@@ -40,13 +40,58 @@ export default function Navigation() {
           <EmblemIcon className="w-8 h-8 text-[#4F0D0E]" />
         </motion.div>
 
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
+        <div className="flex items-center justify-between py-4">
+          {/* Left Navigation */}
+          <div className="hidden lg:flex items-center space-x-8">
+            {[
+              { href: "/stories", label: "Wedding Stories" },
+              { href: "/four-acts", label: "Our Process" }
+            ].map((item, index) => (
+              <motion.div
+                key={item.href}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.6, ease: "easeOut" }}
+                className="relative group"
+              >
+                <Link 
+                  href={item.href} 
+                  className="relative font-primary text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
+                >
+                  <motion.span
+                    className="relative z-10"
+                    whileHover={{ y: -1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item.label}
+                  </motion.span>
+                  
+                  {/* Underline animation */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-0.5 bg-[#4F0D0E]"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: "100%" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  />
+                  
+                  {/* Background glow on hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-[#4F0D0E]/5 rounded-md -m-1"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Center Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative group"
+            className="relative group flex-shrink-0"
           >
             <Link href="/" className="flex items-center">
               <div className="h-8 w-auto relative">
@@ -64,26 +109,24 @@ export default function Navigation() {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
+          {/* Right Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {[
-              { href: "/stories", label: "Our Stories" },
-              { href: "/four-acts", label: "The Four Acts" },
-              { href: "/love-is-love", label: "Love is Love" },
-              { href: "/our-vision", label: "Our Vision" },
-              { href: "/begin-your-story", label: "Begin Your Story" }
+              { href: "/love-is-love", label: "Inclusive Love" },
+              { href: "/our-vision", label: "About Us" },
+              { href: "/begin-your-story", label: "Get Started" }
             ].map((item, index) => (
               <motion.div
                 key={item.href}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index, duration: 0.6, ease: "easeOut" }}
+                transition={{ delay: 0.1 * (index + 2), duration: 0.6, ease: "easeOut" }}
                 className="relative group"
               >
                 <Link 
                   href={item.href} 
                   className="relative font-primary text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
-                >pkill -f "next dev" && npm run dev
+                >
                   <motion.span
                     className="relative z-10"
                     whileHover={{ y: -1 }}
@@ -169,11 +212,11 @@ export default function Navigation() {
                 transition={{ delay: 0.1, duration: 0.4 }}
               >
                 {[
-                  { href: "/stories", label: "Our Stories" },
-                  { href: "/four-acts", label: "The Four Acts" },
-                  { href: "/love-is-love", label: "Love is Love" },
-                  { href: "/our-vision", label: "Our Vision" },
-                  { href: "/begin-your-story", label: "Begin Your Story" }
+                  { href: "/stories", label: "Wedding Stories" },
+                  { href: "/four-acts", label: "Our Process" },
+                  { href: "/love-is-love", label: "Inclusive Love" },
+                  { href: "/our-vision", label: "About Us" },
+                  { href: "/begin-your-story", label: "Get Started" }
                 ].map((item, index) => (
                   <motion.div
                     key={item.href}

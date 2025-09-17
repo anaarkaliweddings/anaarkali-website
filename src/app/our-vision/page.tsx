@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
+import EmblemIcon from '@/components/EmblemIcon'
 
 export default function OurVision() {
   const [selectedTeamMember, setSelectedTeamMember] = useState<number | null>(null)
@@ -85,88 +88,169 @@ export default function OurVision() {
       <Navigation />
       
       {/* Page Header */}
-      <section className="pt-20 pb-16 bg-[#FAF9F6]">
+      <section className="pt-20 pb-16 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="font-playfair text-4xl md:text-5xl text-[#2C2C2C] mb-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="font-primary text-4xl md:text-5xl text-luxury-primary mb-6">
               The Storytellers Behind the Lens
             </h1>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-interface text-lg text-luxury-primary/70 max-w-3xl mx-auto leading-relaxed">
               Meet the humans who turn your love into cinema.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Founder Story */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <div>
-                <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-6">
+                <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-6">
                   From Freelancer to Director: The Abhishek Story
                 </h2>
               </div>
               
               <div className="space-y-6">
-                <p className="font-inter text-lg text-[#2C2C2C] leading-relaxed">
+                <motion.p 
+                  className="font-interface text-lg text-luxury-primary leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
                   Four years ago, I was just another freelancer with a camera and a dream.
                   Today, we're directing love stories that become family legacies.
-                </p>
+                </motion.p>
                 
-                <p className="font-inter text-lg text-[#2C2C2C] leading-relaxed">
+                <motion.p 
+                  className="font-interface text-lg text-luxury-primary leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
                   The journey started with a simple frustration: watching couples receive beautiful but soulless wedding films. Technically perfect. Emotionally empty. I knew we could do better.
-                </p>
+                </motion.p>
 
-                <div className="space-y-4">
-                  <h3 className="font-playfair text-xl text-[#2C2C2C]">
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="font-primary text-xl text-luxury-primary">
                     The Vision
                   </h3>
-                  <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-interface text-base text-luxury-primary/80 leading-relaxed">
                     Build a team that treats every wedding like the movie it deserves to be. Not just photographers, but directors. Not just vendors, but family.
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="space-y-4">
-                  <h3 className="font-playfair text-xl text-[#2C2C2C]">
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="font-primary text-xl text-luxury-primary">
                     The Mission
                   </h3>
-                  <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-interface text-base text-luxury-primary/80 leading-relaxed">
                     Preserve the essence of bonding between couples and families through cinematic storytelling that captures not just what happened, but how it felt.
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="space-y-4">
-                  <h3 className="font-playfair text-xl text-[#2C2C2C]">
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="font-primary text-xl text-luxury-primary">
                     The Dream
                   </h3>
-                  <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-interface text-base text-luxury-primary/80 leading-relaxed">
                     Scale from where we are today to a ₹20 crore brand that sets trends, breaks norms, and creates a new standard for what wedding documentation can be.
                   </p>
-                </div>
+                </motion.div>
 
-                <p className="font-inter text-lg font-medium text-[#2C2C2C]">
+                <motion.p 
+                  className="font-interface text-lg font-medium text-luxury-primary"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  viewport={{ once: true }}
+                >
                   But here's what won't change: Every couple, regardless of budget, gets treated like they're starring in the most important film of the year. Because they are.
-                </p>
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative">
-              <div className="aspect-square bg-gray-400 rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-black/20 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="w-20 h-20 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto">
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="aspect-square rounded-lg overflow-hidden shadow-xl">
+                <LuxuryVideoPlayer
+                  src="/hero-video"
+                  className="w-full h-full object-cover"
+                  muted
+                  autoplay
+                  showControls={false}
+                />
+                <div className="absolute inset-0 bg-luxury-primary/30 flex items-center justify-center">
+                  <motion.div 
+                    className="text-center text-white"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    viewport={{ once: true }}
+                  >
+                    <motion.div 
+                      className="w-20 h-20 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto backdrop-blur-sm"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                    <p className="text-sm font-inter">Abhishek - Founder & Director</p>
-                  </div>
+                    </motion.div>
+                    <p className="text-sm font-interface">Abhishek - Founder & Director</p>
+                  </motion.div>
+                </div>
+                
+                {/* Emblem Watermark */}
+                <div className="absolute top-4 right-4">
+                  <EmblemIcon size="sm" className="text-white opacity-40" />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Personal Interests */}
           <div className="mt-16 bg-[#FAF9F6] p-8 rounded-lg">

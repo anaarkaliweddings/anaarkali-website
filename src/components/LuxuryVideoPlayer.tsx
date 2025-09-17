@@ -9,16 +9,20 @@ interface LuxuryVideoPlayerProps {
   poster?: string
   autoplay?: boolean
   className?: string
+  showControls?: boolean
+  muted?: boolean
 }
 
 const LuxuryVideoPlayer: React.FC<LuxuryVideoPlayerProps> = ({ 
   src, 
   poster, 
   autoplay = false,
-  className = ''
+  className = '',
+  showControls = true,
+  muted = true
 }) => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [showControls, setShowControls] = useState(false)
+  const [showControlsState, setShowControlsState] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const handlePlay = () => {
@@ -46,15 +50,15 @@ const LuxuryVideoPlayer: React.FC<LuxuryVideoPlayerProps> = ({
   return (
     <div 
       className={`relative group ${className}`}
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
+      onMouseEnter={() => showControls && setShowControlsState(true)}
+      onMouseLeave={() => showControls && setShowControlsState(false)}
     >
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
         poster={poster}
         autoPlay={autoplay}
-        muted
+        muted={muted}
         loop
         playsInline
         preload="metadata"
@@ -66,11 +70,11 @@ const LuxuryVideoPlayer: React.FC<LuxuryVideoPlayerProps> = ({
       </video>
       
       {/* Custom play button overlay */}
-      {!isPlaying && (
+      {!isPlaying && showControls && (
         <motion.div
           className="absolute inset-0 flex items-center justify-center bg-black/20"
           initial={{ opacity: 0 }}
-          animate={{ opacity: showControls ? 1 : 0 }}
+          animate={{ opacity: showControlsState ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         >
           <motion.button
@@ -91,16 +95,18 @@ const LuxuryVideoPlayer: React.FC<LuxuryVideoPlayerProps> = ({
       )}
       
       {/* Brand watermark */}
-      <div className="absolute top-4 right-4">
-        <EmblemIcon 
-          size="sm" 
-          variant="watermark"
-          className="text-white opacity-30" 
-        />
-      </div>
+      {showControls && (
+        <div className="absolute top-4 right-4">
+          <EmblemIcon 
+            size="sm" 
+            variant="watermark"
+            className="text-white opacity-30" 
+          />
+        </div>
+      )}
       
       {/* Play/Pause controls */}
-      {showControls && (
+      {showControls && showControlsState && (
         <motion.div
           className="absolute bottom-4 left-4"
           initial={{ opacity: 0, y: 10 }}

@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
+import EmblemIcon from '@/components/EmblemIcon'
 
 export default function FourActs() {
   const [selectedPackage, setSelectedPackage] = useState('Essential')
@@ -90,121 +93,245 @@ export default function FourActs() {
     )
   }
 
+  // Calculate total investment
+  const calculateTotalInvestment = () => {
+    const basePackage = packages[selectedPackage as keyof typeof packages]
+    const basePriceRange = basePackage.price
+    
+    // Extract price range (e.g., "₹2-5 lakhs" -> [200000, 500000])
+    const priceMatch = basePriceRange.match(/₹(\d+)-(\d+)\s*lakhs/)
+    if (!priceMatch) return basePriceRange
+    
+    const minBase = parseInt(priceMatch[1]) * 100000 // Convert lakhs to rupees
+    const maxBase = parseInt(priceMatch[2]) * 100000
+    
+    // Calculate add-on costs
+    let totalAddOns = 0
+    addOns.forEach(addOnId => {
+      const addOn = addOnOptions.find(a => a.id === addOnId)
+      if (addOn) {
+        const addOnPrice = parseInt(addOn.price.replace(/[₹,]/g, ''))
+        totalAddOns += addOnPrice
+      }
+    })
+    
+    const minTotal = minBase + totalAddOns
+    const maxTotal = maxBase + totalAddOns
+    
+    // Convert back to lakhs format
+    const minLakhs = Math.round(minTotal / 100000)
+    const maxLakhs = Math.round(maxTotal / 100000)
+    
+    return `₹${minLakhs}-${maxLakhs} lakhs`
+  }
+
   return (
     <div className="min-h-screen">
       <Navigation />
       
       {/* Page Header */}
-      <section className="pt-20 pb-16 bg-[#FAF9F6]">
+      <section className="pt-20 pb-16 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="font-playfair text-4xl md:text-5xl text-[#2C2C2C] mb-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="font-primary text-4xl md:text-5xl text-luxury-primary mb-6">
               Your Director's Journey
             </h1>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-interface text-lg text-luxury-primary/70 max-w-3xl mx-auto leading-relaxed">
               Like any great film, your wedding story follows a four-act structure. Here's how we bring yours to life.
             </p>
-          </div>
+          </motion.div>
 
           {/* Process Overview Timeline */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             {[
               { id: 1, title: 'Pre-Production', subtitle: 'The Vision', duration: '1-2 months' },
               { id: 2, title: 'Production', subtitle: 'The Shoot', duration: 'Your wedding day(s)' },
               { id: 3, title: 'Post-Production', subtitle: 'The Edit', duration: '3-4 weeks' },
               { id: 4, title: 'The Premiere', subtitle: 'Your Release', duration: '1 week after' }
-            ].map((act) => (
-              <div key={act.id} className="text-center">
-                <div className="w-16 h-16 bg-[#D4A574] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="font-playfair text-xl font-bold">{act.id}</span>
-                </div>
-                <h3 className="font-playfair text-lg text-[#2C2C2C] mb-2">
+            ].map((act, index) => (
+              <motion.div 
+                key={act.id} 
+                className="text-center group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.05 }}
+              >
+                <motion.div 
+                  className="w-16 h-16 bg-luxury-primary text-luxury-accent rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
+                  <span className="font-primary text-xl font-bold">{act.id}</span>
+                </motion.div>
+                <h3 className="font-primary text-lg text-luxury-primary mb-2 group-hover:text-luxury-primary/80 transition-colors duration-300">
                   {act.title}
                 </h3>
-                <p className="font-inter text-sm text-[#2C2C2C]/70 mb-2">
+                <p className="font-interface text-sm text-luxury-primary/70 mb-2">
                   {act.subtitle}
                 </p>
-                <p className="font-inter text-xs text-[#D4A574] font-medium">
+                <p className="font-interface text-xs text-luxury-primary font-medium">
                   {act.duration}
                 </p>
-              </div>
+                
+                {/* Emblem Watermark */}
+                <div className="mt-4 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
+                  <EmblemIcon size="sm" className="text-luxury-primary" />
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Act I: Pre-Production */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#D4A574] text-white rounded-full flex items-center justify-center">
-                  <span className="font-playfair text-xl font-bold">1</span>
-                </div>
+                <motion.div 
+                  className="w-12 h-12 bg-luxury-primary text-luxury-accent rounded-full flex items-center justify-center shadow-lg"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
+                  <span className="font-primary text-xl font-bold">1</span>
+                </motion.div>
                 <div>
-                  <h2 className="font-playfair text-3xl text-[#2C2C2C]">
+                  <h2 className="font-primary text-3xl text-luxury-primary">
                     Act I: Pre-Production - "The Vision"
                   </h2>
-                  <p className="font-inter text-sm text-[#D4A574] font-medium">
+                  <p className="font-interface text-sm text-luxury-primary font-medium">
                     Duration: 1-2 months before your wedding
                   </p>
                 </div>
               </div>
               
               <div className="space-y-6">
-                <p className="font-inter text-lg text-[#2C2C2C] leading-relaxed">
+                <motion.p 
+                  className="font-interface text-lg text-luxury-primary leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
                   This is where the magic begins.
-                </p>
+                </motion.p>
                 
-                <div className="space-y-4">
-                  <h3 className="font-playfair text-xl text-[#2C2C2C]">
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="font-primary text-xl text-luxury-primary">
                     The Storyboarding Session
                   </h3>
-                  <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-interface text-base text-luxury-primary/80 leading-relaxed">
                     We don't ask about your timeline first. We ask about your love story.
                     In our 90-minute director's meeting, we map out the emotional arc of your day.
                     Who are the supporting characters? What moments matter most to you?
                     What's the theme of your love story—romance, adventure, tradition with a twist?
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="space-y-4">
-                  <h3 className="font-playfair text-xl text-[#2C2C2C]">
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="font-primary text-xl text-luxury-primary">
                     The Director's Treatment
                   </h3>
-                  <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-interface text-base text-luxury-primary/80 leading-relaxed">
                     After our session, you receive a beautiful document outlining:
                   </p>
                   <ul className="space-y-2 ml-4">
-                    <li className="font-inter text-base text-[#2C2C2C]/80">• The logline of your wedding film</li>
-                    <li className="font-inter text-base text-[#2C2C2C]/80">• Visual style and tone</li>
-                    <li className="font-inter text-base text-[#2C2C2C]/80">• Key characters and their roles</li>
-                    <li className="font-inter text-base text-[#2C2C2C]/80">• The emotional beats we'll capture</li>
+                    <li className="font-interface text-base text-luxury-primary/80">• The logline of your wedding film</li>
+                    <li className="font-interface text-base text-luxury-primary/80">• Visual style and tone</li>
+                    <li className="font-interface text-base text-luxury-primary/80">• Key characters and their roles</li>
+                    <li className="font-interface text-base text-luxury-primary/80">• The emotional beats we'll capture</li>
                   </ul>
-                </div>
+                </motion.div>
 
-                <p className="font-inter text-lg font-medium text-[#2C2C2C]">
+                <motion.p 
+                  className="font-interface text-lg font-medium text-luxury-primary"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
                   By the end of Act I, you'll feel like your love story is being taken seriously as a piece of art.
-                </p>
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative">
-              <div className="aspect-video bg-gray-400 rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-black/20 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto">
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="aspect-video rounded-lg overflow-hidden shadow-xl">
+                <LuxuryVideoPlayer
+                  src="/hero-video"
+                  className="w-full h-full object-cover"
+                  muted
+                  autoplay
+                  showControls={false}
+                />
+                <div className="absolute inset-0 bg-luxury-primary/30 flex items-center justify-center">
+                  <motion.div 
+                    className="text-center text-white"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    viewport={{ once: true }}
+                  >
+                    <motion.div 
+                      className="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto backdrop-blur-sm"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M8 5v10l8-5-8-5z"/>
                       </svg>
-                    </div>
-                    <p className="text-sm font-inter">Pre-production consultation</p>
-                  </div>
+                    </motion.div>
+                    <p className="text-sm font-interface">Pre-production consultation</p>
+                  </motion.div>
+                </div>
+                
+                {/* Emblem Watermark */}
+                <div className="absolute top-4 right-4">
+                  <EmblemIcon size="sm" className="text-white opacity-40" />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -530,7 +657,7 @@ export default function FourActs() {
                       Total Investment
                     </span>
                     <span className="font-playfair text-lg font-bold text-[#D4A574]">
-                      {packages[selectedPackage as keyof typeof packages].price}
+                      {calculateTotalInvestment()}
                     </span>
                   </div>
                 </div>

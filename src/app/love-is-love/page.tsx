@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
+import EmblemIcon from '@/components/EmblemIcon'
 
 export default function LoveIsLove() {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -116,61 +119,138 @@ export default function LoveIsLove() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-[#2C2C2C] text-white">
+      <section className="pt-20 pb-16 bg-luxury-primary text-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="font-playfair text-4xl md:text-5xl text-white mb-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="font-primary text-4xl md:text-5xl text-luxury-accent mb-6">
               Every Story Deserves Telling
             </h1>
-            <p className="font-inter text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-interface text-lg text-luxury-accent/80 max-w-3xl mx-auto leading-relaxed">
               Love doesn't fit into one box. Neither does our lens.
             </p>
-          </div>
+          </motion.div>
 
           {/* Mission Statement */}
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <div className="space-y-6">
-              <p className="font-inter text-xl text-white leading-relaxed">
+              <motion.p 
+                className="font-interface text-xl text-luxury-accent leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 We believe love is love is love.
-              </p>
-              <div className="space-y-4 text-white/90">
-                <p className="font-inter text-lg">No matter who you love.</p>
-                <p className="font-inter text-lg">How you love.</p>
-                <p className="font-inter text-lg">Where you love.</p>
-                <p className="font-inter text-lg">What traditions you follow.</p>
-                <p className="font-inter text-lg">What rules you break.</p>
-              </div>
-              <p className="font-inter text-lg text-white leading-relaxed">
+              </motion.p>
+              <motion.div 
+                className="space-y-4 text-luxury-accent/90"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <motion.p 
+                  className="font-interface text-lg"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.8 }}
+                >No matter who you love.</motion.p>
+                <motion.p 
+                  className="font-interface text-lg"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.9 }}
+                >How you love.</motion.p>
+                <motion.p 
+                  className="font-interface text-lg"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 1.0 }}
+                >Where you love.</motion.p>
+                <motion.p 
+                  className="font-interface text-lg"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 1.1 }}
+                >What traditions you follow.</motion.p>
+                <motion.p 
+                  className="font-interface text-lg"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 1.2 }}
+                >What rules you break.</motion.p>
+              </motion.div>
+              <motion.p 
+                className="font-interface text-lg text-luxury-accent leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.4 }}
+              >
                 Your love story deserves to be told with the same cinematic beauty, respect, and attention to detail as any other.
-              </p>
-              <p className="font-inter text-lg font-medium text-white">
+              </motion.p>
+              <motion.p 
+                className="font-interface text-lg font-medium text-luxury-accent"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.6 }}
+              >
                 This is more than a service—it's our promise.<br />
                 A safe space where your authentic self isn't just welcomed, it's celebrated.
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-[#FAF9F6]">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-4">
               The Love We've Captured So Far
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {statistics.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="font-playfair text-4xl md:text-5xl text-[#D4A574] font-bold mb-2">
+              <motion.div 
+                key={index} 
+                className="text-center group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.05 }}
+              >
+                <motion.div 
+                  className="font-primary text-4xl md:text-5xl text-luxury-primary font-bold mb-2"
+                  whileHover={{ scale: 1.1 }}
+                >
                   {stat.number}
-                </div>
-                <p className="font-inter text-sm text-[#2C2C2C]/70 leading-relaxed">
+                </motion.div>
+                <p className="font-interface text-sm text-luxury-primary/70 leading-relaxed">
                   {stat.label}
                 </p>
-              </div>
+                
+                {/* Emblem Watermark */}
+                <div className="mt-4 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
+                  <EmblemIcon size="sm" className="text-luxury-primary" />
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -179,65 +259,136 @@ export default function LoveIsLove() {
       {/* Diverse Portfolio Gallery */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-4">
               Love Stories That Break Beautiful Rules
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-3xl mx-auto">
+            <p className="font-interface text-lg text-luxury-primary/70 max-w-3xl mx-auto">
               Every love story here represents a couple who refused to fit into someone else's definition of what a wedding should be. We're honored to have been their directors.
             </p>
-          </div>
+          </motion.div>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {filters.map((filter) => (
-              <button
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {filters.map((filter, index) => (
+              <motion.button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-3 font-inter text-sm transition-all duration-300 ${
+                className={`px-6 py-3 font-interface text-sm transition-all duration-300 rounded-full ${
                   activeFilter === filter
-                    ? 'bg-[#D4A574] text-white'
-                    : 'bg-[#FAF9F6] text-[#2C2C2C] hover:bg-[#D4A574] hover:text-white border border-gray-200'
+                    ? 'bg-luxury-primary text-luxury-accent shadow-lg'
+                    : 'bg-luxury-accent text-luxury-primary hover:bg-luxury-primary hover:text-luxury-accent border border-luxury-primary/30 hover:border-luxury-primary'
                 }`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {filter}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Portfolio Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item) => (
-              <div key={item.id} className="group cursor-pointer">
-                <div className="relative aspect-video bg-gray-400 rounded-lg overflow-hidden mb-4">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M8 5v10l8-5-8-5z"/>
-                      </svg>
+          <AnimatePresence mode="wait">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              layout
+            >
+              {filteredItems.map((item, index) => (
+                <motion.div 
+                  key={item.id} 
+                  className="group cursor-pointer"
+                  layout
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -30, scale: 0.9 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                >
+                  <div className="relative aspect-video bg-luxury-primary/10 rounded-lg overflow-hidden mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    {/* Elegant Film Strip Border Effect */}
+                    <div className="absolute inset-0 border border-luxury-primary/15 group-hover:border-luxury-primary/30 transition-all duration-300 rounded-lg"></div>
+                    <div className="absolute inset-1 border border-luxury-accent/20 group-hover:border-luxury-accent/40 transition-all duration-300 rounded-lg"></div>
+                    
+                    {/* Video Background */}
+                    <LuxuryVideoPlayer
+                      src="/hero-video"
+                      className="w-full h-full object-cover"
+                      muted
+                      autoplay
+                      showControls={false}
+                    />
+                    
+                    {/* Elegant Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-luxury-primary/40 via-luxury-primary/10 to-transparent group-hover:from-luxury-primary/50 group-hover:via-luxury-primary/20 transition-all duration-300"></div>
+                    
+                    {/* Play Button */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.div 
+                        className="w-16 h-16 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
+                        whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.3)" }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <svg className="w-6 h-6 ml-1 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M8 5v10l8-5-8-5z"/>
+                        </svg>
+                      </motion.div>
+                    </div>
+                    
+                    {/* Content Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-black/20 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                        <h3 className="text-white font-primary text-lg mb-1 drop-shadow-lg">
+                          {item.title}
+                        </h3>
+                        <p className="text-white/90 font-interface text-sm drop-shadow-md">
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Emblem Watermark */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
+                      <EmblemIcon size="sm" className="text-white" />
                     </div>
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-playfair text-lg mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/80 font-inter text-sm">
-                      {item.subtitle}
+                  
+                  <motion.div 
+                    className="space-y-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+                  >
+                    <p className="font-interface text-sm text-luxury-primary/70">
+                      {item.location} • {item.category}
                     </p>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-inter text-sm text-[#2C2C2C]/70">
-                    {item.location} • {item.category}
-                  </p>
-                  <p className="font-inter text-sm text-[#2C2C2C] leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+                    <p className="font-interface text-sm text-luxury-primary leading-relaxed">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 

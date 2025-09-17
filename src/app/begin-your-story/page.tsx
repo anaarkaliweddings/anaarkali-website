@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
+import EmblemIcon from '@/components/EmblemIcon'
 
 export default function BeginYourStory() {
   const [formData, setFormData] = useState({
@@ -102,41 +105,70 @@ export default function BeginYourStory() {
       <Navigation />
       
       {/* Page Header */}
-      <section className="pt-20 pb-16 bg-[#FAF9F6]">
+      <section className="pt-20 pb-16 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="font-playfair text-4xl md:text-5xl text-[#2C2C2C] mb-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="font-primary text-4xl md:text-5xl text-luxury-primary mb-6">
               Ready for Your Premiere?
             </h1>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-interface text-lg text-luxury-primary/70 max-w-3xl mx-auto leading-relaxed">
               Every great love story deserves a great director. Let's see if we're meant to tell yours.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Form */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-4">
               Tell Us About Your Love Story
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-2xl mx-auto">
+            <p className="font-interface text-lg text-luxury-primary/70 max-w-2xl mx-auto">
               Before we talk packages and pricing, we want to understand your vision. What kind of film do you want your wedding to be?
             </p>
-          </div>
+          </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-12">
+          <motion.form 
+            onSubmit={handleSubmit} 
+            className="space-y-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             {/* Your Love Story Details */}
-            <div className="space-y-8">
-              <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-primary text-2xl text-luxury-primary mb-6">
                 Your Love Story Details
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="block font-interface text-sm font-medium text-luxury-primary mb-2">
                     Your names *
                   </label>
                   <input
@@ -144,13 +176,18 @@ export default function BeginYourStory() {
                     required
                     value={formData.names}
                     onChange={(e) => handleInputChange('names', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md font-inter text-sm focus:outline-none focus:ring-2 focus:ring-[#D4A574]"
+                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-interface text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
                     placeholder="Enter both your names"
                   />
-                </div>
+                </motion.div>
 
-                <div>
-                  <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="block font-interface text-sm font-medium text-luxury-primary mb-2">
                     Wedding date (or approximate) *
                   </label>
                   <input
@@ -158,10 +195,10 @@ export default function BeginYourStory() {
                     required
                     value={formData.weddingDate}
                     onChange={(e) => handleInputChange('weddingDate', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md font-inter text-sm focus:outline-none focus:ring-2 focus:ring-[#D4A574]"
+                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-interface text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
                     placeholder="e.g., March 2024 or TBD"
                   />
-                </div>
+                </motion.div>
               </div>
 
               <div>
@@ -204,19 +241,24 @@ export default function BeginYourStory() {
                 />
               </div>
 
-              <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <label className="block font-interface text-sm font-medium text-luxury-primary mb-2">
                   Describe your dream wedding film in one word
                 </label>
                 <input
                   type="text"
                   value={formData.dreamFilmWord}
                   onChange={(e) => handleInputChange('dreamFilmWord', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md font-inter text-sm focus:outline-none focus:ring-2 focus:ring-[#D4A574]"
+                  className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-interface text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
                   placeholder="e.g., Romantic, Cinematic, Intimate, Grand"
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Your Wedding Vision */}
             <div className="space-y-8">
@@ -393,130 +435,174 @@ export default function BeginYourStory() {
               </div>
             </div>
 
-            <div className="text-center">
-              <button
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <motion.button
                 type="submit"
-                className="bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-12 py-4 font-inter text-sm tracking-wider uppercase transition-all duration-300"
+                className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-12 py-4 font-interface text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Send Our Story
-              </button>
-            </div>
-          </form>
+              </motion.button>
+            </motion.div>
+          </motion.form>
         </div>
       </section>
 
       {/* Consultation Booking */}
-      <section className="py-20 bg-[#FAF9F6]">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-4">
               Book Your Director's Consultation
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-2xl mx-auto">
+            <p className="font-interface text-lg text-luxury-primary/70 max-w-2xl mx-auto">
               Ready to meet your potential directors? Book a consultation where we'll discuss your vision and our approach.
             </p>
-          </div>
+          </motion.div>
 
           <div className="space-y-6">
-            {consultationTypes.map((consultation) => (
-              <div
+            {consultationTypes.map((consultation, index) => (
+              <motion.div
                 key={consultation.id}
                 onClick={() => setSelectedConsultation(selectedConsultation === consultation.id ? '' : consultation.id)}
                 className={`p-6 border-2 rounded-lg cursor-pointer transition-all duration-300 ${
                   selectedConsultation === consultation.id
-                    ? 'border-[#D4A574] bg-[#D4A574]/5'
-                    : 'border-gray-200 hover:border-[#D4A574]/50'
+                    ? 'border-luxury-accent bg-luxury-accent/5'
+                    : 'border-luxury-primary/20 hover:border-luxury-accent/50'
                 }`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
-                    <h3 className="font-playfair text-xl text-[#2C2C2C] mb-2">
+                    <h3 className="font-primary text-xl text-luxury-primary mb-2">
                       {consultation.title}
                     </h3>
-                    <p className="font-inter text-base text-[#2C2C2C]/80 mb-4">
+                    <p className="font-interface text-base text-luxury-primary/80 mb-4">
                       {consultation.description}
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="font-inter text-sm text-[#D4A574] font-medium">
+                    <span className="font-interface text-sm text-luxury-accent font-medium">
                       {consultation.duration}
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {selectedConsultation && (
-            <div className="mt-8 text-center">
-              <button className="bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-8 py-3 font-inter text-sm tracking-wider uppercase transition-all duration-300">
-                Book This Consultation
-              </button>
-            </div>
-          )}
+          <AnimatePresence>
+            {selectedConsultation && (
+              <motion.div 
+                className="mt-8 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.button 
+                  className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-8 py-3 font-interface text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book This Consultation
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
       {/* Contact Information */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-4">
               Reach Your Directors
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="font-playfair text-xl text-[#2C2C2C] mb-2">
-                WhatsApp (Fastest Response)
-              </h3>
-              <p className="font-inter text-base text-[#2C2C2C]/80">
-                +91-XXXXX-XXXXX
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-4xl mb-4">📞</div>
-              <h3 className="font-playfair text-xl text-[#2C2C2C] mb-2">
-                Phone
-              </h3>
-              <p className="font-inter text-base text-[#2C2C2C]/80">
-                +91-XXXXX-XXXXX
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-4xl mb-4">✉️</div>
-              <h3 className="font-playfair text-xl text-[#2C2C2C] mb-2">
-                Email
-              </h3>
-              <p className="font-inter text-base text-[#2C2C2C]/80">
-                hello@anaarkaliproductions.com
-              </p>
-            </div>
+            {[
+              { icon: '📱', title: 'WhatsApp (Fastest Response)', contact: '+91-XXXXX-XXXXX' },
+              { icon: '📞', title: 'Phone', contact: '+91-XXXXX-XXXXX' },
+              { icon: '✉️', title: 'Email', contact: 'hello@anaarkaliproductions.com' }
+            ].map((contact, index) => (
+              <motion.div 
+                key={index}
+                className="text-center p-6 bg-luxury-accent/5 rounded-lg border border-luxury-primary/10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="text-4xl mb-4">{contact.icon}</div>
+                <h3 className="font-primary text-xl text-luxury-primary mb-2">
+                  {contact.title}
+                </h3>
+                <p className="font-interface text-base text-luxury-primary/80">
+                  {contact.contact}
+                </p>
+              </motion.div>
+            ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-8">
+          <motion.div 
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="font-primary text-2xl text-luxury-primary mb-8">
               Office Locations
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <div className="text-2xl mb-2">📍</div>
-                <p className="font-inter text-base text-[#2C2C2C]/80">
-                  Delhi/NCR: Available for in-person meetings
-                </p>
-              </div>
-              <div>
-                <div className="text-2xl mb-2">📍</div>
-                <p className="font-inter text-base text-[#2C2C2C]/80">
-                  Destination: We travel for your love story
-                </p>
-              </div>
+              {[
+                { location: 'Delhi/NCR: Available for in-person meetings' },
+                { location: 'Destination: We travel for your love story' }
+              ].map((office, index) => (
+                <motion.div 
+                  key={index}
+                  className="p-4 bg-luxury-accent/5 rounded-lg border border-luxury-primary/10"
+                  initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="text-2xl mb-2">📍</div>
+                  <p className="font-interface text-base text-luxury-primary/80">
+                    {office.location}
+                  </p>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -645,20 +731,31 @@ export default function BeginYourStory() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-[#2C2C2C] text-white">
+      <section className="py-20 bg-luxury-primary text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-playfair text-3xl md:text-4xl text-white mb-6">
-            Your Love Story is Waiting
-          </h2>
-          <p className="font-inter text-lg text-white/80 mb-8 leading-relaxed">
-            Don't let another day pass without beginning the conversation about your wedding film. Great cinema starts with great planning.
-          </p>
-          <button className="bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-12 py-4 font-inter text-lg tracking-wider uppercase transition-all duration-300">
-            Begin Your Story
-          </button>
-          <p className="font-inter text-sm text-white/60 mt-6">
-            Remember: We only take on a limited number of weddings each year. If you've found us, and we speak to your heart, let's talk.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-primary text-3xl md:text-4xl text-white mb-6">
+              Your Love Story is Waiting
+            </h2>
+            <p className="font-interface text-lg text-white/80 mb-8 leading-relaxed">
+              Don't let another day pass without beginning the conversation about your wedding film. Great cinema starts with great planning.
+            </p>
+            <motion.button 
+              className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-12 py-4 font-interface text-lg tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Begin Your Story
+            </motion.button>
+            <p className="font-interface text-sm text-white/60 mt-6">
+              Remember: We only take on a limited number of weddings each year. If you've found us, and we speak to your heart, let's talk.
+            </p>
+          </motion.div>
         </div>
       </section>
 
