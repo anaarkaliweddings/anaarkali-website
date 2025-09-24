@@ -178,28 +178,8 @@ How Did You Hear: ${formData.howDidYouHear}
     }
   }
 
-  const handleConsultationSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    const result = await consultationBooking.submitBooking(consultationFormData)
-    
-    if (result.success) {
-      // Reset consultation form
-      setConsultationFormData({
-        name: '',
-        email: '',
-        phone: '',
-        consultation_type: 'virtual',
-        preferred_date: '',
-        preferred_time: '',
-        timezone: '',
-        wedding_date: '',
-        budget_range: '',
-        message: ''
-      })
-      setSelectedConsultation('')
-    }
-  }
+  // Note: Consultation booking form to be implemented
+  // const handleConsultationSubmit = async (e: React.FormEvent) => { ... }
 
   return (
     <div className="min-h-screen">
@@ -914,7 +894,11 @@ How Did You Hear: ${formData.howDidYouHear}
               Don't let another day pass without beginning the conversation about your wedding film. Great cinema starts with great planning.
             </p>
             <motion.button 
-              className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-12 py-4 font-interface text-lg tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
+              onClick={() => {
+                // Scroll to the contact form at the top
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+              className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-12 py-4 font-primary text-lg tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

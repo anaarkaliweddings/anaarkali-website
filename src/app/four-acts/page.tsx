@@ -673,7 +673,13 @@ export default function FourActs() {
                 </div>
               </div>
 
-              <button className="w-full bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-8 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300">
+              <button 
+                onClick={() => {
+                  // Navigate to Begin Your Story page
+                  window.location.href = '/begin-your-story'
+                }}
+                className="w-full bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-8 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 cursor-pointer"
+              >
                 Book Consultation
               </button>
             </div>

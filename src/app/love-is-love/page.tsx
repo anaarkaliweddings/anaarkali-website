@@ -457,10 +457,20 @@ export default function LoveIsLove() {
             Let's create something beautiful together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-8 py-4 font-inter text-sm tracking-wider uppercase transition-all duration-300">
+            <button 
+              onClick={() => {
+                window.location.href = '/begin-your-story'
+              }}
+              className="bg-[#D4A574] hover:bg-[#D4A574]/90 text-white px-8 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 cursor-pointer"
+            >
               Begin Your Story
             </button>
-            <button className="border border-white text-white hover:bg-white hover:text-[#2C2C2C] px-8 py-4 font-inter text-sm tracking-wider uppercase transition-all duration-300">
+            <button 
+              onClick={() => {
+                window.location.href = '/our-vision'
+              }}
+              className="border border-white text-white hover:bg-white hover:text-[#2C2C2C] px-8 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 cursor-pointer"
+            >
               Learn More
             </button>
           </div>
