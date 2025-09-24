@@ -171,3 +171,17 @@ body {
   font-family: 'Arial Unicode MS', 'Arial', 'Helvetica', sans-serif;
   scroll-behavior: smooth;
 }
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  width: 32px;
+  height: 32px;
+  border: 1.8px solid #ffffff;
+  border-radius: 9999px;
+  mix-blend-mode: difference;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.cursor--hover .custom-cursor {
+  transform: scale(1.6);
+}

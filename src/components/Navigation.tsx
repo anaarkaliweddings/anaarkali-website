@@ -56,10 +56,10 @@ export default function Navigation() {
               >
                 <Link 
                   href={item.href} 
-                  className="relative font-primary text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
+                  className="relative font-technical-bold text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
                 >
                   <motion.span
-                    className="relative z-10"
+                    className="relative z-10 uppercase"
                     whileHover={{ y: -1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -125,10 +125,10 @@ export default function Navigation() {
               >
                 <Link 
                   href={item.href} 
-                  className="relative font-primary text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
+                  className="relative font-technical-bold text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
                 >
                   <motion.span
-                    className="relative z-10"
+                    className="relative z-10 uppercase"
                     whileHover={{ y: -1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -227,11 +227,11 @@ export default function Navigation() {
                   >
                     <Link
                       href={item.href}
-                      className="relative font-primary text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-3 px-2 block"
+                      className="relative font-technical-bold text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-3 px-2 block"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <motion.span
-                        className="relative z-10"
+                        className="relative z-10 uppercase"
                         whileHover={{ x: 4 }}
                         transition={{ duration: 0.2 }}
                       >
