@@ -4,12 +4,17 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
-import EmblemIcon from '@/components/EmblemIcon'
+import { useContactFormSubmission, useConsultationBookingSubmission } from '@/lib/hooks/useFormSubmission'
 
 export default function BeginYourStory() {
+  // Form submission hooks
+  const contactForm = useContactFormSubmission()
+  const consultationBooking = useConsultationBookingSubmission()
+  
   const [formData, setFormData] = useState({
     names: '',
+    email: '',
+    phone: '',
     weddingDate: '',
     location: '',
     loveStory: '',
@@ -29,6 +34,20 @@ export default function BeginYourStory() {
 
   const [selectedConsultation, setSelectedConsultation] = useState('')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  
+  // Consultation booking form data
+  const [consultationFormData, setConsultationFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    consultation_type: 'virtual' as 'virtual' | 'in_person',
+    preferred_date: '',
+    preferred_time: '',
+    timezone: '',
+    wedding_date: '',
+    budget_range: '',
+    message: ''
+  })
 
   const eventTypes = ['Traditional', 'Modern', 'Destination', 'Court marriage', 'Multi-day celebration']
   const servicesNeeded = ['Photography', 'Videography', 'Both']
@@ -94,10 +113,92 @@ export default function BeginYourStory() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    
+    // Transform form data to match database schema
+    const submissionData = {
+      name: formData.names,
+      email: formData.email,
+      phone: formData.phone,
+      wedding_date: formData.weddingDate || undefined,
+      venue: formData.location || undefined,
+      guest_count: formData.guestCount || undefined,
+      budget_range: formData.budget || undefined,
+      services_interested: formData.servicesNeeded,
+      message: `
+Love Story: ${formData.loveStory}
+
+Important to You: ${formData.importantToYou}
+
+Dream Film Description: ${formData.dreamFilmWord}
+
+Event Type: ${formData.eventType.join(', ')}
+
+Cultural Ceremonies: ${formData.culturalCeremonies}
+
+What Matters Most: ${formData.whatMattersMost}
+
+Accessibility Needs: ${formData.accessibilityNeeds}
+
+LGBTQ+ Community: ${formData.lgbtqCommunity}
+
+Family Dynamics: ${formData.familyDynamics}
+
+How Did You Hear: ${formData.howDidYouHear}
+      `.trim(),
+      timeline: 'Not specified',
+      how_did_you_hear: formData.howDidYouHear
+    }
+
+    const result = await contactForm.submitForm(submissionData)
+    
+    if (result.success) {
+      // Reset form
+      setFormData({
+        names: '',
+        email: '',
+        phone: '',
+        weddingDate: '',
+        location: '',
+        loveStory: '',
+        importantToYou: '',
+        dreamFilmWord: '',
+        eventType: [],
+        guestCount: '',
+        culturalCeremonies: '',
+        servicesNeeded: [],
+        budget: '',
+        whatMattersMost: '',
+        accessibilityNeeds: '',
+        lgbtqCommunity: '',
+        familyDynamics: '',
+        howDidYouHear: ''
+      })
+    }
+  }
+
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    const result = await consultationBooking.submitBooking(consultationFormData)
+    
+    if (result.success) {
+      // Reset consultation form
+      setConsultationFormData({
+        name: '',
+        email: '',
+        phone: '',
+        consultation_type: 'virtual',
+        preferred_date: '',
+        preferred_time: '',
+        timezone: '',
+        wedding_date: '',
+        budget_range: '',
+        message: ''
+      })
+      setSelectedConsultation('')
+    }
   }
 
   return (
@@ -184,10 +285,48 @@ export default function BeginYourStory() {
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="block font-primary text-sm font-medium text-luxury-primary mb-2">
+                    Email address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
+                    placeholder="your.email@example.com"
+                  />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="block font-primary text-sm font-medium text-luxury-primary mb-2">
+                    Phone number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
+                    placeholder="+91 98765 43210"
+                  />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <label className="block font-interface text-sm font-medium text-luxury-primary mb-2">
+                  <label className="block font-primary text-sm font-medium text-luxury-primary mb-2">
                     Wedding date (or approximate) *
                   </label>
                   <input
@@ -436,19 +575,48 @@ export default function BeginYourStory() {
             </div>
 
             <motion.div 
-              className="text-center"
+              className="text-center space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               viewport={{ once: true }}
             >
+              {/* Success Message */}
+              {contactForm.isSuccess && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-green-50 border border-green-200 text-green-800 px-6 py-4 rounded-md"
+                >
+                  <p className="font-primary-medium">Thank you! Your story has been sent successfully.</p>
+                  <p className="font-primary text-sm mt-1">We'll be in touch within 24 hours.</p>
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {contactForm.error && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-md"
+                >
+                  <p className="font-primary-medium">Oops! Something went wrong.</p>
+                  <p className="font-primary text-sm mt-1">{contactForm.error}</p>
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
-                className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-12 py-4 font-interface text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                disabled={contactForm.isSubmitting}
+                className={`px-12 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl ${
+                  contactForm.isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-luxury-accent hover:bg-luxury-accent/90 text-white'
+                }`}
+                whileHover={!contactForm.isSubmitting ? { scale: 1.05 } : {}}
+                whileTap={!contactForm.isSubmitting ? { scale: 0.95 } : {}}
               >
-                Send Our Story
+                {contactForm.isSubmitting ? 'Sending...' : 'Send Our Story'}
               </motion.button>
             </motion.div>
           </motion.form>
