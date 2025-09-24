@@ -312,7 +312,7 @@ export default function LoveIsLove() {
               {filteredItems.map((item, index) => (
                 <motion.div 
                   key={item.id} 
-                  className="group cursor-pointer"
+                  className="w-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(79,13,14,0.12)] overflow-hidden"
                   layout
                   initial={{ opacity: 0, y: 30, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -324,67 +324,31 @@ export default function LoveIsLove() {
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <div className="relative aspect-video bg-luxury-primary/10 rounded-lg overflow-hidden mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    {/* Elegant Film Strip Border Effect */}
-                    <div className="absolute inset-0 border border-luxury-primary/15 group-hover:border-luxury-primary/30 transition-all duration-300 rounded-lg"></div>
-                    <div className="absolute inset-1 border border-luxury-accent/20 group-hover:border-luxury-accent/40 transition-all duration-300 rounded-lg"></div>
-                    
-                    {/* Video Background */}
-                    <LuxuryVideoPlayer
-                      src="/hero-video"
+                  <div className="w-full aspect-video overflow-hidden">
+                    <video
                       className="w-full h-full object-cover"
                       muted
-                      autoplay
-                      showControls={false}
-                    />
-                    
-                    {/* Elegant Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-luxury-primary/40 via-luxury-primary/10 to-transparent group-hover:from-luxury-primary/50 group-hover:via-luxury-primary/20 transition-all duration-300"></div>
-                    
-                    {/* Play Button */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div 
-                        className="w-16 h-16 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
-                        whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.3)" }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <svg className="w-6 h-6 ml-1 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M8 5v10l8-5-8-5z"/>
-                        </svg>
-                      </motion.div>
-                    </div>
-                    
-                    {/* Content Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="bg-black/20 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-                        <h3 className="text-white font-primary text-lg mb-1 drop-shadow-lg">
-                          {item.title}
-                        </h3>
-                        <p className="text-white/90 font-interface text-sm drop-shadow-md">
-                          {item.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {/* Emblem Watermark */}
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
-                      <EmblemIcon size="sm" className="text-white" />
-                    </div>
+                      playsInline
+                      loop
+                      preload="metadata"
+                    >
+                      <source src="/hero-video.webm" type="video/webm" />
+                      <source src="/hero-video.mp4" type="video/mp4" />
+                    </video>
                   </div>
-                  
-                  <motion.div 
-                    className="space-y-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-                  >
-                    <p className="font-interface text-sm text-luxury-primary/70">
-                      {item.location} • {item.category}
+
+                  {/* Text Area */}
+                  <div className="p-6">
+                    <h3 className="font-primary-medium text-xl text-[#4F0D0E] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="font-primary text-sm text-[#4F0D0E] opacity-60 mb-3">
+                      • {item.subtitle}
                     </p>
-                    <p className="font-interface text-sm text-luxury-primary leading-relaxed">
-                      {item.description}
+                    <p className="font-primary text-sm text-[#4F0D0E] opacity-80 leading-[1.4]">
+                      A celebration of love in all its beautiful forms.
                     </p>
-                  </motion.div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -393,7 +357,7 @@ export default function LoveIsLove() {
       </section>
 
       {/* Safe Space Messaging */}
-      <section className="py-20 bg-[#FAF9F6]">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
@@ -440,7 +404,7 @@ export default function LoveIsLove() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {resources.map((resource, index) => (
-              <div key={index} className="bg-[#FAF9F6] p-8 rounded-lg">
+              <div key={index} className="bg-luxury-accent p-8 rounded-lg">
                 <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
                   {resource.title}
                 </h3>
@@ -483,7 +447,7 @@ export default function LoveIsLove() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#2C2C2C] text-white">
+      <section className="py-20 bg-luxury-secondary text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-playfair text-3xl md:text-4xl text-white mb-6">
             Ready to Tell Your Love Story?

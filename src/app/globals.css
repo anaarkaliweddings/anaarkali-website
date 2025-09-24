@@ -10,78 +10,78 @@
 /* 
  * Font System Documentation
  * 
- * Primary Font (ITC Garamond STD): Use for headings, titles, and luxury brand elements
+ * Primary Font (Inter Tight): Use for all body text, navigation, and UI elements
  * - .font-primary: Regular weight
  * - .font-primary-bold: Bold weight  
- * - .font-primary-italic: Italic style
+ * - .font-primary-medium: Medium weight
  * 
- * Interface Font (Arial Unicode MS): Use for body text, navigation, and UI elements
- * - .font-interface: Regular weight
- * - .font-interface-bold: Bold weight
- * - .font-interface-light: Light weight
+ * Highlight Font (Instrument Serif): Use for important highlight words in titles
+ * - .font-highlight: Regular weight
+ * - .font-highlight-bold: Bold weight
+ * - .font-highlight-italic: Italic style
  * 
- * Technical Font (Roboto Mono): Use for code, technical content, and monospace needs
- * - .font-technical: Regular weight
- * - .font-technical-bold: Bold weight
- * - .font-technical-light: Light weight
+ * Comments Font (Roboto): Use for code, technical content, and comments
+ * - .font-comments: Regular weight
+ * - .font-comments-bold: Bold weight
+ * - .font-comments-light: Light weight
  * 
  * Usage Examples:
- * <h1 className="font-primary-bold">Luxury Title</h1>
- * <p className="font-interface">Body text content</p>
- * <code className="font-technical">Technical code</code>
+ * <h1 className="font-primary-bold">Main <span className="font-highlight">Highlight</span> Title</h1>
+ * <p className="font-primary">Body text content</p>
+ * <code className="font-comments">Technical code</code>
  */
 
 /* Font Utility Classes */
 .font-primary {
-  font-family: 'ITC Garamond STD', 'Garamond', 'Times New Roman', serif;
+  font-family: 'Inter Tight', 'Inter', 'system-ui', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .font-primary-bold {
-  font-family: 'ITC Garamond STD', 'Garamond', 'Times New Roman', serif;
+  font-family: 'Inter Tight', 'Inter', 'system-ui', sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
-.font-primary-italic {
-  font-family: 'ITC Garamond STD', 'Garamond', 'Times New Roman', serif;
+.font-primary-medium {
+  font-family: 'Inter Tight', 'Inter', 'system-ui', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-highlight {
+  font-family: 'Instrument Serif', 'Georgia', 'Times New Roman', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-highlight-bold {
+  font-family: 'Instrument Serif', 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-highlight-italic {
+  font-family: 'Instrument Serif', 'Georgia', 'Times New Roman', serif;
   font-weight: 400;
   font-style: italic;
 }
 
-.font-interface {
-  font-family: 'Arial Unicode MS', 'Arial', 'Helvetica', sans-serif;
+.font-comments {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.font-interface-bold {
-  font-family: 'Arial Unicode MS', 'Arial', 'Helvetica', sans-serif;
+.font-comments-bold {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
-.font-interface-light {
-  font-family: 'Arial Unicode MS', 'Arial', 'Helvetica', sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.font-technical {
-  font-family: 'Roboto Mono', 'Courier New', monospace;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.font-technical-bold {
-  font-family: 'Roboto Mono', 'Courier New', monospace;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.font-technical-light {
-  font-family: 'Roboto Mono', 'Courier New', monospace;
+.font-comments-light {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -168,7 +168,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Arial Unicode MS', 'Arial', 'Helvetica', sans-serif;
+  font-family: 'Inter Tight', 'Inter', 'system-ui', sans-serif;
   scroll-behavior: smooth;
 }
 

@@ -215,45 +215,31 @@ export default function OurVision() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="aspect-square rounded-lg overflow-hidden shadow-xl">
-                <LuxuryVideoPlayer
-                  src="/hero-video"
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
+                <video
                   className="w-full h-full object-cover"
                   muted
-                  autoplay
-                  showControls={false}
-                />
-                <div className="absolute inset-0 bg-luxury-primary/30 flex items-center justify-center">
-                  <motion.div 
-                    className="text-center text-white"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    viewport={{ once: true }}
-                  >
-                    <motion.div 
-                      className="w-20 h-20 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto backdrop-blur-sm"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
-                    </motion.div>
-                    <p className="text-sm font-interface">Abhishek - Founder & Director</p>
-                  </motion.div>
-                </div>
-                
-                {/* Emblem Watermark */}
-                <div className="absolute top-4 right-4">
-                  <EmblemIcon size="sm" className="text-white opacity-40" />
-                </div>
+                  playsInline
+                  loop
+                  preload="metadata"
+                >
+                  <source src="/hero-video.webm" type="video/webm" />
+                  <source src="/hero-video.mp4" type="video/mp4" />
+                </video>
+              </div>
+              
+              {/* Info Card Below Video */}
+              <div className="mt-6 p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)]">
+                <h4 className="font-primary-medium text-lg text-[#4F0D0E] mb-2">Abhishek - Founder & Director</h4>
+                <p className="font-primary text-sm text-[#4F0D0E] opacity-80 leading-[1.4]">
+                  Meet the visionary behind Anaarkali Productions and discover the passion that drives our storytelling.
+                </p>
               </div>
             </motion.div>
           </motion.div>
 
           {/* Personal Interests */}
-          <div className="mt-16 bg-[#FAF9F6] p-8 rounded-lg">
+          <div className="mt-16 bg-luxury-accent p-8 rounded-lg">
             <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
               When I'm not behind the camera, you'll find me:
             </h3>
@@ -278,7 +264,7 @@ export default function OurVision() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-[#FAF9F6]">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
@@ -367,7 +353,7 @@ export default function OurVision() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {brandValues.map((value, index) => (
-              <div key={index} className="text-center p-8 bg-[#FAF9F6] rounded-lg">
+              <div key={index} className="text-center p-8 bg-luxury-accent rounded-lg">
                 <div className="text-4xl mb-4">{value.icon}</div>
                 <h3 className="font-playfair text-xl text-[#2C2C2C] mb-4">
                   {value.title}
@@ -382,7 +368,7 @@ export default function OurVision() {
       </section>
 
       {/* Behind the Magic */}
-      <section className="py-20 bg-[#FAF9F6]">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
@@ -414,7 +400,7 @@ export default function OurVision() {
       </section>
 
       {/* Future Vision */}
-      <section className="py-20 bg-[#2C2C2C] text-white">
+      <section className="py-20 bg-luxury-secondary text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl text-white mb-4">

@@ -82,11 +82,13 @@ const LuxuryVideoPlayer: React.FC<LuxuryVideoPlayerProps> = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={togglePlay}
+            aria-label={isPlaying ? 'Pause video' : 'Play video'}
           >
             <svg 
               className="w-8 h-8 text-[#ECEBE1] ml-1" 
               fill="currentColor" 
               viewBox="0 0 20 20"
+              aria-hidden="true"
             >
               <path d="M8 5v10l8-5-8-5z"/>
             </svg>
@@ -116,13 +118,14 @@ const LuxuryVideoPlayer: React.FC<LuxuryVideoPlayerProps> = ({
           <button
             onClick={togglePlay}
             className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-black/70 transition-colors"
+            aria-label={isPlaying ? 'Pause video' : 'Play video'}
           >
             {isPlaying ? (
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M5 4h3v12H5V4zm7 0h3v12h-3V4z"/>
               </svg>
             ) : (
-              <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M8 5v10l8-5-8-5z"/>
               </svg>
             )}

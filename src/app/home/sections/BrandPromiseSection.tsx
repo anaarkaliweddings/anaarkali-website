@@ -57,9 +57,9 @@ export default function BrandPromiseSection() {
               <div ref={rulerRef} className="w-px bg-luxury-primary" />
             </div>
             <div ref={textRef} className="pl-6 space-y-6 text-luxury-primary">
-              <h2 className="font-primary text-3xl md:text-4xl">Every couple plans two weddings—</h2>
-              <p className="font-interface text-lg leading-relaxed">The grand performance for the world to see, and the quiet truth that belongs only to you.</p>
-              <p className="font-interface text-lg leading-relaxed">We specialize in the second one.</p>
+              <h2 className="font-primary-bold text-3xl md:text-4xl">Every couple plans <span className="font-highlight">two weddings</span>—</h2>
+              <p className="font-primary text-lg leading-relaxed">The grand performance for the world to see, and the quiet truth that belongs only to you.</p>
+              <p className="font-primary text-lg leading-relaxed">We specialize in the second one.</p>
               <div className="space-y-3 text-luxury-primary/80">
                 {[
                   'The in-between moments when no one\'s watching.',
@@ -67,12 +67,12 @@ export default function BrandPromiseSection() {
                   'The tear that escapes during the vidaai.',
                   'The way your nani adjusts your dupatta without being asked.'
                 ].map((line, i) => (
-                  <motion.p key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: i * 0.1, ease: 'easeOut' }} viewport={{ once: true }} className="font-interface">
+                  <motion.p key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: i * 0.1, ease: 'easeOut' }} viewport={{ once: true }} className="font-primary">
                     {line}
                   </motion.p>
                 ))}
               </div>
-              <p className="font-interface text-lg font-medium">This is where real cinema lives. This is what we hunt for. This is why we exist.</p>
+              <p className="font-primary text-lg font-medium">This is where real cinema lives. This is what we hunt for. This is why we exist.</p>
             </div>
           </div>
 
@@ -87,10 +87,10 @@ export default function BrandPromiseSection() {
             <motion.div className="absolute -bottom-8 -right-8 bg-luxury-primary text-luxury-accent px-6 py-3 rounded-lg shadow-lg"
               initial={{ rotate: -90, x: 100, y: 100, opacity: 0 }}
               whileInView={{ rotate: 0, x: 0, y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, ease: springEase as any }} viewport={{ once: true }}>
+              transition={{ duration: 0.8, ease: [0.68, -0.55, 0.265, 1.55] }} viewport={{ once: true }}>
               <div className="text-center">
-                <div className="font-primary text-2xl font-bold" aria-live="polite">Client Love</div>
-                <div className="font-interface text-xs tracking-wider uppercase">Hover to scrub</div>
+                <div className="font-primary-bold text-2xl" aria-live="polite">Client Love</div>
+                <div className="font-primary text-xs tracking-wider uppercase">Hover to scrub</div>
               </div>
             </motion.div>
           </motion.div>

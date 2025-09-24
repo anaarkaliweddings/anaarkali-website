@@ -56,7 +56,7 @@ export default function Navigation() {
               >
                 <Link 
                   href={item.href} 
-                  className="relative font-technical-bold text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
+                  className="relative font-primary-medium text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
                 >
                   <motion.span
                     className="relative z-10 uppercase"
@@ -125,7 +125,7 @@ export default function Navigation() {
               >
                 <Link 
                   href={item.href} 
-                  className="relative font-technical-bold text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
+                  className="relative font-primary-medium text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-2 px-1 block"
                 >
                   <motion.span
                     className="relative z-10 uppercase"
@@ -227,7 +227,7 @@ export default function Navigation() {
                   >
                     <Link
                       href={item.href}
-                      className="relative font-technical-bold text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-3 px-2 block"
+                      className="relative font-primary-medium text-sm text-[#2C2C2C] hover:text-[#4F0D0E] transition-all duration-300 py-3 px-2 block"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <motion.span

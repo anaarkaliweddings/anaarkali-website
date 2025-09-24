@@ -187,7 +187,6 @@ export default function Stories() {
               {filteredItems.map((item, index) => (
                 <motion.div 
                   key={item.id} 
-                  className="group cursor-pointer"
                   layout
                   initial={{ opacity: 0, y: 30, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -198,63 +197,33 @@ export default function Stories() {
                     ease: "easeOut"
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
+                  className="w-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(79,13,14,0.12)] overflow-hidden"
                 >
-                  <div className="relative aspect-video bg-luxury-primary/5 rounded-lg overflow-hidden mb-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
-                    {/* Elegant Film Strip Border Effect */}
-                    <div className="absolute inset-0 border border-luxury-primary/15 group-hover:border-luxury-primary/30 transition-all duration-300 rounded-lg"></div>
-                    <div className="absolute inset-1 border border-luxury-accent/20 group-hover:border-luxury-accent/40 transition-all duration-300 rounded-lg"></div>
-                    
-                    {/* Video Background */}
-                    <LuxuryVideoPlayer
-                      src="/hero-video"
+                  <div className="w-full aspect-video overflow-hidden">
+                    <video
                       className="w-full h-full object-cover"
                       muted
-                      autoplay
-                      showControls={false}
-                    />
-                    
-                    {/* Elegant Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-luxury-primary/40 via-luxury-primary/10 to-transparent group-hover:from-luxury-primary/50 group-hover:via-luxury-primary/20 transition-all duration-300"></div>
-                    
-                    {/* Elegant Play Button */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div 
-                        className="w-16 h-16 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
-                        whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.3)" }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <svg className="w-6 h-6 ml-1 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M8 5v10l8-5-8-5z"/>
-                        </svg>
-                      </motion.div>
-                    </div>
-                    
-                    {/* Content Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="bg-black/20 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-                        <h3 className="text-white font-primary text-lg mb-1 drop-shadow-lg">
-                          {item.title}
-                        </h3>
-                        <p className="text-white/90 font-interface text-sm drop-shadow-md">
-                          {item.location} • {item.category}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {/* Emblem Watermark */}
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
-                      <EmblemIcon size="sm" className="text-white" />
-                    </div>
+                      playsInline
+                      loop
+                      preload="metadata"
+                    >
+                      <source src="/hero-video.webm" type="video/webm" />
+                      <source src="/hero-video.mp4" type="video/mp4" />
+                    </video>
                   </div>
-                  
-                  <motion.p 
-                    className="font-interface text-sm text-luxury-primary/70 leading-relaxed"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-                  >
-                    {item.description}
-                  </motion.p>
+
+                  {/* Text Area */}
+                  <div className="p-6">
+                    <h3 className="font-primary-medium text-xl text-[#4F0D0E] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="font-primary text-sm text-[#4F0D0E] opacity-60 mb-3">
+                      • {item.location}
+                    </p>
+                    <p className="font-primary text-sm text-[#4F0D0E] opacity-80 leading-[1.4]">
+                      {item.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

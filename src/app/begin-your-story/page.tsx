@@ -607,7 +607,7 @@ export default function BeginYourStory() {
       </section>
 
       {/* Next Steps */}
-      <section className="py-20 bg-[#FAF9F6]">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
@@ -698,7 +698,7 @@ export default function BeginYourStory() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#FAF9F6] rounded-lg overflow-hidden">
+              <div key={index} className="bg-luxury-accent rounded-lg overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
