@@ -194,25 +194,10 @@ export default function FourActs() {
       </section>
 
       {/* Act I: Pre-Production */}
-      <section className="py-20 bg-luxury-accent">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
-                <video
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/hero-video.webm" type="video/webm" />
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
-            
-            <div className="space-y-8 order-1 lg:order-2">
+            <div className="space-y-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-[#D4A574] text-white rounded-full flex items-center justify-center">
                   <span className="font-primary-bold text-xl font-bold">1</span>
@@ -261,6 +246,29 @@ export default function FourActs() {
 
                 <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
                   By the end of Act I, you'll feel like your love story is being taken seriously as a piece of art.
+                </p>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
+                <video
+                  className="w-full h-full object-cover"
+                  muted
+                  playsInline
+                  loop
+                  preload="metadata"
+                >
+                  <source src="/hero-video.webm" type="video/webm" />
+                  <source src="/hero-video.mp4" type="video/mp4" />
+                </video>
+              </div>
+              
+              {/* Info Card Below Video */}
+              <div className="mt-6 p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)]">
+                <h4 className="font-primary-medium text-lg text-[#4F0D0E] mb-2">Pre-production consultation</h4>
+                <p className="font-primary text-sm text-[#4F0D0E] opacity-80 leading-[1.4]">
+                  We start by understanding your unique love story and vision for your wedding film.
                 </p>
               </div>
             </div>
