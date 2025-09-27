@@ -1013,8 +1013,8 @@ How Did You Hear: ${formData.howDidYouHear}
                 disabled={contactForm.isSubmitting}
                 className={`px-12 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl ${
                   contactForm.isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-luxury-accent hover:bg-luxury-accent/90 text-white'
+                    ? 'bg-gray-400 cursor-not-allowed text-white'
+                    : 'bg-red-600 hover:bg-red-700 text-white font-semibold'
                 }`}
                 whileHover={!contactForm.isSubmitting ? { scale: 1.05 } : {}}
                 whileTap={!contactForm.isSubmitting ? { scale: 0.95 } : {}}
