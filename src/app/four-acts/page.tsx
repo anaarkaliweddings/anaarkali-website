@@ -138,10 +138,10 @@ export default function FourActs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="font-primary-bold text-4xl md:text-5xl text-luxury-accent mb-6">
+            <h1 className="font-primary text-4xl md:text-5xl text-white mb-6">
               Your Director's Journey
             </h1>
-            <p className="font-primary text-lg text-luxury-accent/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-primary text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
               Like any great film, your wedding story follows a four-act structure. Here's how we bring yours to life.
             </p>
           </motion.div>
@@ -173,19 +173,19 @@ export default function FourActs() {
                 >
                   <span className="font-primary text-xl font-bold">{act.id}</span>
                 </motion.div>
-                <h3 className="font-primary text-lg text-luxury-accent mb-2 group-hover:text-luxury-accent/80 transition-colors duration-300">
+                <h3 className="font-primary text-lg text-white mb-2 group-hover:text-white/80 transition-colors duration-300">
                   {act.title}
                 </h3>
-                <p className="font-primary text-sm text-luxury-accent/80 mb-2">
+                <p className="font-primary text-sm text-white/90 mb-2">
                   {act.subtitle}
                 </p>
-                <p className="font-primary text-xs text-luxury-accent/70 font-medium">
+                <p className="font-primary text-xs text-white/80 font-medium">
                   {act.duration}
                 </p>
                 
                 {/* Emblem Watermark */}
                 <div className="mt-4 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
-                  <EmblemIcon size="sm" className="text-luxury-accent" />
+                  <EmblemIcon size="sm" className="text-white" />
                 </div>
               </motion.div>
             ))}
