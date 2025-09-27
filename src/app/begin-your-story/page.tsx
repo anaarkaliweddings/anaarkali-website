@@ -545,7 +545,7 @@ How Did You Hear: ${formData.howDidYouHear}
       <Navigation />
       
       {/* Page Header */}
-      <section className="pt-20 pb-16 bg-luxury-accent">
+      <section className="pt-32 pb-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             className="text-center mb-16"

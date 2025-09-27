@@ -130,20 +130,59 @@ export default function FourActs() {
       <Navigation />
       
       {/* Page Header */}
-      <section className="pt-20 pb-16 bg-luxury-accent">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-luxury-accent via-luxury-accent/95 to-luxury-accent/90 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-32 h-32 border border-luxury-primary rounded-full"></div>
+          <div className="absolute top-20 right-20 w-24 h-24 border border-luxury-primary rounded-full"></div>
+          <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-luxury-primary rounded-full"></div>
+          <div className="absolute bottom-10 right-1/3 w-20 h-20 border border-luxury-primary rounded-full"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-20"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="font-primary text-4xl md:text-5xl text-luxury-primary mb-6">
-              Your Director's Journey
+            <motion.div
+              className="inline-block mb-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
+              <div className="w-16 h-1 bg-luxury-primary mx-auto mb-4"></div>
+              <span className="font-primary text-sm uppercase tracking-wider text-luxury-primary/80">
+                The Process
+              </span>
+            </motion.div>
+            
+            <h1 className="font-highlight text-5xl md:text-6xl lg:text-7xl text-luxury-primary mb-8 leading-tight">
+              Your Director's <span className="text-[#D4A574]">Journey</span>
             </h1>
-            <p className="font-primaryface text-lg text-luxury-primary/70 max-w-3xl mx-auto leading-relaxed">
-              Like any great film, your wedding story follows a four-act structure. Here's how we bring yours to life.
-            </p>
+            
+            <motion.p 
+              className="font-primary text-xl md:text-2xl text-luxury-primary/80 max-w-4xl mx-auto leading-relaxed mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              Like any great film, your wedding story follows a four-act structure. 
+              <br className="hidden md:block" />
+              Here's how we bring yours to life.
+            </motion.p>
+            
+            <motion.div
+              className="flex items-center justify-center gap-2 text-luxury-primary/60"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            >
+              <div className="w-8 h-px bg-luxury-primary/40"></div>
+              <span className="font-primary text-sm uppercase tracking-wider">Scroll to explore</span>
+              <div className="w-8 h-px bg-luxury-primary/40"></div>
+            </motion.div>
           </motion.div>
 
           {/* Process Overview Timeline */}

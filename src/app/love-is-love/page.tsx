@@ -119,7 +119,7 @@ export default function LoveIsLove() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-luxury-primary text-luxury-accent">
+      <section className="pt-32 pb-20 bg-luxury-primary text-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             className="text-center mb-16"
