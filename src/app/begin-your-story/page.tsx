@@ -217,21 +217,40 @@ export default function BeginYourStory() {
   const consultationTypes = [
     {
       id: 'discovery',
-      title: '30-Minute Discovery Call (Free)',
-      description: 'Perfect for: Getting to know each other and basic questions',
-      duration: '30 min'
+      title: 'Discovery Call',
+      subtitle: '30 Minutes • Free',
+      description: 'Perfect for getting to know each other and basic questions',
+      features: ['Initial connection', 'Basic questions answered', 'Service overview'],
+      icon: '💬',
+      color: 'from-blue-50 to-indigo-50',
+      borderColor: 'border-blue-200',
+      accentColor: 'text-blue-600',
+      bgAccent: 'bg-blue-50'
     },
     {
       id: 'deep-dive',
-      title: '60-Minute Creative Deep-Dive (Free)',
-      description: 'Perfect for: Detailed vision discussion and seeing if we\'re creative partners',
-      duration: '60 min'
+      title: 'Creative Deep-Dive',
+      subtitle: '60 Minutes • Free',
+      description: 'Detailed vision discussion and seeing if we\'re creative partners',
+      features: ['Vision alignment', 'Creative partnership assessment', 'Detailed planning'],
+      icon: '🎬',
+      color: 'from-purple-50 to-pink-50',
+      borderColor: 'border-purple-200',
+      accentColor: 'text-purple-600',
+      bgAccent: 'bg-purple-50',
+      popular: true
     },
     {
       id: 'in-person',
-      title: '90-Minute In-Person Meeting (₹500 refundable with booking)',
-      description: 'Perfect for: Full experience including portfolio review and venue discussion',
-      duration: '90 min'
+      title: 'In-Person Meeting',
+      subtitle: '90 Minutes • ₹500 (refundable)',
+      description: 'Full experience including portfolio review and venue discussion',
+      features: ['Portfolio showcase', 'Venue discussion', 'Complete experience'],
+      icon: '🏛️',
+      color: 'from-amber-50 to-orange-50',
+      borderColor: 'border-amber-200',
+      accentColor: 'text-amber-600',
+      bgAccent: 'bg-amber-50'
     }
   ]
 
@@ -1187,54 +1206,154 @@ How Did You Hear: ${formData.howDidYouHear}
       </section>
 
       {/* Consultation Booking */}
-      <section className="py-20 bg-luxury-accent">
-        <div className="max-w-4xl mx-auto px-6">
+      <section className="py-24 bg-gradient-to-br from-luxury-accent via-white to-luxury-accent/30 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-32 h-32 border border-luxury-primary/20 rounded-full"></div>
+          <div className="absolute top-40 right-32 w-24 h-24 border border-luxury-primary/20 rounded-full"></div>
+          <div className="absolute bottom-32 left-1/4 w-20 h-20 border border-luxury-primary/20 rounded-full"></div>
+          <div className="absolute bottom-20 right-20 w-28 h-28 border border-luxury-primary/20 rounded-full"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <h2 className="font-primary text-3xl md:text-4xl text-luxury-primary mb-4">
-              Book Your Director's Consultation
+            <motion.div
+              className="inline-block mb-6"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-6xl">🎬</span>
+            </motion.div>
+            <h2 className="font-primary-bold text-4xl md:text-5xl text-luxury-primary mb-6">
+              Book Your <span className="font-highlight text-luxury-primary">Director's</span> Consultation
             </h2>
-            <p className="font-interface text-lg text-luxury-primary/70 max-w-2xl mx-auto">
-              Ready to meet your potential directors? Book a consultation where we'll discuss your vision and our approach.
+            <p className="font-primary text-xl text-luxury-primary/80 max-w-3xl mx-auto leading-relaxed">
+              Ready to meet your potential directors? Choose your consultation experience and let's discuss your vision, our approach, and how we can bring your love story to life.
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {consultationTypes.map((consultation, index) => (
               <motion.div
                 key={consultation.id}
                 onClick={() => setSelectedConsultation(selectedConsultation === consultation.id ? '' : consultation.id)}
-                className={`p-6 border-2 rounded-lg cursor-pointer transition-all duration-300 ${
+                className={`relative group cursor-pointer transition-all duration-500 ${
                   selectedConsultation === consultation.id
-                    ? 'border-luxury-accent bg-luxury-accent/5'
-                    : 'border-luxury-primary/20 hover:border-luxury-accent/50'
+                    ? 'transform scale-105 z-10'
+                    : 'hover:transform hover:scale-102'
                 }`}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.7, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ y: -8 }}
               >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h3 className="font-primary text-xl text-luxury-primary mb-2">
-                      {consultation.title}
-                    </h3>
-                    <p className="font-interface text-base text-luxury-primary/80 mb-4">
+                {/* Popular Badge */}
+                {consultation.popular && (
+                  <motion.div
+                    className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="bg-gradient-to-r from-luxury-primary to-luxury-primary/80 text-white px-4 py-2 rounded-full text-sm font-primary-medium shadow-lg">
+                      Most Popular
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Card */}
+                <div className={`relative h-full bg-white rounded-3xl shadow-xl border-2 transition-all duration-500 overflow-hidden ${
+                  selectedConsultation === consultation.id
+                    ? 'border-luxury-primary shadow-2xl shadow-luxury-primary/20'
+                    : `border-gray-200 hover:border-luxury-primary/50 hover:shadow-2xl`
+                }`}>
+                  {/* Gradient Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${consultation.color} opacity-20`}></div>
+                  
+                  {/* Content */}
+                  <div className="relative p-8 h-full flex flex-col">
+                    {/* Icon */}
+                    <motion.div
+                      className="text-5xl mb-6 text-center"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {consultation.icon}
+                    </motion.div>
+
+                    {/* Title & Subtitle */}
+                    <div className="text-center mb-6">
+                      <h3 className="font-primary-bold text-2xl text-luxury-primary mb-2">
+                        {consultation.title}
+                      </h3>
+                      <p className={`font-primary-medium text-lg ${consultation.accentColor}`}>
+                        {consultation.subtitle}
+                      </p>
+                    </div>
+
+                    {/* Description */}
+                    <p className="font-primary text-luxury-primary/80 text-center mb-6 leading-relaxed">
                       {consultation.description}
                     </p>
+
+                    {/* Features */}
+                    <div className="flex-1 mb-8">
+                      <ul className="space-y-3">
+                        {consultation.features.map((feature, featureIndex) => (
+                          <motion.li
+                            key={featureIndex}
+                            className="flex items-center text-luxury-primary/70"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: 0.3 + (featureIndex * 0.1) }}
+                            viewport={{ once: true }}
+                          >
+                            <div className={`w-2 h-2 rounded-full ${consultation.bgAccent} mr-3`}></div>
+                            <span className="font-primary text-sm">{feature}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Selection Indicator */}
+                    <div className="text-center">
+                      <motion.div
+                        className={`w-8 h-8 mx-auto rounded-full border-2 transition-all duration-300 ${
+                          selectedConsultation === consultation.id
+                            ? 'border-luxury-primary bg-luxury-primary'
+                            : 'border-gray-300 group-hover:border-luxury-primary/50'
+                        }`}
+                        animate={{
+                          scale: selectedConsultation === consultation.id ? [1, 1.2, 1] : 1
+                        }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {selectedConsultation === consultation.id && (
+                          <motion.div
+                            className="w-full h-full flex items-center justify-center"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <div className="w-3 h-3 bg-white rounded-full"></div>
+                          </motion.div>
+                        )}
+                      </motion.div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className="font-interface text-sm text-luxury-accent font-medium">
-                      {consultation.duration}
-                    </span>
-                  </div>
+
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-luxury-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </motion.div>
             ))}
@@ -1243,16 +1362,32 @@ How Did You Hear: ${formData.howDidYouHear}
           <AnimatePresence>
             {selectedConsultation && (
               <motion.div 
-                className="mt-8 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
+                className="text-center"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -30, scale: 0.9 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
+                <motion.div
+                  className="inline-block mb-8"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <div className="bg-gradient-to-r from-luxury-primary to-luxury-primary/80 text-white px-8 py-4 rounded-2xl shadow-xl">
+                    <p className="font-primary-medium text-lg">
+                      Selected: {consultationTypes.find(c => c.id === selectedConsultation)?.title}
+                    </p>
+                  </div>
+                </motion.div>
+
                 <motion.button 
-                  className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-8 py-3 font-interface text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.05 }}
+                  className="bg-gradient-to-r from-luxury-primary to-luxury-primary/90 hover:from-luxury-primary/90 hover:to-luxury-primary text-white px-12 py-4 font-primary-bold text-lg tracking-wider uppercase transition-all duration-300 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105"
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
                 >
                   Book This Consultation
                 </motion.button>
