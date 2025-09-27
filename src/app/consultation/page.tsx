@@ -92,7 +92,7 @@ export default function ConsultationBooking() {
     try {
       const fullPhoneNumber = `${selectedCountryCode}${formData.phone}`
       
-      await consultationBooking.submitBooking({
+      const submissionData = {
         name: formData.name,
         email: formData.email,
         phone: fullPhoneNumber,
@@ -100,8 +100,14 @@ export default function ConsultationBooking() {
         preferred_date: formData.preferredDate,
         preferred_time: formData.preferredTime,
         message: formData.message || '',
-        status: 'pending'
-      })
+        status: 'pending' as const
+      }
+      
+      console.log('Submitting consultation data:', submissionData)
+      console.log('Consultation type value:', formData.consultationType)
+      console.log('Consultation type type:', typeof formData.consultationType)
+      
+      await consultationBooking.submitBooking(submissionData)
 
       // Reset form on success
       setFormData({
