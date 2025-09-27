@@ -42,6 +42,8 @@ export interface ConsultationBooking {
 // Form submission functions
 export async function submitContactForm(data: ContactFormSubmission) {
   try {
+    console.log('Submitting contact form data:', data)
+    
     const { data: result, error } = await supabase
       .from('contact_forms')
       .insert([data])
@@ -49,19 +51,22 @@ export async function submitContactForm(data: ContactFormSubmission) {
       .single()
 
     if (error) {
-      console.error('Error submitting contact form:', error)
-      throw new Error('Failed to submit contact form')
+      console.error('Supabase error submitting contact form:', error)
+      throw new Error(`Failed to submit contact form: ${error.message}`)
     }
 
+    console.log('Contact form submitted successfully:', result)
     return { success: true, data: result }
   } catch (error) {
     console.error('Contact form submission error:', error)
-    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
+    throw error // Re-throw to let the hook handle it
   }
 }
 
 export async function submitConsultationBooking(data: ConsultationBooking) {
   try {
+    console.log('Submitting consultation booking data:', data)
+    
     const { data: result, error } = await supabase
       .from('consultation_bookings')
       .insert([data])
@@ -69,14 +74,15 @@ export async function submitConsultationBooking(data: ConsultationBooking) {
       .single()
 
     if (error) {
-      console.error('Error submitting consultation booking:', error)
-      throw new Error('Failed to submit consultation booking')
+      console.error('Supabase error submitting consultation booking:', error)
+      throw new Error(`Failed to submit consultation booking: ${error.message}`)
     }
 
+    console.log('Consultation booking submitted successfully:', result)
     return { success: true, data: result }
   } catch (error) {
     console.error('Consultation booking submission error:', error)
-    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
+    throw error // Re-throw to let the hook handle it
   }
 }
 

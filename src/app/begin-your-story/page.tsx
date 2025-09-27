@@ -304,11 +304,11 @@ export default function BeginYourStory() {
       newErrors.loveStory = 'Love story is required'
     }
     
-    if (!formData.importantToYou.trim()) {
+    if (!formData.importantToYou.trim() || formData.importantToYou.trim() === 'Nil') {
       newErrors.importantToYou = 'This field is required'
     }
     
-    if (!formData.dreamFilmWord.trim()) {
+    if (!formData.dreamFilmWord.trim() || formData.dreamFilmWord.trim() === 'Nil') {
       newErrors.dreamFilmWord = 'This field is required'
     }
     
@@ -324,11 +324,11 @@ export default function BeginYourStory() {
       newErrors.budget = 'Budget range is required'
     }
     
-    if (!formData.whatMattersMost.trim()) {
+    if (!formData.whatMattersMost.trim() || formData.whatMattersMost.trim() === 'Nil') {
       newErrors.whatMattersMost = 'This field is required'
     }
     
-    if (!formData.howDidYouHear.trim()) {
+    if (!formData.howDidYouHear.trim() || formData.howDidYouHear.trim() === 'Nil') {
       newErrors.howDidYouHear = 'This field is required'
     }
     
@@ -374,7 +374,11 @@ How Did You Hear: ${formData.howDidYouHear}
       how_did_you_hear: formData.howDidYouHear
     }
 
+    console.log('Submitting form data:', submissionData)
+    
     const result = await contactForm.submitForm(submissionData)
+    
+    console.log('Form submission result:', result)
     
     if (result.success) {
       // Reset form
