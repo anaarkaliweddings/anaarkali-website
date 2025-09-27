@@ -59,6 +59,115 @@ export default function BeginYourStory() {
   const servicesNeeded = ['Photography', 'Videography', 'Aerial Coverage', 'All of the above']
   const budgetOptions = ['₹2-5 lakhs', '₹5-8 lakhs', '₹8-12 lakhs', '₹12+ lakhs', 'Let\'s discuss']
   
+  // Package details for each budget range
+  const packageDetails = {
+    '₹2-5 lakhs': {
+      name: 'Essential Package',
+      description: 'Perfect for intimate celebrations',
+      includes: [
+        'Pre-production consultation',
+        'Full day coverage (8-10 hours)',
+        'Basic editing and color correction',
+        'Digital gallery (100+ photos)',
+        'Same-day social media content',
+        'Online delivery within 4 weeks'
+      ],
+      addOns: [
+        'Extended coverage (+₹50,000/day)',
+        'Drone footage (+₹75,000)',
+        'Physical album (+₹25,000)',
+        'Live streaming (+₹30,000)'
+      ]
+    },
+    '₹5-8 lakhs': {
+      name: 'Cinematic Package',
+      description: 'Our most popular choice for complete storytelling',
+      includes: [
+        'Complete four-act experience',
+        'Multiple camera angles (2-3 cameras)',
+        'Professional color grading',
+        'Cinematic film delivery (3-5 min highlight)',
+        'Behind-the-scenes footage',
+        'Digital gallery (300+ photos)',
+        'Online delivery within 3 weeks',
+        '1 revision round included'
+      ],
+      addOns: [
+        'Extended coverage (+₹50,000/day)',
+        'Drone footage (included)',
+        'Physical album (+₹25,000)',
+        'Live streaming (+₹30,000)',
+        'Additional highlight films (+₹40,000 each)'
+      ]
+    },
+    '₹8-12 lakhs': {
+      name: 'Premium Package',
+      description: 'For the ultimate cinematic experience',
+      includes: [
+        'Extended pre-production (2-3 meetings)',
+        'Multiple camera setup (3-4 cameras)',
+        'Drone coverage included',
+        'Live streaming of ceremonies',
+        'Premium editing suite with multiple versions',
+        'Physical album & USB delivery',
+        'Digital gallery (500+ photos)',
+        'Online delivery within 2 weeks',
+        '2 revision rounds included',
+        'Dedicated project manager'
+      ],
+      addOns: [
+        'Extended coverage (+₹50,000/day)',
+        'Additional highlight films (+₹40,000 each)',
+        'Engagement shoot (+₹75,000)',
+        'Reception coverage (+₹1,00,000)',
+        'Custom music composition (+₹50,000)'
+      ]
+    },
+    '₹12+ lakhs': {
+      name: 'Signature Package',
+      description: 'Bespoke luxury experience tailored to your vision',
+      includes: [
+        'Unlimited pre-production consultations',
+        'Full multi-day coverage',
+        'Cinema-grade equipment setup',
+        'Drone & aerial coverage',
+        'Live streaming with multiple angles',
+        'Premium editing with unlimited revisions',
+        'Physical album & premium USB delivery',
+        'Digital gallery (1000+ photos)',
+        'Express delivery (1 week)',
+        'Dedicated project manager & assistant',
+        'Custom music composition',
+        'Luxury presentation box'
+      ],
+      addOns: [
+        'Destination wedding coverage',
+        'Multiple event coverage',
+        'Custom documentary style film',
+        'Family interview sessions',
+        'Custom graphics and animations'
+      ]
+    },
+    'Let\'s discuss': {
+      name: 'Custom Package',
+      description: 'Tailored to your unique needs and vision',
+      includes: [
+        'Personalized consultation',
+        'Custom package design',
+        'Flexible coverage options',
+        'Tailored deliverables',
+        'Flexible payment plans',
+        'Ongoing support throughout planning'
+      ],
+      addOns: [
+        'All services available',
+        'Custom pricing based on requirements',
+        'Flexible timeline',
+        'Special arrangements for unique needs'
+      ]
+    }
+  }
+  
   // Country codes for phone number dropdown
   const countryCodes = [
     { code: '+91', country: 'India', flag: '🇮🇳' },
@@ -901,6 +1010,57 @@ How Did You Hear: ${formData.howDidYouHear}
                   ))}
                 </div>
               </div>
+
+              {/* Package Details Display */}
+              {formData.budget && packageDetails[formData.budget as keyof typeof packageDetails] && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-luxury-accent/30 p-6 rounded-lg border border-luxury-primary/20"
+                >
+                  <div className="mb-4">
+                    <h4 className="font-primary-bold text-xl text-luxury-primary mb-2">
+                      {packageDetails[formData.budget as keyof typeof packageDetails].name}
+                    </h4>
+                    <p className="font-primary text-luxury-primary/80">
+                      {packageDetails[formData.budget as keyof typeof packageDetails].description}
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* What's Included */}
+                    <div>
+                      <h5 className="font-primary-bold text-lg text-luxury-primary mb-3">
+                        What's Included
+                      </h5>
+                      <ul className="space-y-2">
+                        {packageDetails[formData.budget as keyof typeof packageDetails].includes.map((item, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <span className="text-luxury-primary mt-1">✓</span>
+                            <span className="font-primary text-sm text-luxury-primary/80">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    {/* Available Add-ons */}
+                    <div>
+                      <h5 className="font-primary-bold text-lg text-luxury-primary mb-3">
+                        Available Add-ons
+                      </h5>
+                      <ul className="space-y-2">
+                        {packageDetails[formData.budget as keyof typeof packageDetails].addOns.map((item, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <span className="text-[#D4A574] mt-1">+</span>
+                            <span className="font-primary text-sm text-luxury-primary/80">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
 
               <div>
                 <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
