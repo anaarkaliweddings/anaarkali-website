@@ -5,7 +5,6 @@ import { loadGSAP } from '@/lib/animations'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
 import EmblemLoader from '@/components/EmblemLoader'
 import dynamic from 'next/dynamic'
 
@@ -14,7 +13,6 @@ const BrandPromiseSection = dynamic(() => import('./home/sections/BrandPromiseSe
 const RecentPremieresSection = dynamic(() => import('./home/sections/RecentPremieresSection'), { ssr: false })
 
 export default function Home() {
-  const [storyCount, setStoryCount] = useState(147)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

@@ -30,13 +30,17 @@ export default function TestDatabase() {
       how_did_you_hear: 'Test page'
     }
 
-    const result = await submitContactForm(dummyData)
-    
-    if (result.success) {
-      addResult('✅ Contact Form: SUCCESS!')
-      addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
-    } else {
-      addResult(`❌ Contact Form: FAILED - ${result.error}`)
+    try {
+      const result = await submitContactForm(dummyData)
+      
+      if (result.success) {
+        addResult('✅ Contact Form: SUCCESS!')
+        addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
+      } else {
+        addResult(`❌ Contact Form: FAILED - Unknown error`)
+      }
+    } catch (error) {
+      addResult(`❌ Contact Form: FAILED - ${error instanceof Error ? error.message : 'Unknown error'}`)
     }
     
     setIsLoading(false)
@@ -59,13 +63,17 @@ export default function TestDatabase() {
       message: 'Test consultation booking from test page.'
     }
 
-    const result = await submitConsultationBooking(dummyData)
-    
-    if (result.success) {
-      addResult('✅ Consultation Booking: SUCCESS!')
-      addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
-    } else {
-      addResult(`❌ Consultation Booking: FAILED - ${result.error}`)
+    try {
+      const result = await submitConsultationBooking(dummyData)
+      
+      if (result.success) {
+        addResult('✅ Consultation Booking: SUCCESS!')
+        addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
+      } else {
+        addResult(`❌ Consultation Booking: FAILED - Unknown error`)
+      }
+    } catch (error) {
+      addResult(`❌ Consultation Booking: FAILED - ${error instanceof Error ? error.message : 'Unknown error'}`)
     }
     
     setIsLoading(false)
