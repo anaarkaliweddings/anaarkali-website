@@ -194,108 +194,10 @@ export default function FourActs() {
       </section>
 
       {/* Act I: Pre-Production */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className="space-y-8"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <motion.div 
-                  className="w-12 h-12 bg-luxury-primary text-luxury-accent rounded-full flex items-center justify-center shadow-lg"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                >
-                  <span className="font-primary text-xl font-bold">1</span>
-                </motion.div>
-                <div>
-                  <h2 className="font-primary text-3xl text-luxury-primary">
-                    Act I: Pre-Production - "The Vision"
-                  </h2>
-                  <p className="font-primaryface text-sm text-luxury-primary font-medium">
-                    Duration: 1-2 months before your wedding
-                  </p>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                <motion.p 
-                  className="font-primaryface text-lg text-luxury-primary leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  This is where the magic begins.
-                </motion.p>
-                
-                <motion.div 
-                  className="space-y-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="font-primary text-xl text-luxury-primary">
-                    The Storyboarding Session
-                  </h3>
-                  <p className="font-primaryface text-base text-luxury-primary/80 leading-relaxed">
-                    We don't ask about your timeline first. We ask about your love story.
-                    In our 90-minute director's meeting, we map out the emotional arc of your day.
-                    Who are the supporting characters? What moments matter most to you?
-                    What's the theme of your love story—romance, adventure, tradition with a twist?
-                  </p>
-                </motion.div>
-
-                <motion.div 
-                  className="space-y-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="font-primary text-xl text-luxury-primary">
-                    The Director's Treatment
-                  </h3>
-                  <p className="font-primaryface text-base text-luxury-primary/80 leading-relaxed">
-                    After our session, you receive a beautiful document outlining:
-                  </p>
-                  <ul className="space-y-2 ml-4">
-                    <li className="font-primaryface text-base text-luxury-primary/80">• The logline of your wedding film</li>
-                    <li className="font-primaryface text-base text-luxury-primary/80">• Visual style and tone</li>
-                    <li className="font-primaryface text-base text-luxury-primary/80">• Key characters and their roles</li>
-                    <li className="font-primaryface text-base text-luxury-primary/80">• The emotional beats we'll capture</li>
-                  </ul>
-                </motion.div>
-
-                <motion.p 
-                  className="font-primaryface text-lg font-medium text-luxury-primary"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  By the end of Act I, you'll feel like your love story is being taken seriously as a piece of art.
-                </motion.p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
               <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
                 <video
                   className="w-full h-full object-cover"
@@ -308,16 +210,61 @@ export default function FourActs() {
                   <source src="/hero-video.mp4" type="video/mp4" />
                 </video>
               </div>
+            </div>
+            
+            <div className="space-y-8 order-1 lg:order-2">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-[#D4A574] text-white rounded-full flex items-center justify-center">
+                  <span className="font-primary-bold text-xl font-bold">1</span>
+                </div>
+                <div>
+                  <h2 className="font-primary-bold text-3xl text-[#2C2C2C]">
+                    Act I: Pre-Production - "The Vision"
+                  </h2>
+                  <p className="font-primary text-sm text-[#D4A574] font-medium">
+                    Duration: 1-2 months before your wedding
+                  </p>
+                </div>
+              </div>
               
-              {/* Info Card Below Video */}
-              <div className="mt-6 p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)]">
-                <h4 className="font-primary-medium text-lg text-[#4F0D0E] mb-2">Pre-production consultation</h4>
-                <p className="font-primary text-sm text-[#4F0D0E] opacity-80 leading-[1.4]">
-                  We start by understanding your unique love story and vision for your wedding film.
+              <div className="space-y-6">
+                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                  This is where the magic begins.
+                </p>
+                
+                <div className="space-y-4">
+                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                    The Storyboarding Session
+                  </h3>
+                  <p className="font-primary text-base text-[#2C2C2C] leading-relaxed">
+                    We don't ask about your timeline first. We ask about your love story.
+                    In our 90-minute director's meeting, we map out the emotional arc of your day.
+                    Who are the supporting characters? What moments matter most to you?
+                    What's the theme of your love story—romance, adventure, tradition with a twist?
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                    The Director's Treatment
+                  </h3>
+                  <p className="font-primary text-base text-[#2C2C2C] leading-relaxed">
+                    After our session, you receive a beautiful document outlining:
+                  </p>
+                  <ul className="space-y-2 ml-4">
+                    <li className="font-primary text-base text-[#2C2C2C]">• The logline of your wedding film</li>
+                    <li className="font-primary text-base text-[#2C2C2C]">• Visual style and tone</li>
+                    <li className="font-primary text-base text-[#2C2C2C]">• Key characters and their roles</li>
+                    <li className="font-primary text-base text-[#2C2C2C]">• The emotional beats we'll capture</li>
+                  </ul>
+                </div>
+
+                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                  By the end of Act I, you'll feel like your love story is being taken seriously as a piece of art.
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
