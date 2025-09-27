@@ -66,17 +66,50 @@ export default function Footer() {
             <div className="space-y-2 text-xs font-interface tracking-wider">
               <div>EMAIL US</div>
               <div>CHAT UNAVAILABLE</div>
-              <Link href="#" className="block hover:text-[#ECEBE1] transition-all duration-300 group">
-                <span className="relative">
-                  BOOK AN APPOINTMENT →
+              <motion.div
+                className="relative"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link href="#" className="block hover:text-[#ECEBE1] transition-all duration-300 group relative">
+                  <motion.span 
+                    className="relative z-10 font-bold text-sm tracking-wider"
+                    animate={{ 
+                      color: ["#ECEBE1", "#D4A574", "#ECEBE1"],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    BOOK AN APPOINTMENT →
+                  </motion.span>
+                  
+                  {/* Pulsing background glow */}
                   <motion.div
-                    className="absolute -bottom-1 left-0 h-0.5 bg-[#ECEBE1]"
+                    className="absolute inset-0 bg-[#D4A574]/20 rounded-lg -m-2"
+                    animate={{ 
+                      opacity: [0.3, 0.6, 0.3],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
+                  {/* Animated underline */}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-[#D4A574] to-[#ECEBE1]"
                     initial={{ width: 0 }}
                     whileHover={{ width: "100%" }}
                     transition={{ duration: 0.3 }}
                   />
-                </span>
-              </Link>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
 

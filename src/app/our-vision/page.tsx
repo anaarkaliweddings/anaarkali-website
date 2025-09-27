@@ -77,7 +77,6 @@ export default function OurVision() {
 
   const futureVision = [
     'Document 100+ weddings annually',
-    'Expand across India and internationally',
     'Launch training programs for aspiring wedding cinematographers',
     'Open a flagship studio that sets industry standards',
     'Become the most trusted name in inclusive wedding documentation'

@@ -35,6 +35,12 @@ export default function BeginYourStory() {
   const [selectedConsultation, setSelectedConsultation] = useState('')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   
+  // Form validation states
+  const [errors, setErrors] = useState<{[key: string]: string}>({})
+  const [selectedCountryCode, setSelectedCountryCode] = useState('+91')
+  const [locationSuggestions, setLocationSuggestions] = useState<string[]>([])
+  const [showLocationSuggestions, setShowLocationSuggestions] = useState(false)
+  
   // Consultation booking form data
   const [consultationFormData, setConsultationFormData] = useState({
     name: '',
@@ -50,8 +56,55 @@ export default function BeginYourStory() {
   })
 
   const eventTypes = ['Traditional', 'Modern', 'Destination', 'Court marriage', 'Multi-day celebration']
-  const servicesNeeded = ['Photography', 'Videography', 'Both']
+  const servicesNeeded = ['Photography', 'Videography', 'Aerial Coverage', 'All of the above']
   const budgetOptions = ['₹2-5 lakhs', '₹5-8 lakhs', '₹8-12 lakhs', '₹12+ lakhs', 'Let\'s discuss']
+  
+  // Country codes for phone number dropdown
+  const countryCodes = [
+    { code: '+91', country: 'India', flag: '🇮🇳' },
+    { code: '+1', country: 'USA/Canada', flag: '🇺🇸' },
+    { code: '+44', country: 'UK', flag: '🇬🇧' },
+    { code: '+61', country: 'Australia', flag: '🇦🇺' },
+    { code: '+971', country: 'UAE', flag: '🇦🇪' },
+    { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+    { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+    { code: '+86', country: 'China', flag: '🇨🇳' },
+    { code: '+81', country: 'Japan', flag: '🇯🇵' },
+    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+    { code: '+49', country: 'Germany', flag: '🇩🇪' },
+    { code: '+33', country: 'France', flag: '🇫🇷' },
+    { code: '+39', country: 'Italy', flag: '🇮🇹' },
+    { code: '+34', country: 'Spain', flag: '🇪🇸' },
+    { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+    { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+    { code: '+46', country: 'Sweden', flag: '🇸🇪' },
+    { code: '+47', country: 'Norway', flag: '🇳🇴' },
+    { code: '+45', country: 'Denmark', flag: '🇩🇰' }
+  ]
+  
+  // Popular Indian cities for location autocomplete
+  const indianCities = [
+    'Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune', 'Ahmedabad',
+    'Jaipur', 'Surat', 'Lucknow', 'Kanpur', 'Nagpur', 'Indore', 'Thane', 'Bhopal',
+    'Visakhapatnam', 'Pimpri-Chinchwad', 'Patna', 'Vadodara', 'Ghaziabad', 'Ludhiana',
+    'Agra', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Kalyan-Dombivali', 'Vasai-Virar',
+    'Varanasi', 'Srinagar', 'Aurangabad', 'Navi Mumbai', 'Solapur', 'Vijayawada',
+    'Kolhapur', 'Amritsar', 'Nashik', 'Sangli', 'Malegaon', 'Ulhasnagar', 'Jalgaon',
+    'Latur', 'Dhule', 'Ahmednagar', 'Ichalkaranji', 'Parbhani', 'Jalna', 'Bhusawal',
+    'Panvel', 'Satara', 'Beed', 'Yavatmal', 'Kamptee', 'Gondia', 'Barshi', 'Achalpur',
+    'Osmanabad', 'Nanded-Waghala', 'Sangamner', 'Malegaon', 'Lonavla', 'Deolali',
+    'Udgir', 'Shegaon', 'Wani', 'Umarkhed', 'Warora', 'Pusad', 'Sangole', 'Malkapur',
+    'Amalner', 'Dhule', 'Parli', 'Shirpur-Warwade', 'Shirur', 'Shrigonda', 'Raver',
+    'Mukhed', 'Rajura', 'Vadgaon Kasba', 'Tirora', 'Savda', 'Uran', 'Uran Islampur',
+    'Manmad', 'Lasalgaon', 'Deolali Pravara', 'Aurangabad', 'Gangapur', 'Vaijapur',
+    'Sillod', 'Phulambri', 'Kannad', 'Paithan', 'Pathri', 'Jalna', 'Ambad', 'Ghansawangi',
+    'Shendurjana', 'Sailu', 'Mantha', 'Partur', 'Jintur', 'Bhokardan', 'Soyagaon',
+    'Niphad', 'Yevla', 'Umarga', 'Tuljapur', 'Osmnabad', 'Kallam', 'Washi', 'Kalamb',
+    'Barshi Takli', 'Latur', 'Ahmadpur', 'Udgir', 'Nilanga', 'Ausa', 'Chakur',
+    'Shirur-Anantpal', 'Ahmadpur', 'Jalkot', 'Murud', 'Loha', 'Renapur', 'Chakur',
+    'Shirur-Anantpal', 'Ahmadpur', 'Jalkot', 'Murud', 'Loha', 'Renapur', 'Chakur'
+  ]
   const consultationTypes = [
     {
       id: 'discovery',
@@ -100,27 +153,197 @@ export default function BeginYourStory() {
     }
   ]
 
+  // Validation functions
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  const validatePhoneNumber = (phone: string, countryCode: string): boolean => {
+    // Remove spaces and special characters
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '')
+    
+    // Basic validation for different country codes (without the + prefix since we're validating the number part only)
+    switch (countryCode) {
+      case '+91': // India - 10 digits starting with 6-9
+        return /^[6-9]\d{9}$/.test(cleanPhone)
+      case '+1': // USA/Canada - 10 digits
+        return /^[2-9]\d{2}[2-9]\d{2}\d{4}$/.test(cleanPhone)
+      case '+44': // UK - 10-11 digits
+        return /^[1-9]\d{8,9}$/.test(cleanPhone)
+      case '+971': // UAE - 9 digits
+        return /^[5-9]\d{8}$/.test(cleanPhone)
+      case '+65': // Singapore - 8 digits
+        return /^[689]\d{7}$/.test(cleanPhone)
+      case '+60': // Malaysia - 9-10 digits
+        return /^[1-9]\d{7,8}$/.test(cleanPhone)
+      case '+66': // Thailand - 9 digits
+        return /^[689]\d{8}$/.test(cleanPhone)
+      case '+86': // China - 11 digits
+        return /^1[3-9]\d{9}$/.test(cleanPhone)
+      case '+81': // Japan - 10-11 digits
+        return /^[789]\d{9,10}$/.test(cleanPhone)
+      case '+82': // South Korea - 10-11 digits
+        return /^1[0-9]\d{7,8}$/.test(cleanPhone)
+      default:
+        // Generic validation: 7-15 digits
+        return /^\d{7,15}$/.test(cleanPhone)
+    }
+  }
+
   const handleInputChange = (field: string, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }))
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }))
+    }
+  }
+
+  const handleLocationChange = (value: string) => {
+    setFormData(prev => ({ ...prev, location: value }))
+    setShowLocationSuggestions(true)
+    
+    if (value.length > 1) {
+      const filtered = indianCities.filter(city => 
+        city.toLowerCase().includes(value.toLowerCase())
+      ).slice(0, 5)
+      setLocationSuggestions(filtered)
+    } else {
+      setLocationSuggestions([])
+    }
+    
+    if (errors.location) {
+      setErrors(prev => ({ ...prev, location: '' }))
+    }
+  }
+
+  const selectLocation = (location: string) => {
+    setFormData(prev => ({ ...prev, location }))
+    setShowLocationSuggestions(false)
+    setLocationSuggestions([])
   }
 
   const handleCheckboxChange = (field: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: prev[field as keyof typeof prev].includes(value)
-        ? (prev[field as keyof typeof prev] as string[]).filter(item => item !== value)
-        : [...(prev[field as keyof typeof prev] as string[]), value]
-    }))
+    setFormData(prev => {
+      const currentValues = prev[field as keyof typeof prev] as string[]
+      
+      // Special handling for "All of the above" in services
+      if (field === 'servicesNeeded' && value === 'All of the above') {
+        if (currentValues.includes('All of the above')) {
+          // If "All of the above" is being unchecked, uncheck everything
+          return { ...prev, [field]: [] }
+        } else {
+          // If "All of the above" is being checked, check all services
+          return { ...prev, [field]: ['Photography', 'Videography', 'Aerial Coverage', 'All of the above'] }
+        }
+      }
+      
+      // If any individual service is unchecked, also uncheck "All of the above"
+      if (field === 'servicesNeeded' && value !== 'All of the above') {
+        const newValues = currentValues.includes(value)
+          ? currentValues.filter(item => item !== value)
+          : [...currentValues, value]
+        
+        // Remove "All of the above" if any individual service is unchecked
+        const filteredValues = newValues.filter(item => item !== 'All of the above')
+        
+        // If all individual services are selected, add "All of the above"
+        const individualServices = ['Photography', 'Videography', 'Aerial Coverage']
+        const allIndividualSelected = individualServices.every(service => filteredValues.includes(service))
+        
+        return { 
+          ...prev, 
+          [field]: allIndividualSelected 
+            ? [...filteredValues, 'All of the above']
+            : filteredValues
+        }
+      }
+      
+      // Default checkbox behavior for other fields
+      return {
+        ...prev,
+        [field]: currentValues.includes(value)
+          ? currentValues.filter(item => item !== value)
+          : [...currentValues, value]
+      }
+    })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    // Validate form fields
+    const newErrors: {[key: string]: string} = {}
+    
+    if (!formData.names.trim()) {
+      newErrors.names = 'Names are required'
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required'
+    } else if (!validatePhoneNumber(formData.phone, selectedCountryCode)) {
+      newErrors.phone = 'Please enter a valid phone number'
+    }
+    
+    if (!formData.weddingDate.trim()) {
+      newErrors.weddingDate = 'Wedding date is required'
+    }
+    
+    if (!formData.location.trim()) {
+      newErrors.location = 'Location is required'
+    }
+    
+    if (!formData.loveStory.trim()) {
+      newErrors.loveStory = 'Love story is required'
+    }
+    
+    if (!formData.importantToYou.trim()) {
+      newErrors.importantToYou = 'This field is required'
+    }
+    
+    if (!formData.dreamFilmWord.trim()) {
+      newErrors.dreamFilmWord = 'This field is required'
+    }
+    
+    if (formData.eventType.length === 0) {
+      newErrors.eventType = 'Please select at least one event type'
+    }
+    
+    if (formData.servicesNeeded.length === 0) {
+      newErrors.servicesNeeded = 'Please select at least one service'
+    }
+    
+    if (!formData.budget.trim()) {
+      newErrors.budget = 'Budget range is required'
+    }
+    
+    if (!formData.whatMattersMost.trim()) {
+      newErrors.whatMattersMost = 'This field is required'
+    }
+    
+    if (!formData.howDidYouHear.trim()) {
+      newErrors.howDidYouHear = 'This field is required'
+    }
+    
+    setErrors(newErrors)
+    
+    // If there are errors, don't submit
+    if (Object.keys(newErrors).length > 0) {
+      return
+    }
+    
     // Transform form data to match database schema
     const submissionData = {
       name: formData.names,
       email: formData.email,
-      phone: formData.phone,
+      phone: `${selectedCountryCode} ${formData.phone}`,
       wedding_date: formData.weddingDate || undefined,
       venue: formData.location || undefined,
       guest_count: formData.guestCount || undefined,
@@ -175,6 +398,8 @@ How Did You Hear: ${formData.howDidYouHear}
         familyDynamics: '',
         howDidYouHear: ''
       })
+      setSelectedCountryCode('+91')
+      setErrors({})
     }
   }
 
@@ -257,9 +482,16 @@ How Did You Hear: ${formData.howDidYouHear}
                     required
                     value={formData.names}
                     onChange={(e) => handleInputChange('names', e.target.value)}
-                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-interface text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
+                    className={`w-full px-4 py-3 border rounded-md font-interface text-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
+                      errors.names 
+                        ? 'border-red-500 focus:ring-red-200 focus:border-red-500' 
+                        : 'border-luxury-primary/20 focus:ring-luxury-accent focus:border-luxury-accent'
+                    }`}
                     placeholder="Enter both your names"
                   />
+                  {errors.names && (
+                    <p className="text-red-500 text-xs mt-1">{errors.names}</p>
+                  )}
                 </motion.div>
 
                 <motion.div
@@ -276,9 +508,16 @@ How Did You Hear: ${formData.howDidYouHear}
                     required
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
+                    className={`w-full px-4 py-3 border rounded-md font-primary text-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
+                      errors.email 
+                        ? 'border-red-500 focus:ring-red-200 focus:border-red-500' 
+                        : 'border-luxury-primary/20 focus:ring-luxury-accent focus:border-luxury-accent'
+                    }`}
                     placeholder="your.email@example.com"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </motion.div>
 
                 <motion.div
@@ -290,14 +529,34 @@ How Did You Hear: ${formData.howDidYouHear}
                   <label className="block font-primary text-sm font-medium text-luxury-primary mb-2">
                     Phone number *
                   </label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
-                    placeholder="+91 98765 43210"
-                  />
+                  <div className="flex">
+                    <select
+                      value={selectedCountryCode}
+                      onChange={(e) => setSelectedCountryCode(e.target.value)}
+                      className="px-3 py-3 border border-luxury-primary/20 border-r-0 rounded-l-md font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300 bg-white"
+                    >
+                      {countryCodes.map((country) => (
+                        <option key={country.code} value={country.code}>
+                          {country.flag} {country.code}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      className={`flex-1 px-4 py-3 border rounded-r-md font-primary text-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.phone 
+                          ? 'border-red-500 focus:ring-red-200 focus:border-red-500' 
+                          : 'border-luxury-primary/20 focus:ring-luxury-accent focus:border-luxury-accent'
+                      }`}
+                      placeholder="98765 43210"
+                    />
+                  </div>
+                  {errors.phone && (
+                    <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+                  )}
                 </motion.div>
 
                 <motion.div
@@ -320,18 +579,40 @@ How Did You Hear: ${formData.howDidYouHear}
                 </motion.div>
               </div>
 
-              <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+              <div className="relative">
+                <label className="block font-primary text-sm font-medium text-luxury-primary mb-2">
                   Primary location/city *
                 </label>
                 <input
                   type="text"
                   required
                   value={formData.location}
-                  onChange={(e) => handleInputChange('location', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md font-inter text-sm focus:outline-none focus:ring-2 focus:ring-[#D4A574]"
+                  onChange={(e) => handleLocationChange(e.target.value)}
+                  onFocus={() => setShowLocationSuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowLocationSuggestions(false), 200)}
+                  className={`w-full px-4 py-3 border rounded-md font-primary text-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
+                    errors.location 
+                      ? 'border-red-500 focus:ring-red-200 focus:border-red-500' 
+                      : 'border-luxury-primary/20 focus:ring-luxury-accent focus:border-luxury-accent'
+                  }`}
                   placeholder="e.g., Delhi, Mumbai, Goa"
                 />
+                {showLocationSuggestions && locationSuggestions.length > 0 && (
+                  <div className="absolute z-10 w-full mt-1 bg-white border border-luxury-primary/20 rounded-md shadow-lg max-h-48 overflow-y-auto">
+                    {locationSuggestions.map((city, index) => (
+                      <div
+                        key={index}
+                        onClick={() => selectLocation(city)}
+                        className="px-4 py-2 hover:bg-luxury-accent/20 cursor-pointer font-primary text-sm text-luxury-primary border-b border-luxury-primary/10 last:border-b-0"
+                      >
+                        {city}
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {errors.location && (
+                  <p className="text-red-500 text-xs mt-1">{errors.location}</p>
+                )}
               </div>
 
               <div>
@@ -898,7 +1179,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 // Scroll to the contact form at the top
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="bg-luxury-accent hover:bg-luxury-accent/90 text-white px-12 py-4 font-primary text-lg tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
+              className="bg-luxury-accent hover:bg-luxury-accent/90 text-luxury-primary px-12 py-4 font-primary text-lg tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
