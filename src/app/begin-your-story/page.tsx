@@ -1268,8 +1268,7 @@ How Did You Hear: ${formData.howDidYouHear}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    // Add actual booking functionality here
-                    console.log('Booking consultation:', selectedConsultation)
+                    window.location.href = '/consultation'
                   }}
                 >
                   Book This Consultation

@@ -29,12 +29,9 @@ export interface ConsultationBooking {
   name: string
   email: string
   phone: string
-  consultation_type: 'virtual' | 'in_person'
+  consultation_type: 'phone' | 'video' | 'in-person'
   preferred_date: string
   preferred_time: string
-  timezone?: string
-  wedding_date?: string
-  budget_range?: string
   message?: string
   status?: 'pending' | 'confirmed' | 'completed' | 'cancelled'
 }

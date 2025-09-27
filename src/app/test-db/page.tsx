@@ -49,12 +49,9 @@ export default function TestDatabase() {
       name: 'Priya & Arjun Singh',
       email: 'consultation@example.com',
       phone: '+91 87654 32109',
-      consultation_type: 'virtual' as const,
+      consultation_type: 'video' as const,
       preferred_date: '2024-03-15',
       preferred_time: '15:30',
-      timezone: 'Asia/Kolkata',
-      wedding_date: '2024-08-20',
-      budget_range: '₹5-8 lakhs',
       message: 'Test consultation booking from test page.'
     }
 
