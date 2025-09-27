@@ -83,6 +83,12 @@ export default function ConsultationBooking() {
       return
     }
 
+    // Ensure consultation_type is valid
+    if (!formData.consultationType || !['phone', 'video', 'in-person'].includes(formData.consultationType)) {
+      setErrors(prev => ({ ...prev, consultationType: 'Please select a consultation type' }))
+      return
+    }
+
     try {
       const fullPhoneNumber = `${selectedCountryCode}${formData.phone}`
       
@@ -164,12 +170,12 @@ export default function ConsultationBooking() {
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 className={`w-full px-4 py-3 border rounded-lg font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300 ${
-                  errors.name ? 'border-red-500' : 'border-luxury-primary/20'
+                  errors.name ? 'border-luxury-primary' : 'border-luxury-primary/20'
                 }`}
                 placeholder="Enter your full name"
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                <p className="text-luxury-primary text-sm mt-1">{errors.name}</p>
               )}
             </div>
 
@@ -183,12 +189,12 @@ export default function ConsultationBooking() {
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 className={`w-full px-4 py-3 border rounded-lg font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300 ${
-                  errors.email ? 'border-red-500' : 'border-luxury-primary/20'
+                  errors.email ? 'border-luxury-primary' : 'border-luxury-primary/20'
                 }`}
                 placeholder="Enter your email address"
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                <p className="text-luxury-primary text-sm mt-1">{errors.email}</p>
               )}
             </div>
 
@@ -214,13 +220,13 @@ export default function ConsultationBooking() {
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                   className={`flex-1 px-4 py-3 border border-luxury-primary/20 rounded-r-lg font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300 ${
-                    errors.phone ? 'border-red-500' : ''
+                    errors.phone ? 'border-luxury-primary' : ''
                   }`}
                   placeholder="Enter your phone number"
                 />
               </div>
               {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                <p className="text-luxury-primary text-sm mt-1">{errors.phone}</p>
               )}
             </div>
 
@@ -233,7 +239,7 @@ export default function ConsultationBooking() {
                 {consultationTypes.map((type) => (
                   <motion.div
                     key={type.id}
-                    className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 ${
+                    className={`p-4 border rounded-lg cursor-pointer transition-all duration-300 ${
                       formData.consultationType === type.id
                         ? 'border-luxury-primary bg-luxury-primary/5'
                         : 'border-luxury-primary/20 hover:border-luxury-primary/50'
@@ -267,7 +273,7 @@ export default function ConsultationBooking() {
                 ))}
               </div>
               {errors.consultationType && (
-                <p className="text-red-500 text-sm mt-2">{errors.consultationType}</p>
+                <p className="text-luxury-primary text-sm mt-2">{errors.consultationType}</p>
               )}
             </div>
 
@@ -282,11 +288,11 @@ export default function ConsultationBooking() {
                 onChange={(e) => handleInputChange('preferredDate', e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
                 className={`w-full px-4 py-3 border rounded-lg font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300 ${
-                  errors.preferredDate ? 'border-red-500' : 'border-luxury-primary/20'
+                  errors.preferredDate ? 'border-luxury-primary' : 'border-luxury-primary/20'
                 }`}
               />
               {errors.preferredDate && (
-                <p className="text-red-500 text-sm mt-1">{errors.preferredDate}</p>
+                <p className="text-luxury-primary text-sm mt-1">{errors.preferredDate}</p>
               )}
             </div>
 
@@ -299,7 +305,7 @@ export default function ConsultationBooking() {
                 value={formData.preferredTime}
                 onChange={(e) => handleInputChange('preferredTime', e.target.value)}
                 className={`w-full px-4 py-3 border rounded-lg font-primary text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300 ${
-                  errors.preferredTime ? 'border-red-500' : 'border-luxury-primary/20'
+                  errors.preferredTime ? 'border-luxury-primary' : 'border-luxury-primary/20'
                 }`}
               >
                 <option value="">Select a time slot</option>
@@ -310,7 +316,7 @@ export default function ConsultationBooking() {
                 ))}
               </select>
               {errors.preferredTime && (
-                <p className="text-red-500 text-sm mt-1">{errors.preferredTime}</p>
+                <p className="text-luxury-primary text-sm mt-1">{errors.preferredTime}</p>
               )}
             </div>
 
@@ -332,12 +338,12 @@ export default function ConsultationBooking() {
             <AnimatePresence>
               {consultationBooking.isSuccess && (
                 <motion.div
-                  className="p-4 bg-green-50 border border-green-200 rounded-lg"
+                  className="p-4 bg-luxury-accent/30 border border-luxury-primary/20 rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                 >
-                  <p className="text-green-800 font-primary-medium">
+                  <p className="text-luxury-primary font-primary-medium">
                     Thank you! Your consultation request has been submitted successfully. We'll contact you within 24 hours to confirm your appointment.
                   </p>
                 </motion.div>
@@ -345,12 +351,12 @@ export default function ConsultationBooking() {
 
               {consultationBooking.error && (
                 <motion.div
-                  className="p-4 bg-red-50 border border-red-200 rounded-lg"
+                  className="p-4 bg-luxury-accent/30 border border-luxury-primary/20 rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                 >
-                  <p className="text-red-800 font-primary-medium">
+                  <p className="text-luxury-primary font-primary-medium">
                     {consultationBooking.error}
                   </p>
                 </motion.div>
