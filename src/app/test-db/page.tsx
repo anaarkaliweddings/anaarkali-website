@@ -32,13 +32,8 @@ export default function TestDatabase() {
 
     try {
       const result = await submitContactForm(dummyData)
-      
-      if (result.success) {
-        addResult('✅ Contact Form: SUCCESS!')
-        addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
-      } else {
-        addResult(`❌ Contact Form: FAILED - Unknown error`)
-      }
+      addResult('✅ Contact Form: SUCCESS!')
+      addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
     } catch (error) {
       addResult(`❌ Contact Form: FAILED - ${error instanceof Error ? error.message : 'Unknown error'}`)
     }
@@ -65,13 +60,8 @@ export default function TestDatabase() {
 
     try {
       const result = await submitConsultationBooking(dummyData)
-      
-      if (result.success) {
-        addResult('✅ Consultation Booking: SUCCESS!')
-        addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
-      } else {
-        addResult(`❌ Consultation Booking: FAILED - Unknown error`)
-      }
+      addResult('✅ Consultation Booking: SUCCESS!')
+      addResult(`📄 Data: ${JSON.stringify(result.data, null, 2)}`)
     } catch (error) {
       addResult(`❌ Consultation Booking: FAILED - ${error instanceof Error ? error.message : 'Unknown error'}`)
     }

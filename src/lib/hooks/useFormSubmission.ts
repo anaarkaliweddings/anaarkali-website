@@ -21,14 +21,8 @@ export function useContactFormSubmission() {
 
     try {
       const result = await submitContactForm(data)
-      
-      if (result.success) {
-        setState({ isSubmitting: false, isSuccess: true, error: null })
-        return { success: true, data: result.data }
-      } else {
-        setState({ isSubmitting: false, isSuccess: false, error: result.error || 'Failed to submit form' })
-        return { success: false, error: result.error }
-      }
+      setState({ isSubmitting: false, isSuccess: true, error: null })
+      return { success: true, data: result.data }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred'
       setState({ isSubmitting: false, isSuccess: false, error: errorMessage })
@@ -59,14 +53,8 @@ export function useConsultationBookingSubmission() {
 
     try {
       const result = await submitConsultationBooking(data)
-      
-      if (result.success) {
-        setState({ isSubmitting: false, isSuccess: true, error: null })
-        return { success: true, data: result.data }
-      } else {
-        setState({ isSubmitting: false, isSuccess: false, error: result.error || 'Failed to submit booking' })
-        return { success: false, error: result.error }
-      }
+      setState({ isSubmitting: false, isSuccess: true, error: null })
+      return { success: true, data: result.data }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred'
       setState({ isSubmitting: false, isSuccess: false, error: errorMessage })
