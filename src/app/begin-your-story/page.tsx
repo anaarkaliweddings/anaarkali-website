@@ -200,6 +200,134 @@ export default function BeginYourStory() {
     }
   }
 
+  // Date formatting function to convert various date formats to YYYY-MM-DD
+  const formatDateForDatabase = (dateString: string): string | undefined => {
+    if (!dateString || dateString.trim() === '') return undefined
+    
+    const trimmed = dateString.trim()
+    
+    // If it's already in YYYY-MM-DD format, return as is
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+      return trimmed
+    }
+    
+    // If it's in MM/DD/YYYY format
+    if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(trimmed)) {
+      const [month, day, year] = trimmed.split('/')
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    }
+    
+    // If it's in DD/MM/YYYY format
+    if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(trimmed)) {
+      const [day, month, year] = trimmed.split('/')
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    }
+    
+    // If it's in "Month DD, YYYY" format - parse manually to avoid timezone issues
+    const monthDayYearMatch = trimmed.match(/^([A-Za-z]+) (\d{1,2}), (\d{4})$/)
+    if (monthDayYearMatch) {
+      const [, monthName, day, year] = monthDayYearMatch
+      const monthMap: { [key: string]: string } = {
+        'january': '01', 'jan': '01',
+        'february': '02', 'feb': '02',
+        'march': '03', 'mar': '03',
+        'april': '04', 'apr': '04',
+        'may': '05',
+        'june': '06', 'jun': '06',
+        'july': '07', 'jul': '07',
+        'august': '08', 'aug': '08',
+        'september': '09', 'sep': '09', 'sept': '09',
+        'october': '10', 'oct': '10',
+        'november': '11', 'nov': '11',
+        'december': '12', 'dec': '12'
+      }
+      const monthNum = monthMap[monthName.toLowerCase()]
+      if (monthNum) {
+        return `${year}-${monthNum}-${day.padStart(2, '0')}`
+      }
+    }
+    
+    // If it's in "Month YYYY" format, assume first day of month
+    const monthYearMatch = trimmed.match(/^([A-Za-z]+) (\d{4})$/)
+    if (monthYearMatch) {
+      const [, monthName, year] = monthYearMatch
+      const monthMap: { [key: string]: string } = {
+        'january': '01', 'jan': '01',
+        'february': '02', 'feb': '02',
+        'march': '03', 'mar': '03',
+        'april': '04', 'apr': '04',
+        'may': '05',
+        'june': '06', 'jun': '06',
+        'july': '07', 'jul': '07',
+        'august': '08', 'aug': '08',
+        'september': '09', 'sep': '09', 'sept': '09',
+        'october': '10', 'oct': '10',
+        'november': '11', 'nov': '11',
+        'december': '12', 'dec': '12'
+      }
+      const monthNum = monthMap[monthName.toLowerCase()]
+      if (monthNum) {
+        return `${year}-${monthNum}-01`
+      }
+    }
+    
+    // If it's in "Month DD" format, assume current year
+    const monthDayMatch = trimmed.match(/^([A-Za-z]+) (\d{1,2})$/)
+    if (monthDayMatch) {
+      const [, monthName, day] = monthDayMatch
+      const currentYear = new Date().getFullYear()
+      const monthMap: { [key: string]: string } = {
+        'january': '01', 'jan': '01',
+        'february': '02', 'feb': '02',
+        'march': '03', 'mar': '03',
+        'april': '04', 'apr': '04',
+        'may': '05',
+        'june': '06', 'jun': '06',
+        'july': '07', 'jul': '07',
+        'august': '08', 'aug': '08',
+        'september': '09', 'sep': '09', 'sept': '09',
+        'october': '10', 'oct': '10',
+        'november': '11', 'nov': '11',
+        'december': '12', 'dec': '12'
+      }
+      const monthNum = monthMap[monthName.toLowerCase()]
+      if (monthNum) {
+        return `${currentYear}-${monthNum}-${day.padStart(2, '0')}`
+      }
+    }
+    
+    // If all else fails, try to parse as a general date
+    try {
+      const date = new Date(trimmed)
+      if (!isNaN(date.getTime())) {
+        // Use local date to avoid timezone issues
+        const year = date.getFullYear()
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const day = String(date.getDate()).padStart(2, '0')
+        return `${year}-${month}-${day}`
+      }
+    } catch (e) {
+      // Return undefined if we can't parse it
+    }
+    
+    return undefined
+  }
+
+  // Date validation function
+  const validateDate = (dateString: string): boolean => {
+    if (!dateString || dateString.trim() === '') return false
+    
+    const formatted = formatDateForDatabase(dateString)
+    if (!formatted) return false
+    
+    // Check if the date is in the future (weddings are typically in the future)
+    const date = new Date(formatted)
+    const today = new Date()
+    today.setHours(0, 0, 0, 0) // Reset time to start of day
+    
+    return date >= today
+  }
+
   const handleLocationChange = (value: string) => {
     setFormData(prev => ({ ...prev, location: value }))
     setShowLocationSuggestions(true)
@@ -294,6 +422,8 @@ export default function BeginYourStory() {
     
     if (!formData.weddingDate.trim()) {
       newErrors.weddingDate = 'Wedding date is required'
+    } else if (!validateDate(formData.weddingDate)) {
+      newErrors.weddingDate = 'Please enter a valid future date (e.g., March 24, 2024 or 2024-03-24)'
     }
     
     if (!formData.location.trim()) {
@@ -344,7 +474,7 @@ export default function BeginYourStory() {
       name: formData.names,
       email: formData.email,
       phone: `${selectedCountryCode} ${formData.phone}`,
-      wedding_date: formData.weddingDate || undefined,
+      wedding_date: formatDateForDatabase(formData.weddingDate),
       venue: formData.location || undefined,
       guest_count: formData.guestCount || undefined,
       budget_range: formData.budget || undefined,
@@ -573,13 +703,21 @@ How Did You Hear: ${formData.howDidYouHear}
                     Wedding date (or approximate) *
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     required
                     value={formData.weddingDate}
                     onChange={(e) => handleInputChange('weddingDate', e.target.value)}
-                    className="w-full px-4 py-3 border border-luxury-primary/20 rounded-md font-interface text-sm focus:outline-none focus:ring-2 focus:ring-luxury-accent focus:border-luxury-accent transition-all duration-300"
-                    placeholder="e.g., March 2024 or TBD"
+                    min={new Date().toISOString().split('T')[0]}
+                    className={`w-full px-4 py-3 border rounded-md font-primary text-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
+                      errors.weddingDate 
+                        ? 'border-red-500 focus:ring-red-200 focus:border-red-500' 
+                        : 'border-luxury-primary/20 focus:ring-luxury-accent focus:border-luxury-accent'
+                    }`}
+                    placeholder="Select your wedding date"
                   />
+                  {errors.weddingDate && (
+                    <p className="text-red-500 text-xs mt-1 font-primary">{errors.weddingDate}</p>
+                  )}
                 </motion.div>
               </div>
 
