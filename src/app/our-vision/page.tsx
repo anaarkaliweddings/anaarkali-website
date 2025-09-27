@@ -239,7 +239,7 @@ export default function OurVision() {
 
           {/* Personal Interests */}
           <div className="mt-16 bg-luxury-accent p-8 rounded-lg">
-            <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
+            <h3 className="font-playfair text-2xl text-luxury-secondary mb-6">
               When I'm not behind the camera, you'll find me:
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -252,7 +252,7 @@ export default function OurVision() {
               ].map((interest, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <span className="text-2xl">{interest.icon}</span>
-                  <p className="font-inter text-sm text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-inter text-sm text-luxury-secondary/80 leading-relaxed">
                     {interest.text}
                   </p>
                 </div>
@@ -266,10 +266,10 @@ export default function OurVision() {
       <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               Our Cast of Storytellers
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-2xl mx-auto">
+            <p className="font-inter text-lg text-luxury-secondary/70 max-w-2xl mx-auto">
               Great cinema requires a great team. Here are the artists who make our magic happen.
             </p>
           </div>
@@ -293,7 +293,7 @@ export default function OurVision() {
                       </div>
                     </div>
                   </div>
-                  <h3 className="font-playfair text-xl text-[#2C2C2C] mb-2">
+                  <h3 className="font-playfair text-xl text-luxury-secondary mb-2">
                     {member.name}
                   </h3>
                   <p className="font-inter text-sm text-[#D4A574] font-medium">
@@ -303,28 +303,28 @@ export default function OurVision() {
 
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-inter text-sm font-medium text-[#2C2C2C] mb-1">
+                    <h4 className="font-inter text-sm font-medium text-luxury-secondary mb-1">
                       Specializes in:
                     </h4>
-                    <p className="font-inter text-sm text-[#2C2C2C]/80">
+                    <p className="font-inter text-sm text-luxury-secondary/80">
                       {member.specialty}
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-inter text-sm font-medium text-[#2C2C2C] mb-1">
+                    <h4 className="font-inter text-sm font-medium text-luxury-secondary mb-1">
                       Signature style:
                     </h4>
-                    <p className="font-inter text-sm text-[#2C2C2C]/80">
+                    <p className="font-inter text-sm text-luxury-secondary/80">
                       {member.style}
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-inter text-sm font-medium text-[#2C2C2C] mb-1">
+                    <h4 className="font-inter text-sm font-medium text-luxury-secondary mb-1">
                       Fun fact:
                     </h4>
-                    <p className="font-inter text-sm text-[#2C2C2C]/80">
+                    <p className="font-inter text-sm text-luxury-secondary/80">
                       {member.funFact}
                     </p>
                   </div>
@@ -345,7 +345,7 @@ export default function OurVision() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               What We Stand For
             </h2>
           </div>
@@ -354,10 +354,10 @@ export default function OurVision() {
             {brandValues.map((value, index) => (
               <div key={index} className="text-center p-8 bg-luxury-accent rounded-lg">
                 <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="font-playfair text-xl text-[#2C2C2C] mb-4">
+                <h3 className="font-playfair text-xl text-luxury-secondary mb-4">
                   {value.title}
                 </h3>
-                <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                <p className="font-inter text-base text-luxury-secondary/80 leading-relaxed">
                   {value.description}
                 </p>
               </div>
@@ -370,10 +370,10 @@ export default function OurVision() {
       <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               The Technology Behind the Art
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-3xl mx-auto">
+            <p className="font-inter text-lg text-luxury-secondary/70 max-w-3xl mx-auto">
               Great storytelling requires great tools. Here's what we use to bring your vision to life:
             </p>
           </div>
@@ -381,12 +381,12 @@ export default function OurVision() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {equipment.map((category, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                <h3 className="font-playfair text-lg text-[#2C2C2C] mb-4">
+                <h3 className="font-playfair text-lg text-luxury-secondary mb-4">
                   {category.category}
                 </h3>
                 <ul className="space-y-2">
                   {category.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="font-inter text-sm text-[#2C2C2C]/80 flex items-start gap-2">
+                    <li key={itemIndex} className="font-inter text-sm text-luxury-secondary/80 flex items-start gap-2">
                       <span className="text-[#D4A574] mt-1">•</span>
                       {item}
                     </li>

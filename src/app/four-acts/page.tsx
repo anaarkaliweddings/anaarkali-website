@@ -203,7 +203,7 @@ export default function FourActs() {
                   <span className="font-primary-bold text-xl font-bold">1</span>
                 </div>
                 <div>
-                  <h2 className="font-primary-bold text-3xl text-[#2C2C2C]">
+                  <h2 className="font-primary-bold text-3xl text-luxury-secondary">
                     Act I: Pre-Production - "The Vision"
                   </h2>
                   <p className="font-primary text-sm text-[#D4A574] font-medium">
@@ -213,15 +213,15 @@ export default function FourActs() {
               </div>
               
               <div className="space-y-6">
-                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                <p className="font-primary text-lg text-luxury-secondary leading-relaxed">
                   This is where the magic begins.
                 </p>
                 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Storyboarding Session
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C] leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary leading-relaxed">
                     We don't ask about your timeline first. We ask about your love story.
                     In our 90-minute director's meeting, we map out the emotional arc of your day.
                     Who are the supporting characters? What moments matter most to you?
@@ -230,21 +230,21 @@ export default function FourActs() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Director's Treatment
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C] leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary leading-relaxed">
                     After our session, you receive a beautiful document outlining:
                   </p>
                   <ul className="space-y-2 ml-4">
-                    <li className="font-primary text-base text-[#2C2C2C]">• The logline of your wedding film</li>
-                    <li className="font-primary text-base text-[#2C2C2C]">• Visual style and tone</li>
-                    <li className="font-primary text-base text-[#2C2C2C]">• Key characters and their roles</li>
-                    <li className="font-primary text-base text-[#2C2C2C]">• The emotional beats we'll capture</li>
+                    <li className="font-primary text-base text-luxury-secondary">• The logline of your wedding film</li>
+                    <li className="font-primary text-base text-luxury-secondary">• Visual style and tone</li>
+                    <li className="font-primary text-base text-luxury-secondary">• Key characters and their roles</li>
+                    <li className="font-primary text-base text-luxury-secondary">• The emotional beats we'll capture</li>
                   </ul>
                 </div>
 
-                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                <p className="font-primary text-lg text-luxury-secondary leading-relaxed">
                   By the end of Act I, you'll feel like your love story is being taken seriously as a piece of art.
                 </p>
               </div>
@@ -309,7 +309,7 @@ export default function FourActs() {
                   <span className="font-primary-bold text-xl font-bold">2</span>
                 </div>
                 <div>
-                  <h2 className="font-primary-bold text-3xl text-[#2C2C2C]">
+                  <h2 className="font-primary-bold text-3xl text-luxury-secondary">
                     Act II: Production - "The Shoot"
                   </h2>
                   <p className="font-primary text-sm text-[#D4A574] font-medium">
@@ -319,15 +319,15 @@ export default function FourActs() {
               </div>
               
               <div className="space-y-6">
-                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                <p className="font-primary text-lg text-luxury-secondary leading-relaxed">
                   The cameras roll, but you won't feel like you're performing.
                 </p>
                 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Call Sheet
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                     The day before your wedding, you receive a professional call sheet.
                     Scene by scene breakdown. Cast requirements. Everything organized.
                     No chaos. No confusion. Just clarity.
@@ -335,10 +335,10 @@ export default function FourActs() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     Direction, Not Posing
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                     We don't say 'smile!'
                     We say 'Tell each other what you're most excited about for your honeymoon.'
                     We direct emotions, not expressions.
@@ -361,7 +361,7 @@ export default function FourActs() {
                   <span className="font-primary-bold text-xl font-bold">3</span>
                 </div>
                 <div>
-                  <h2 className="font-primary-bold text-3xl text-[#2C2C2C]">
+                  <h2 className="font-primary-bold text-3xl text-luxury-secondary">
                     Act III: Post-Production - "The Edit"
                   </h2>
                   <p className="font-primary text-sm text-[#D4A574] font-medium">
@@ -371,15 +371,15 @@ export default function FourActs() {
               </div>
               
               <div className="space-y-6">
-                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                <p className="font-primary text-lg text-luxury-secondary leading-relaxed">
                   This is where your story comes alive.
                 </p>
                 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Dailies (48-hour delivery)
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                     While we work on your main film, you get a sneak peek.
                     5 professionally edited Reels, ready for social media.
                     The social wedding happens in real-time. We make sure you're part of it.
@@ -387,10 +387,10 @@ export default function FourActs() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Edit Process
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                     Regular updates so you never wonder what's happening.
                     Color grading that makes every frame cinema-ready.
                     Sound design that brings back the feeling of being there.
@@ -458,7 +458,7 @@ export default function FourActs() {
                   <span className="font-primary-bold text-xl font-bold">4</span>
                 </div>
                 <div>
-                  <h2 className="font-primary-bold text-3xl text-[#2C2C2C]">
+                  <h2 className="font-primary-bold text-3xl text-luxury-secondary">
                     Act IV: The Premiere - "Your Release"
                   </h2>
                   <p className="font-primary text-sm text-[#D4A574] font-medium">
@@ -468,30 +468,30 @@ export default function FourActs() {
               </div>
               
               <div className="space-y-6">
-                <p className="font-primary text-lg text-[#2C2C2C] leading-relaxed">
+                <p className="font-primary text-lg text-luxury-secondary leading-relaxed">
                   Your love story deserves a proper premiere.
                 </p>
                 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Premiere Box
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                     A beautifully curated package arrives at your door:
                   </p>
                   <ul className="space-y-2 ml-4">
-                    <li className="font-primary text-base text-[#2C2C2C]/80">• Handwritten note from your director</li>
-                    <li className="font-primary text-base text-[#2C2C2C]/80">• Custom engraved USB with your film</li>
-                    <li className="font-primary text-base text-[#2C2C2C]/80">• Sensory elements that bring back your day</li>
-                    <li className="font-primary text-base text-[#2C2C2C]/80">• Your premiere ticket</li>
+                    <li className="font-primary text-base text-luxury-secondary/80">• Handwritten note from your director</li>
+                    <li className="font-primary text-base text-luxury-secondary/80">• Custom engraved USB with your film</li>
+                    <li className="font-primary text-base text-luxury-secondary/80">• Sensory elements that bring back your day</li>
+                    <li className="font-primary text-base text-luxury-secondary/80">• Your premiere ticket</li>
                   </ul>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-primary-bold text-xl text-[#2C2C2C]">
+                  <h3 className="font-primary-bold text-xl text-luxury-secondary">
                     The Private Screening Room
                   </h3>
-                  <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                  <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                     Your personalized webpage where your film lives.
                     Not just a Dropbox link. A destination.
                     High-definition streaming. Easy downloads. Elegant presentation.
@@ -507,10 +507,10 @@ export default function FourActs() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-primary-bold text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-primary-bold text-3xl md:text-4xl text-luxury-secondary mb-4">
               The Investment in Your Legacy
             </h2>
-            <p className="font-primary text-lg text-[#2C2C2C]/70 max-w-3xl mx-auto">
+            <p className="font-primary text-lg text-luxury-secondary/70 max-w-3xl mx-auto">
               Great cinema isn't cheap. But the memories we create together? Priceless.
             </p>
           </div>
@@ -518,7 +518,7 @@ export default function FourActs() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Package Selection */}
             <div className="space-y-8">
-              <h3 className="font-primary-bold text-2xl text-[#2C2C2C] mb-6">
+              <h3 className="font-primary-bold text-2xl text-luxury-secondary mb-6">
                 Choose Your Director's Treatment
               </h3>
               
@@ -535,10 +535,10 @@ export default function FourActs() {
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <h4 className="font-primary-bold text-xl text-[#2C2C2C] mb-2">
+                        <h4 className="font-primary-bold text-xl text-luxury-secondary mb-2">
                           {key} Package
                         </h4>
-                        <p className="font-primary text-sm text-[#2C2C2C]/70">
+                        <p className="font-primary text-sm text-luxury-secondary/70">
                           {pkg.description}
                         </p>
                       </div>
@@ -550,7 +550,7 @@ export default function FourActs() {
                     </div>
                     <ul className="space-y-2">
                       {pkg.includes.map((item, index) => (
-                        <li key={index} className="font-primary text-sm text-[#2C2C2C]/80 flex items-center gap-2">
+                        <li key={index} className="font-primary text-sm text-luxury-secondary/80 flex items-center gap-2">
                           <span className="text-[#D4A574]">✓</span>
                           {item}
                         </li>
@@ -563,7 +563,7 @@ export default function FourActs() {
 
             {/* Add-ons and Summary */}
             <div className="space-y-8">
-              <h3 className="font-primary-bold text-2xl text-[#2C2C2C] mb-6">
+              <h3 className="font-primary-bold text-2xl text-luxury-secondary mb-6">
                 Add-On Services
               </h3>
               
@@ -577,7 +577,7 @@ export default function FourActs() {
                         onChange={() => toggleAddOn(addOn.id)}
                         className="w-4 h-4 text-[#D4A574] border-gray-300 rounded focus:ring-[#D4A574]"
                       />
-                      <span className="font-primary text-sm text-[#2C2C2C]">
+                      <span className="font-primary text-sm text-luxury-secondary">
                         {addOn.name}
                       </span>
                     </div>
@@ -590,15 +590,15 @@ export default function FourActs() {
 
               {/* Investment Summary */}
               <div className="bg-luxury-accent p-6 rounded-lg">
-                <h4 className="font-primary-bold text-lg text-[#2C2C2C] mb-4">
+                <h4 className="font-primary-bold text-lg text-luxury-secondary mb-4">
                   Investment Summary
                 </h4>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="font-primary text-sm text-[#2C2C2C]/70">
+                    <span className="font-primary text-sm text-luxury-secondary/70">
                       {selectedPackage} Package
                     </span>
-                    <span className="font-primary text-sm text-[#2C2C2C]">
+                    <span className="font-primary text-sm text-luxury-secondary">
                       {packages[selectedPackage as keyof typeof packages].price}
                     </span>
                   </div>
@@ -606,10 +606,10 @@ export default function FourActs() {
                     const addOn = addOnOptions.find(a => a.id === addOnId)
                     return addOn ? (
                       <div key={addOnId} className="flex justify-between">
-                        <span className="font-primary text-sm text-[#2C2C2C]/70">
+                        <span className="font-primary text-sm text-luxury-secondary/70">
                           {addOn.name}
                         </span>
-                        <span className="font-primary text-sm text-[#2C2C2C]">
+                        <span className="font-primary text-sm text-luxury-secondary">
                           {addOn.price}
                         </span>
                       </div>
@@ -618,7 +618,7 @@ export default function FourActs() {
                 </div>
                 <div className="border-t border-gray-300 pt-4 mt-4">
                   <div className="flex justify-between">
-                    <span className="font-primary font-medium text-[#2C2C2C]">
+                    <span className="font-primary font-medium text-luxury-secondary">
                       Total Investment
                     </span>
                     <span className="font-primary-bold text-lg font-bold text-[#D4A574]">
@@ -646,7 +646,7 @@ export default function FourActs() {
       <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-primary-bold text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-primary-bold text-3xl md:text-4xl text-luxury-secondary mb-4">
               Questions Every Couple Asks
             </h2>
           </div>
@@ -658,7 +658,7 @@ export default function FourActs() {
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <span className="font-primary text-lg text-[#2C2C2C]">
+                  <span className="font-primary text-lg text-luxury-secondary">
                     {faq.question}
                   </span>
                   <svg
@@ -674,7 +674,7 @@ export default function FourActs() {
                 </button>
                 {openFaq === index && (
                   <div className="px-6 pb-6">
-                    <p className="font-primary text-base text-[#2C2C2C]/80 leading-relaxed">
+                    <p className="font-primary text-base text-luxury-secondary/80 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>

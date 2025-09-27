@@ -733,7 +733,7 @@ How Did You Hear: ${formData.howDidYouHear}
                     placeholder="Enter both your names"
                   />
                   {errors.names && (
-                    <p className="text-red-500 text-xs mt-1">{errors.names}</p>
+                    <p className="text-luxury-primary text-xs mt-1">{errors.names}</p>
                   )}
                 </motion.div>
 
@@ -759,7 +759,7 @@ How Did You Hear: ${formData.howDidYouHear}
                     placeholder="your.email@example.com"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                    <p className="text-luxury-primary text-xs mt-1">{errors.email}</p>
                   )}
                 </motion.div>
 
@@ -798,7 +798,7 @@ How Did You Hear: ${formData.howDidYouHear}
                     />
                   </div>
                   {errors.phone && (
-                    <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+                    <p className="text-luxury-primary text-xs mt-1">{errors.phone}</p>
                   )}
                 </motion.div>
 
@@ -825,7 +825,7 @@ How Did You Hear: ${formData.howDidYouHear}
                     placeholder="Select your wedding date"
                   />
                   {errors.weddingDate && (
-                    <p className="text-red-500 text-xs mt-1 font-primary">{errors.weddingDate}</p>
+                    <p className="text-luxury-primary text-xs mt-1 font-primary">{errors.weddingDate}</p>
                   )}
                 </motion.div>
               </div>
@@ -862,12 +862,12 @@ How Did You Hear: ${formData.howDidYouHear}
                   </div>
                 )}
                 {errors.location && (
-                  <p className="text-red-500 text-xs mt-1">{errors.location}</p>
+                  <p className="text-luxury-primary text-xs mt-1">{errors.location}</p>
                 )}
               </div>
 
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                   Tell us about your love story in 2-3 sentences
                 </label>
                 <textarea
@@ -880,7 +880,7 @@ How Did You Hear: ${formData.howDidYouHear}
               </div>
 
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                   What's most important to you about your wedding documentation?
                 </label>
                 <textarea
@@ -913,12 +913,12 @@ How Did You Hear: ${formData.howDidYouHear}
 
             {/* Your Wedding Vision */}
             <div className="space-y-8">
-              <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
+              <h3 className="font-playfair text-2xl text-luxury-secondary mb-6">
                 Your Wedding Vision
               </h3>
               
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-4">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-4">
                   Event type (select all that apply)
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -930,7 +930,7 @@ How Did You Hear: ${formData.howDidYouHear}
                         onChange={() => handleCheckboxChange('eventType', type)}
                         className="w-4 h-4 text-[#D4A574] border-gray-300 rounded focus:ring-[#D4A574]"
                       />
-                      <span className="font-inter text-sm text-[#2C2C2C]">{type}</span>
+                      <span className="font-inter text-sm text-luxury-secondary">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -938,7 +938,7 @@ How Did You Hear: ${formData.howDidYouHear}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                  <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                     Approximate guest count
                   </label>
                   <input
@@ -951,7 +951,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 </div>
 
                 <div>
-                  <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                  <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                     Are you looking for photography, videography, or both?
                   </label>
                   <div className="space-y-2">
@@ -963,7 +963,7 @@ How Did You Hear: ${formData.howDidYouHear}
                           onChange={() => handleCheckboxChange('servicesNeeded', service)}
                           className="w-4 h-4 text-[#D4A574] border-gray-300 rounded focus:ring-[#D4A574]"
                         />
-                        <span className="font-inter text-sm text-[#2C2C2C]">{service}</span>
+                        <span className="font-inter text-sm text-luxury-secondary">{service}</span>
                       </label>
                     ))}
                   </div>
@@ -971,7 +971,7 @@ How Did You Hear: ${formData.howDidYouHear}
               </div>
 
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                   Any cultural or religious ceremonies we should know about?
                 </label>
                 <textarea
@@ -986,12 +986,12 @@ How Did You Hear: ${formData.howDidYouHear}
 
             {/* Your Investment Range */}
             <div className="space-y-8">
-              <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
+              <h3 className="font-playfair text-2xl text-luxury-secondary mb-6">
                 Your Investment Range
               </h3>
               
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-4">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-4">
                   Budget selection
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1005,7 +1005,7 @@ How Did You Hear: ${formData.howDidYouHear}
                         onChange={(e) => handleInputChange('budget', e.target.value)}
                         className="w-4 h-4 text-[#D4A574] border-gray-300 focus:ring-[#D4A574]"
                       />
-                      <span className="font-inter text-sm text-[#2C2C2C]">{budget}</span>
+                      <span className="font-inter text-sm text-luxury-secondary">{budget}</span>
                     </label>
                   ))}
                 </div>
@@ -1063,7 +1063,7 @@ How Did You Hear: ${formData.howDidYouHear}
               )}
 
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                   What matters most in your investment?
                 </label>
                 <textarea
@@ -1078,13 +1078,13 @@ How Did You Hear: ${formData.howDidYouHear}
 
             {/* Special Considerations */}
             <div className="space-y-8">
-              <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
+              <h3 className="font-playfair text-2xl text-luxury-secondary mb-6">
                 Special Considerations
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                  <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                     Any accessibility needs or special accommodations?
                   </label>
                   <textarea
@@ -1097,7 +1097,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 </div>
 
                 <div>
-                  <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                  <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                     Are you part of the LGBTQ+ community? (We're inclusive and celebrate all love)
                   </label>
                   <textarea
@@ -1111,7 +1111,7 @@ How Did You Hear: ${formData.howDidYouHear}
               </div>
 
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                   Any family dynamics or cultural sensitivities we should be aware of?
                 </label>
                 <textarea
@@ -1124,7 +1124,7 @@ How Did You Hear: ${formData.howDidYouHear}
               </div>
 
               <div>
-                <label className="block font-inter text-sm font-medium text-[#2C2C2C] mb-2">
+                <label className="block font-inter text-sm font-medium text-luxury-secondary mb-2">
                   How did you hear about us?
                 </label>
                 <input
@@ -1149,7 +1149,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-green-50 border border-green-200 text-green-800 px-6 py-4 rounded-md"
+                  className="bg-luxury-accent/30 border border-luxury-primary/20 text-luxury-primary px-6 py-4 rounded-md"
                 >
                   <p className="font-primary-medium">Thank you! Your story has been sent successfully.</p>
                   <p className="font-primary text-sm mt-1">We'll be in touch within 24 hours.</p>
@@ -1161,7 +1161,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-md"
+                  className="bg-luxury-accent/30 border border-luxury-primary/20 text-luxury-primary px-6 py-4 rounded-md"
                 >
                   <p className="font-primary-medium">Oops! Something went wrong.</p>
                   <p className="font-primary text-sm mt-1">{contactForm.error}</p>
@@ -1174,7 +1174,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 className={`px-12 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 rounded-md shadow-lg hover:shadow-xl ${
                   contactForm.isSubmitting
                     ? 'bg-gray-400 cursor-not-allowed text-white'
-                    : 'bg-red-600 hover:bg-red-700 text-white font-semibold'
+                    : 'bg-luxury-primary hover:bg-luxury-primary/90 text-white font-semibold'
                 }`}
                 whileHover={!contactForm.isSubmitting ? { scale: 1.05 } : {}}
                 whileTap={!contactForm.isSubmitting ? { scale: 0.95 } : {}}
@@ -1341,26 +1341,26 @@ How Did You Hear: ${formData.howDidYouHear}
       <section className="py-20 bg-luxury-accent">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               What Happens After You Reach Out
             </h2>
           </div>
 
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-lg">
-              <h3 className="font-playfair text-xl text-[#2C2C2C] mb-4">
+              <h3 className="font-playfair text-xl text-luxury-secondary mb-4">
                 Within 24 hours:
               </h3>
               <ul className="space-y-2">
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   We'll review your love story details
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Send you a personalized response (not a template)
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Schedule your consultation at your convenience
                 </li>
@@ -1368,23 +1368,23 @@ How Did You Hear: ${formData.howDidYouHear}
             </div>
 
             <div className="bg-white p-8 rounded-lg">
-              <h3 className="font-playfair text-xl text-[#2C2C2C] mb-4">
+              <h3 className="font-playfair text-xl text-luxury-secondary mb-4">
                 During your consultation:
               </h3>
               <ul className="space-y-2">
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   We'll share our vision for your wedding film
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Show you examples of similar love stories we've told
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Discuss investment options that work for your budget
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Answer all your questions (and we have some for you too!)
                 </li>
@@ -1392,23 +1392,23 @@ How Did You Hear: ${formData.howDidYouHear}
             </div>
 
             <div className="bg-white p-8 rounded-lg">
-              <h3 className="font-playfair text-xl text-[#2C2C2C] mb-4">
+              <h3 className="font-playfair text-xl text-luxury-secondary mb-4">
                 If we're a perfect match:
               </h3>
               <ul className="space-y-2">
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   We'll send you a detailed proposal within 48 hours
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Reserve your wedding date immediately upon agreement
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Begin the pre-production planning process
                 </li>
-                <li className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                <li className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                   <span className="text-[#D4A574] mt-1">✅</span>
                   Welcome you to the Anaarkali family
                 </li>
@@ -1422,7 +1422,7 @@ How Did You Hear: ${formData.howDidYouHear}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               Questions Before You Begin
             </h2>
           </div>
@@ -1434,7 +1434,7 @@ How Did You Hear: ${formData.howDidYouHear}
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <span className="font-inter text-lg text-[#2C2C2C]">
+                  <span className="font-inter text-lg text-luxury-secondary">
                     {faq.question}
                   </span>
                   <svg
@@ -1450,7 +1450,7 @@ How Did You Hear: ${formData.howDidYouHear}
                 </button>
                 {openFaq === index && (
                   <div className="px-6 pb-6">
-                    <p className="font-inter text-base text-[#2C2C2C]/80 leading-relaxed">
+                    <p className="font-inter text-base text-luxury-secondary/80 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>

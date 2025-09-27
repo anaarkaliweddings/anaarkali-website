@@ -360,10 +360,10 @@ export default function LoveIsLove() {
       <section className="py-20 bg-luxury-accent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               In Their Own Words
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-2xl mx-auto">
+            <p className="font-inter text-lg text-luxury-secondary/70 max-w-2xl mx-auto">
               Because when you become our client, you become our family. Here's what our diverse couples say about their experience.
             </p>
           </div>
@@ -371,15 +371,15 @@ export default function LoveIsLove() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-sm">
-                <p className="font-inter text-[#2C2C2C] mb-6 leading-relaxed">
+                <p className="font-inter text-luxury-secondary mb-6 leading-relaxed">
                   "{testimonial.quote}"
                 </p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-inter text-sm font-medium text-[#2C2C2C]">
+                    <p className="font-inter text-sm font-medium text-luxury-secondary">
                       — {testimonial.author}
                     </p>
-                    <p className="font-inter text-xs text-[#2C2C2C]/70">
+                    <p className="font-inter text-xs text-luxury-secondary/70">
                       {testimonial.location}
                     </p>
                   </div>
@@ -394,10 +394,10 @@ export default function LoveIsLove() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl text-[#2C2C2C] mb-4">
+            <h2 className="font-playfair text-3xl md:text-4xl text-luxury-secondary mb-4">
               Resources for Every Love Story
             </h2>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 max-w-2xl mx-auto">
+            <p className="font-inter text-lg text-luxury-secondary/70 max-w-2xl mx-auto">
               Planning an inclusive wedding? We've got you covered with guides, resources, and support.
             </p>
           </div>
@@ -405,12 +405,12 @@ export default function LoveIsLove() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {resources.map((resource, index) => (
               <div key={index} className="bg-luxury-accent p-8 rounded-lg">
-                <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-6">
+                <h3 className="font-playfair text-2xl text-luxury-secondary mb-6">
                   {resource.title}
                 </h3>
                 <ul className="space-y-3">
                   {resource.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="font-inter text-base text-[#2C2C2C]/80 flex items-start gap-3">
+                    <li key={itemIndex} className="font-inter text-base text-luxury-secondary/80 flex items-start gap-3">
                       <span className="text-[#D4A574] mt-1">•</span>
                       {item}
                     </li>
@@ -422,10 +422,10 @@ export default function LoveIsLove() {
 
           {/* Safe Space Partnerships */}
           <div className="mt-16 text-center">
-            <h3 className="font-playfair text-2xl text-[#2C2C2C] mb-8">
+            <h3 className="font-playfair text-2xl text-luxury-secondary mb-8">
               Safe Space Partnerships
             </h3>
-            <p className="font-inter text-lg text-[#2C2C2C]/70 mb-8">
+            <p className="font-inter text-lg text-luxury-secondary/70 mb-8">
               We work closely with organizations creating inclusive wedding experiences:
             </p>
             <div className="flex flex-wrap justify-center gap-8">
@@ -436,7 +436,7 @@ export default function LoveIsLove() {
                 'Accessibility Support Networks'
               ].map((partner, index) => (
                 <div key={index} className="bg-[#D4A574]/10 px-6 py-3 rounded-lg">
-                  <p className="font-inter text-sm text-[#2C2C2C] font-medium">
+                  <p className="font-inter text-sm text-luxury-secondary font-medium">
                     {partner}
                   </p>
                 </div>
@@ -469,7 +469,7 @@ export default function LoveIsLove() {
               onClick={() => {
                 window.location.href = '/our-vision'
               }}
-              className="border border-white text-white hover:bg-white hover:text-[#2C2C2C] px-8 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 cursor-pointer"
+              className="border border-white text-white hover:bg-white hover:text-luxury-secondary px-8 py-4 font-primary text-sm tracking-wider uppercase transition-all duration-300 cursor-pointer"
             >
               Learn More
             </button>
