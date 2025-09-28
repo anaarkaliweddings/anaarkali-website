@@ -18,61 +18,61 @@ export default function Stories() {
   const portfolioItems = [
     {
       id: 1,
-      title: 'Priya & Arjun',
-      location: 'Delhi',
+      title: 'Anuj & Noopur',
+      location: 'Jim Corbett',
       category: 'Traditional',
-      description: 'A three-day celebration of love, tradition, and family bonds in the heart of Delhi.',
-      videoUrl: '/portfolio/priya-arjun.mp4',
+      description: 'A romantic pre-wedding celebration in the wilderness, capturing authentic moments in the wild.',
+      videoUrl: '/Anuj-Noopur-jim Corbett-2024-01.mp4',
       thumbnail: '/portfolio/priya-arjun-thumb.jpg',
       featured: true
     },
     {
       id: 2,
-      title: 'Sarah & Rajesh',
-      location: 'Mumbai',
+      title: 'Naveen & Sweeta',
+      location: 'Delhi',
       category: 'Modern',
-      description: 'Contemporary elegance meets timeless romance in this intimate Mumbai celebration.',
-      videoUrl: '/portfolio/sarah-rajesh.mp4',
+      description: 'Urban love story captured in the capital city, celebrating love that bridges cultures.',
+      videoUrl: '/Naveen-Sweeta-Delhi-2024-02.mp4',
       thumbnail: '/portfolio/sarah-rajesh-thumb.jpg',
       featured: false
     },
     {
       id: 3,
-      title: 'Meera & Alex',
-      location: 'Goa',
-      category: 'Destination',
-      description: 'Sunset vows by the Arabian Sea, captured in cinematic perfection.',
-      videoUrl: '/portfolio/meera-alex.mp4',
+      title: 'Pooja & Hemant',
+      location: 'Delhi NCR',
+      category: 'Traditional',
+      description: 'A modern couple\'s journey to forever, contemporary love story with traditional roots.',
+      videoUrl: '/Pooja-Hemant-Delhi NCR-2023-05.mp4',
       thumbnail: '/portfolio/meera-alex-thumb.jpg',
       featured: false
     },
     {
       id: 4,
-      title: 'Kai & River',
-      location: 'Bangalore',
-      category: 'LGBTQ+',
-      description: 'A celebration of love that transcends boundaries, documented with authenticity.',
-      videoUrl: '/portfolio/kai-river.mp4',
+      title: 'Priya & David',
+      location: 'Jaipur',
+      category: 'Destination',
+      description: 'A royal pre-wedding celebration in the Pink City, cross-cultural love story set against royal heritage.',
+      videoUrl: '/Priya-david Pre-wedding-Jaipur-2024-03.mp4',
       thumbnail: '/portfolio/kai-river-thumb.jpg',
       featured: false
     },
     {
       id: 5,
-      title: 'Anjali & Dev',
-      location: 'Court House',
-      category: 'Court Marriage',
-      description: 'A courthouse "I do" that was more romantic than any grand affair.',
-      videoUrl: '/portfolio/anjali-dev.mp4',
+      title: 'Priya & Haywards',
+      location: 'Jim Corbett',
+      category: 'Destination',
+      description: 'Love story unfolds in the heart of nature, another beautiful wilderness celebration.',
+      videoUrl: '/Priya-Haywards-jim corbett-2024-06.mp4',
       thumbnail: '/portfolio/anjali-dev-thumb.jpg',
       featured: false
     },
     {
       id: 6,
-      title: 'Priya & Meera',
-      location: 'Mumbai',
-      category: 'LGBTQ+',
-      description: 'When two brides wore red and broke every rule beautifully.',
-      videoUrl: '/portfolio/priya-meera.mp4',
+      title: 'Vidhisha & Ruchir',
+      location: 'Delhi',
+      category: 'Modern',
+      description: 'Urban love story captured in the capital city, modern love story with traditional values.',
+      videoUrl: '/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04.mp4',
       thumbnail: '/portfolio/priya-meera-thumb.jpg',
       featured: false
     }
@@ -199,11 +199,15 @@ export default function Stories() {
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="w-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(79,13,14,0.12)] overflow-hidden"
                 >
-                  <div className="w-full aspect-video overflow-hidden bg-luxury-accent flex items-center justify-center">
-                    <div className="text-center text-luxury-primary">
-                      <div className="font-primary-bold text-lg mb-1">Story Video</div>
-                      <div className="font-primary text-xs opacity-70">Coming Soon</div>
-                    </div>
+                  <div className="w-full aspect-video overflow-hidden">
+                    <video
+                      className="w-full h-full object-cover"
+                      playsInline
+                      loop
+                      preload="metadata"
+                    >
+                      <source src={item.videoUrl} type="video/mp4" />
+                    </video>
                   </div>
 
                   {/* Text Area */}
@@ -300,11 +304,15 @@ export default function Stories() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="aspect-video rounded-lg overflow-hidden shadow-xl bg-luxury-accent flex items-center justify-center">
-                <div className="text-center text-luxury-primary">
-                  <div className="font-primary-bold text-lg mb-1">Featured Story</div>
-                  <div className="font-primary text-xs opacity-70">Coming Soon</div>
-                </div>
+              <div className="aspect-video rounded-lg overflow-hidden shadow-xl">
+                <video
+                  className="w-full h-full object-cover"
+                  playsInline
+                  loop
+                  preload="metadata"
+                >
+                  <source src="/Anuj-Noopur-jim Corbett-2024-01.mp4" type="video/mp4" />
+                </video>
                 <div className="absolute inset-0 bg-luxury-primary/30 flex items-center justify-center">
                   <motion.div 
                     className="text-center text-white"

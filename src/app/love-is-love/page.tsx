@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -9,6 +9,17 @@ import EmblemIcon from '@/components/EmblemIcon'
 
 export default function LoveIsLove() {
   const [activeFilter, setActiveFilter] = useState('All')
+  const videoRefs = useRef<HTMLVideoElement[]>([])
+
+  const handleMouseEnter = (index: number) => {
+    const video = videoRefs.current[index]
+    if (video) video.play().catch(() => {})
+  }
+
+  const handleMouseLeave = (index: number) => {
+    const video = videoRefs.current[index]
+    if (video) video.pause()
+  }
 
   const filters = ['All', 'Interfaith', 'Cultural Traditions', 'Pre-wedding', 'Delhi', 'Jim Corbett']
 
@@ -329,9 +340,14 @@ export default function LoveIsLove() {
                     ease: "easeOut"
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={() => handleMouseLeave(index)}
                 >
                   <div className="w-full aspect-video overflow-hidden">
                     <video
+                      ref={(el) => {
+                        if (el) videoRefs.current[index] = el
+                      }}
                       className="w-full h-full object-cover"
                       playsInline
                       loop
