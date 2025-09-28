@@ -49,10 +49,17 @@ export default function HeroSection() {
 
   return (
     <section id="hero-root" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-primary">
-      {/* Layer 1: Background - No video as requested */}
-      <div className="absolute inset-0 z-0 bg-luxury-primary">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden style={{ mixBlendMode: 'overlay', opacity: 0.08 }} />
+      {/* Layer 1: Video Background */}
+      <div className="absolute inset-0 z-0">
+        <LuxuryVideoPlayer 
+          src="/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04" 
+          className="w-full h-full" 
+          autoplay 
+          muted 
+          showControls={false} 
+        />
+        {/* Video overlay for better text readability */}
+        <div className="absolute inset-0 bg-luxury-primary/40 pointer-events-none" />
       </div>
 
       {/* Layer 2: Emblem silhouette moving slower */}
