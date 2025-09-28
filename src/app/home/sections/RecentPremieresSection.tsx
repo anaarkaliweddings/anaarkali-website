@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 type Story = {
   title: string
@@ -19,6 +19,7 @@ const STORIES: Story[] = [
 
 export default function RecentPremieresSection() {
   const videoRefs = useRef<HTMLVideoElement[]>([])
+  const [loadedVideos, setLoadedVideos] = React.useState<Set<number>>(new Set())
 
   const handleMouseEnter = (index: number) => {
     const video = videoRefs.current[index]
@@ -29,6 +30,27 @@ export default function RecentPremieresSection() {
     const video = videoRefs.current[index]
     if (video) video.pause()
   }
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-video-index') || '0')
+            setLoadedVideos(prev => new Set([...prev, index]))
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: '50px' }
+    )
+
+    const videoContainers = document.querySelectorAll('[data-video-index]')
+    videoContainers.forEach(container => observer.observe(container))
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="py-20 bg-white">
@@ -42,22 +64,36 @@ export default function RecentPremieresSection() {
               className="w-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(79,13,14,0.12)] overflow-hidden"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
+              data-video-index={index}
             >
               {/* Video Area - Landscape */}
               <div className="w-full aspect-video overflow-hidden">
-                <video
-                  ref={(el) => {
-                    if (el) videoRefs.current[index] = el
-                  }}
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                  poster={story.poster}
-                >
-                  <source src={`${story.video}.mp4`} type="video/mp4" />
-                </video>
+                {loadedVideos.has(index) ? (
+                  <video
+                    ref={(el) => {
+                      if (el) videoRefs.current[index] = el
+                    }}
+                    className="w-full h-full object-cover"
+                    muted
+                    playsInline
+                    loop
+                    preload="metadata"
+                    poster={story.poster}
+                    loading="lazy"
+                    decoding="async"
+                  >
+                    <source src={`${story.video}.mp4`} type="video/mp4" />
+                  </video>
+                ) : (
+                  <div className="w-full h-full bg-luxury-accent flex items-center justify-center">
+                    <div className="text-center text-luxury-primary">
+                      <div className="animate-pulse">
+                        <div className="w-12 h-12 border-2 border-luxury-primary border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                        <div className="font-primary text-sm">Loading...</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Text Area */}
