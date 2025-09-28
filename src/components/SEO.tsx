@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { generateSeoConfig, generateKeywords } from '../../lib/seo';
+import { generateSeoConfig, generateKeywords } from '../lib/seo';
 
 interface SEOProps {
   title?: string;
@@ -7,7 +7,7 @@ interface SEOProps {
   canonical?: string;
   ogImage?: string;
   keywords?: string;
-  structuredData?: any;
+  structuredData?: Record<string, unknown>;
   type?: 'home' | 'service' | 'location' | 'blog' | 'inclusive';
   location?: string;
 }

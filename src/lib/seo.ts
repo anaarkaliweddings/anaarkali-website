@@ -41,7 +41,7 @@ export interface SEOConfig {
 
 export const generateSeoConfig = (
   type: 'home' | 'service' | 'location' | 'blog' | 'inclusive',
-  data?: any
+  data?: Record<string, unknown>
 ): SEOConfig => {
   const baseConfig: SEOConfig = {
     title: '',
@@ -70,17 +70,17 @@ export const generateSeoConfig = (
     case 'location':
       return {
         ...baseConfig,
-        title: data?.title || `Wedding Photography in ${data?.location}`,
-        description: data?.description || `Professional wedding photography in ${data?.location}`,
-        canonical: data?.canonical
+        title: (data?.title as string) || `Wedding Photography in ${data?.location as string}`,
+        description: (data?.description as string) || `Professional wedding photography in ${data?.location as string}`,
+        canonical: data?.canonical as string
       };
 
     case 'service':
       return {
         ...baseConfig,
-        title: data?.title || 'Wedding Photography Services',
-        description: data?.description || 'Professional wedding photography and cinematography services',
-        canonical: data?.canonical
+        title: (data?.title as string) || 'Wedding Photography Services',
+        description: (data?.description as string) || 'Professional wedding photography and cinematography services',
+        canonical: data?.canonical as string
       };
 
     default:
@@ -105,7 +105,7 @@ export const generateKeywords = (type: string, location?: string): string => {
   return baseKeywords.join(', ');
 };
 
-export const generateStructuredData = (type: 'LocalBusiness' | 'WeddingService' | 'Article', data?: any) => {
+export const generateStructuredData = (type: 'LocalBusiness' | 'WeddingService' | 'Article', data?: Record<string, unknown>) => {
   const baseSchema = {
     "@context": "https://schema.org",
     "@id": `${BRAND_CONFIG.url}/#${type.toLowerCase()}`
@@ -178,7 +178,7 @@ export const generateStructuredData = (type: 'LocalBusiness' | 'WeddingService' 
           name: BRAND_CONFIG.siteName,
           "@id": `${BRAND_CONFIG.url}/#organization`
         },
-        areaServed: data?.serviceArea?.map((area: string) => ({
+        areaServed: (data?.serviceArea as string[])?.map((area: string) => ({
           "@type": "City",
           name: area
         })) || BRAND_CONFIG.serviceAreas.map(area => ({
@@ -191,11 +191,11 @@ export const generateStructuredData = (type: 'LocalBusiness' | 'WeddingService' 
           itemListElement: [
             {
               "@type": "Offer",
-              priceRange: data?.priceRange || "₹50000-₹500000",
+              priceRange: (data?.priceRange as string) || "₹50000-₹500000",
               itemOffered: {
                 "@type": "Service",
-                name: data?.title,
-                description: data?.description
+                name: data?.title as string,
+                description: data?.description as string
               }
             }
           ]
@@ -206,8 +206,8 @@ export const generateStructuredData = (type: 'LocalBusiness' | 'WeddingService' 
       return {
         ...baseSchema,
         "@type": "Article",
-        headline: data?.title,
-        description: data?.description,
+        headline: data?.title as string,
+        description: data?.description as string,
         author: {
           "@type": "Organization",
           name: BRAND_CONFIG.siteName,
@@ -221,10 +221,10 @@ export const generateStructuredData = (type: 'LocalBusiness' | 'WeddingService' 
             url: BRAND_CONFIG.logo
           }
         },
-        datePublished: data?.publishedAt,
-        dateModified: data?.modifiedAt,
-        mainEntityOfPage: data?.canonical,
-        image: data?.ogImage
+        datePublished: data?.publishedAt as string,
+        dateModified: data?.modifiedAt as string,
+        mainEntityOfPage: data?.canonical as string,
+        image: data?.ogImage as string
       };
 
     default:

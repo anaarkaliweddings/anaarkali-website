@@ -1,29 +1,84 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
-import SEO from '@/components/SEO';
-import StructuredData from '@/components/StructuredData';
-import { generateKeywords, generateStructuredData } from '@/lib/seo';
+import SEO from '../../../components/SEO';
+import StructuredData from '../../../components/StructuredData';
+import { generateKeywords, generateStructuredData } from '../../../lib/seo';
 
-interface CityPageProps {
-  city: string;
-  cityData: {
-    name: string;
-    description: string;
-    venues: string[];
-    priceRange: string;
-    coordinates: {
-      lat: string;
-      lng: string;
-    };
+interface CityData {
+  name: string;
+  description: string;
+  venues: string[];
+  priceRange: string;
+  coordinates: {
+    lat: string;
+    lng: string;
   };
 }
 
-const CityWeddingPage: React.FC<CityPageProps> = ({ city, cityData }) => {
+interface CityPageProps {
+  params: {
+    city: string;
+  };
+}
+
+const cityDataMap: Record<string, CityData> = {
+  delhi: {
+    name: 'Delhi',
+    description: 'Capital city wedding photography with historic venues and modern luxury',
+    venues: ['Leela Palace Delhi', 'ITC Maurya', 'The Imperial', 'Taj Palace', 'The Oberoi'],
+    priceRange: '₹80000-₹500000',
+    coordinates: { lat: '28.6139', lng: '77.2090' }
+  },
+  gurgaon: {
+    name: 'Gurgaon',
+    description: 'Modern city luxury weddings with contemporary venues',
+    venues: ['Trident Gurgaon', 'The Westin', 'Hyatt Regency', 'The Leela', 'Radisson Blu'],
+    priceRange: '₹75000-₹450000',
+    coordinates: { lat: '28.4595', lng: '77.0266' }
+  },
+  noida: {
+    name: 'Noida',
+    description: 'Emerging wedding destination with beautiful venues',
+    venues: ['Radisson Noida', 'The LaLiT', 'Crowne Plaza', 'Holiday Inn', 'The Park'],
+    priceRange: '₹70000-₹400000',
+    coordinates: { lat: '28.5355', lng: '77.3910' }
+  },
+  jaipur: {
+    name: 'Jaipur',
+    description: 'Royal city weddings with heritage palaces and luxury resorts',
+    venues: ['Rambagh Palace', 'The Oberoi Rajvilas', 'ITC Rajputana', 'Jai Mahal Palace', 'Fairmont Jaipur'],
+    priceRange: '₹60000-₹350000',
+    coordinates: { lat: '26.9124', lng: '75.7873' }
+  },
+  chandigarh: {
+    name: 'Chandigarh',
+    description: 'Modern planned city with beautiful architecture and gardens',
+    venues: ['Taj Chandigarh', 'The Lalit', 'Hotel Mountview', 'Park Plaza', 'Hotel Shivalikview'],
+    priceRange: '₹65000-₹380000',
+    coordinates: { lat: '30.7333', lng: '76.7794' }
+  }
+};
+
+export async function generateStaticParams() {
+  const cities = [
+    'delhi', 'gurgaon', 'noida', 'faridabad', 'ghaziabad',
+    'chandigarh', 'punjab', 'jaipur', 'udaipur', 'pushkar',
+    'agra', 'lucknow', 'kanpur', 'varanasi', 'amritsar'
+  ];
+
+  return cities.map(city => ({
+    city
+  }));
+}
+
+export default function CityWeddingPage({ params }: CityPageProps) {
+  const cityData = cityDataMap[params.city] || cityDataMap.delhi;
+  
   const title = `Best Wedding Photographers in ${cityData.name} 2025 | Anaarkali Productions`;
   const description = `Professional wedding photography and cinematography in ${cityData.name}. Luxury wedding films, candid photography, and authentic storytelling. Book consultation today.`;
-  const canonical = `https://anaarkaliproduction.com/wedding-photography/${city}`;
+  const canonical = `https://anaarkaliproduction.com/wedding-photography/${params.city}`;
   const keywords = generateKeywords('location', cityData.name);
 
-  const structuredData = generateStructuredData('WeddingService', {
+  // Generate structured data for SEO
+  generateStructuredData('WeddingService', {
     title,
     description,
     canonical,
@@ -174,71 +229,4 @@ const CityWeddingPage: React.FC<CityPageProps> = ({ city, cityData }) => {
       </main>
     </>
   );
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const cities = [
-    'delhi', 'gurgaon', 'noida', 'faridabad', 'ghaziabad',
-    'chandigarh', 'punjab', 'jaipur', 'udaipur', 'pushkar',
-    'agra', 'lucknow', 'kanpur', 'varanasi', 'amritsar'
-  ];
-
-  const paths = cities.map(city => ({
-    params: { city }
-  }));
-
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const cityDataMap: Record<string, any> = {
-    delhi: {
-      name: 'Delhi',
-      description: 'Capital city wedding photography with historic venues and modern luxury',
-      venues: ['Leela Palace Delhi', 'ITC Maurya', 'The Imperial', 'Taj Palace', 'The Oberoi'],
-      priceRange: '₹80000-₹500000',
-      coordinates: { lat: '28.6139', lng: '77.2090' }
-    },
-    gurgaon: {
-      name: 'Gurgaon',
-      description: 'Modern city luxury weddings with contemporary venues',
-      venues: ['Trident Gurgaon', 'The Westin', 'Hyatt Regency', 'The Leela', 'Radisson Blu'],
-      priceRange: '₹75000-₹450000',
-      coordinates: { lat: '28.4595', lng: '77.0266' }
-    },
-    noida: {
-      name: 'Noida',
-      description: 'Emerging wedding destination with beautiful venues',
-      venues: ['Radisson Noida', 'The LaLiT', 'Crowne Plaza', 'Holiday Inn', 'The Park'],
-      priceRange: '₹70000-₹400000',
-      coordinates: { lat: '28.5355', lng: '77.3910' }
-    },
-    jaipur: {
-      name: 'Jaipur',
-      description: 'Royal city weddings with heritage palaces and luxury resorts',
-      venues: ['Rambagh Palace', 'The Oberoi Rajvilas', 'ITC Rajputana', 'Jai Mahal Palace', 'Fairmont Jaipur'],
-      priceRange: '₹60000-₹350000',
-      coordinates: { lat: '26.9124', lng: '75.7873' }
-    },
-    chandigarh: {
-      name: 'Chandigarh',
-      description: 'Modern planned city with beautiful architecture and gardens',
-      venues: ['Taj Chandigarh', 'The Lalit', 'Hotel Mountview', 'Park Plaza', 'Hotel Shivalikview'],
-      priceRange: '₹65000-₹380000',
-      coordinates: { lat: '30.7333', lng: '76.7794' }
-    }
-  };
-
-  const cityKey = params?.city as string;
-  const cityData = cityDataMap[cityKey] || cityDataMap.delhi;
-
-  return {
-    props: {
-      city: cityKey,
-      cityData
-    },
-    revalidate: 86400 // Revalidate every 24 hours
-  };
-};
-
-export default CityWeddingPage;
+}

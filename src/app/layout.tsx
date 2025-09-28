@@ -3,7 +3,7 @@ import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { BRAND_CONFIG } from '@/lib/seo';
+import { BRAND_CONFIG } from '../lib/seo';
 
 export const metadata: Metadata = {
   title: {

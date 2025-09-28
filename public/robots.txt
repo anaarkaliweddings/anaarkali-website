@@ -1,23 +1,18 @@
+# *
 User-agent: *
 Allow: /
-
-# Disallow admin and API routes
-Disallow: /admin/
-Disallow: /api/
+Disallow: /admin
+Disallow: /api
 Disallow: /test-db
 
-# Allow important pages
-Allow: /wedding-photography/
-Allow: /inclusive-wedding-photography
-Allow: /stories
-Allow: /love-is-love
-Allow: /four-acts
-Allow: /our-vision
-Allow: /begin-your-story
-Allow: /consultation
+# Googlebot
+User-agent: Googlebot
+Allow: /
 
-# Sitemap location
+# Host
+Host: https://anaarkaliproduction.com
+
+# Sitemaps
 Sitemap: https://anaarkaliproduction.com/sitemap.xml
-
-# Crawl delay (optional)
-Crawl-delay: 1
+Sitemap: https://anaarkaliproduction.com/sitemap-portfolio.xml
+Sitemap: https://anaarkaliproduction.com/sitemap-blog.xml

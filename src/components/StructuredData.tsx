@@ -1,8 +1,8 @@
-import { generateStructuredData } from '../../lib/seo';
+import { generateStructuredData } from '../lib/seo';
 
 interface StructuredDataProps {
   type: 'LocalBusiness' | 'WeddingService' | 'Article';
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {

@@ -1,13 +1,14 @@
-import SEO from '@/components/SEO';
-import StructuredData from '@/components/StructuredData';
-import { generateStructuredData } from '@/lib/seo';
+import SEO from '../../components/SEO';
+import StructuredData from '../../components/StructuredData';
+import { generateStructuredData } from '../../lib/seo';
 
 const InclusiveWeddingPage = () => {
   const title = "Inclusive Wedding Photography - LGBTQ+ Friendly | Delhi";
   const description = "Celebrating every love story with inclusive wedding photography and cinematography. LGBTQ+ friendly, interfaith, and court marriage documentation in Delhi.";
   const canonical = "https://anaarkaliproduction.com/inclusive-wedding-photography";
 
-  const structuredData = generateStructuredData('WeddingService', {
+  // Generate structured data for SEO
+  generateStructuredData('WeddingService', {
     title,
     description,
     canonical,
