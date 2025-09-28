@@ -11,6 +11,7 @@ export default function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement | null>(null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
 
   // Video loading optimization
   useEffect(() => {
@@ -19,15 +20,18 @@ export default function HeroSection() {
 
     const handleCanPlay = () => {
       setVideoLoaded(true)
+      setIsMuted(video.muted)
       video.play().catch(console.error)
     }
 
     const handleLoadedData = () => {
       setVideoLoaded(true)
+      setIsMuted(video.muted)
     }
 
     const handleCanPlayThrough = () => {
       setVideoLoaded(true)
+      setIsMuted(video.muted)
     }
 
     video.addEventListener('canplay', handleCanPlay)
@@ -130,12 +134,20 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
         
         {/* Sound indicator - bottom right */}
-        <div className="absolute bottom-4 right-4 z-10 bg-black/50 text-white px-3 py-2 rounded-full text-sm font-primary-medium cursor-pointer hover:bg-black/70 transition-colors">
+        <div 
+          className="absolute bottom-4 right-4 z-10 bg-black/50 text-white px-3 py-2 rounded-full text-sm font-primary-medium cursor-pointer hover:bg-black/70 transition-colors"
+          onClick={() => {
+            if (videoRef.current) {
+              videoRef.current.muted = !videoRef.current.muted
+              setIsMuted(videoRef.current.muted)
+            }
+          }}
+        >
           <span className="flex items-center gap-2">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L5.5 14H3a1 1 0 01-1-1V7a1 1 0 011-1h2.5l2.883-2.793a1 1 0 011.617.793zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-            Click to unmute
+            {isMuted ? 'Click to unmute' : 'Click to mute'}
           </span>
         </div>
       </div>
