@@ -78,7 +78,6 @@ export default function RecentPremieresSection() {
                     loop
                     preload="metadata"
                     poster={story.poster}
-                    loading="lazy"
                     decoding="async"
                   >
                     <source src={`${story.video}.mp4`} type="video/mp4" />
