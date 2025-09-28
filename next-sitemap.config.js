@@ -6,7 +6,7 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   
-  exclude: ['/admin/*', '/api/*', '/dashboard/*', '/test-db'],
+  exclude: ['/admin/*', '/api/*', '/dashboard/*', '/test-db/*'],
   
   additionalPaths: async (config) => [
     await config.transform(config, '/wedding-photography'),
