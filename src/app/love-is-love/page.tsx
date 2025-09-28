@@ -336,7 +336,6 @@ export default function LoveIsLove() {
                       playsInline
                       loop
                       preload="metadata"
-                      decoding="async"
                     >
                       <source src={item.video} type="video/mp4" />
                     </video>
