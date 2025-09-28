@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -11,9 +11,33 @@ export default function Stories() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState('Recent')
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+  const featuredVideoRef = useRef<HTMLVideoElement | null>(null)
 
   const filters = ['All', 'Traditional', 'Modern', 'Destination', 'Court Marriage', 'LGBTQ+']
   const sortOptions = ['Recent', 'Popular', 'Location']
+
+  // Video hover-to-play functionality
+  const handleMouseEnter = (index: number) => {
+    const video = videoRefs.current[index]
+    if (video) {
+      video.play().catch(console.error)
+    }
+  }
+
+  const handleMouseLeave = (index: number) => {
+    const video = videoRefs.current[index]
+    if (video) {
+      video.pause()
+    }
+  }
+
+  const handleFeaturedVideoPlay = () => {
+    const video = featuredVideoRef.current
+    if (video) {
+      video.play().catch(console.error)
+    }
+  }
 
   const portfolioItems = [
     {
@@ -198,16 +222,28 @@ export default function Stories() {
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="w-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(79,13,14,0.12)] overflow-hidden"
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={() => handleMouseLeave(index)}
                 >
-                  <div className="w-full aspect-video overflow-hidden">
+                  <div className="w-full aspect-video overflow-hidden relative">
                     <video
+                      ref={(el) => { videoRefs.current[index] = el }}
                       className="w-full h-full object-cover"
                       playsInline
                       loop
+                      muted
                       preload="metadata"
                     >
                       <source src={item.videoUrl} type="video/mp4" />
                     </video>
+                    {/* Play overlay */}
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
+                        <svg className="w-6 h-6 ml-1 text-luxury-primary" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M8 5v10l8-5-8-5z"/>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Text Area */}
@@ -304,11 +340,13 @@ export default function Stories() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="aspect-video rounded-lg overflow-hidden shadow-xl">
+              <div className="aspect-video rounded-lg overflow-hidden shadow-xl relative">
                 <video
+                  ref={featuredVideoRef}
                   className="w-full h-full object-cover"
                   playsInline
                   loop
+                  muted
                   preload="metadata"
                 >
                   <source src="/Anuj-Noopur-jim Corbett-2024-01.mp4" type="video/mp4" />
@@ -322,9 +360,10 @@ export default function Stories() {
                     viewport={{ once: true }}
                   >
                     <motion.div 
-                      className="w-20 h-20 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto backdrop-blur-sm"
+                      className="w-20 h-20 border-2 border-white rounded-full flex items-center justify-center mb-4 mx-auto backdrop-blur-sm cursor-pointer"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={handleFeaturedVideoPlay}
                     >
                       <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M8 5v10l8-5-8-5z"/>
