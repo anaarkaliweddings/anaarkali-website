@@ -10,56 +10,62 @@ import EmblemIcon from '@/components/EmblemIcon'
 export default function LoveIsLove() {
   const [activeFilter, setActiveFilter] = useState('All')
 
-  const filters = ['All', 'LGBTQ+', 'Interfaith', 'Court Marriage', 'Trans Couples', 'Cultural Traditions']
+  const filters = ['All', 'Interfaith', 'Cultural Traditions', 'Pre-wedding', 'Delhi', 'Jim Corbett']
 
   const diversePortfolio = [
     {
       id: 1,
-      title: 'Meera & Priya',
-      subtitle: 'When two brides wore red and broke every rule beautifully',
-      category: 'LGBTQ+',
-      location: 'Mumbai',
-      description: 'A celebration of love that transcends boundaries, documented with authenticity and joy.'
+      title: 'Anuj & Noopur',
+      subtitle: 'A romantic pre-wedding celebration in the wilderness',
+      category: 'Jim Corbett',
+      location: 'Jim Corbett',
+      description: 'Love story unfolds in the heart of nature, capturing authentic moments in the wild.',
+      video: '/Anuj-Noopur-jim Corbett-2024-01.mp4'
     },
     {
       id: 2,
-      title: 'Karan & Mike',
-      subtitle: 'A Sikh-Christian wedding that celebrated both traditions',
-      category: 'Interfaith',
+      title: 'Naveen & Sweeta',
+      subtitle: 'Urban love story captured in the capital city',
+      category: 'Delhi',
       location: 'Delhi',
-      description: 'Two families, two faiths, one beautiful love story that honored everyone\'s traditions.'
+      description: 'A celebration of love that bridges cultures and creates beautiful memories.',
+      video: '/Naveen-Sweeta-Delhi-2024-02.mp4'
     },
     {
       id: 3,
-      title: 'Anjali & Dev',
-      subtitle: 'A courthouse "I do" that was more romantic than any grand affair',
-      category: 'Court Marriage',
-      location: 'Court House',
-      description: 'Sometimes the most intimate moments create the most powerful stories.'
+      title: 'Pooja & Hemant',
+      subtitle: 'A modern couple\'s journey to forever',
+      category: 'Delhi',
+      location: 'Delhi NCR',
+      description: 'Contemporary love story with traditional roots, beautifully documented.',
+      video: '/Pooja-Hemant-Delhi NCR-2023-05.mp4'
     },
     {
       id: 4,
-      title: 'Alex & Jamie',
-      subtitle: 'A trans couple\'s journey to their perfect day',
-      category: 'Trans Couples',
-      location: 'Bangalore',
-      description: 'Authentic love deserves authentic documentation, regardless of gender identity.'
+      title: 'Priya & David',
+      subtitle: 'A royal pre-wedding celebration in the Pink City',
+      category: 'Pre-wedding',
+      location: 'Jaipur',
+      description: 'Cross-cultural love story set against the backdrop of royal heritage.',
+      video: '/Priya-david Pre-wedding-Jaipur-2024-03.mp4'
     },
     {
       id: 5,
-      title: 'Sarah & Rajesh',
-      subtitle: 'When cultures collide beautifully',
-      category: 'Cultural Traditions',
-      location: 'Goa',
-      description: 'A fusion of traditions that created something entirely new and beautiful.'
+      title: 'Priya & Haywards',
+      subtitle: 'Love story unfolds in the heart of nature',
+      category: 'Jim Corbett',
+      location: 'Jim Corbett',
+      description: 'Another beautiful wilderness celebration, capturing love in its purest form.',
+      video: '/Priya-Haywards-jim corbett-2024-06.mp4'
     },
     {
       id: 6,
-      title: 'Priya & Meera',
-      subtitle: 'Two brides, one love story',
-      category: 'LGBTQ+',
-      location: 'Pune',
-      description: 'Breaking barriers and creating new traditions for future generations.'
+      title: 'Vidhisha & Ruchir',
+      subtitle: 'Urban love story captured in the capital city',
+      category: 'Pre-wedding',
+      location: 'Delhi',
+      description: 'Modern love story with traditional values, beautifully told through our lens.',
+      video: '/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04.mp4'
     }
   ]
 
@@ -324,11 +330,18 @@ export default function LoveIsLove() {
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <div className="w-full aspect-video overflow-hidden bg-luxury-accent flex items-center justify-center">
-                    <div className="text-center text-luxury-primary">
-                      <div className="font-primary-bold text-lg mb-1">Love Story</div>
-                      <div className="font-primary text-xs opacity-70">Coming Soon</div>
-                    </div>
+                  <div className="w-full aspect-video overflow-hidden">
+                    <video
+                      className="w-full h-full object-cover"
+                      muted
+                      playsInline
+                      loop
+                      preload="metadata"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                      <source src={item.video} type="video/mp4" />
+                    </video>
                   </div>
 
                   {/* Text Area */}
