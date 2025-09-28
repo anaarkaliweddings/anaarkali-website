@@ -199,17 +199,11 @@ export default function Stories() {
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="w-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(79,13,14,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(79,13,14,0.12)] overflow-hidden"
                 >
-                  <div className="w-full aspect-video overflow-hidden">
-                    <video
-                      className="w-full h-full object-cover"
-                      muted
-                      playsInline
-                      loop
-                      preload="metadata"
-                    >
-                      <source src="/hero-video.webm" type="video/webm" />
-                      <source src="/hero-video.mp4" type="video/mp4" />
-                    </video>
+                  <div className="w-full aspect-video overflow-hidden bg-luxury-accent flex items-center justify-center">
+                    <div className="text-center text-luxury-primary">
+                      <div className="font-primary-bold text-lg mb-1">Story Video</div>
+                      <div className="font-primary text-xs opacity-70">Coming Soon</div>
+                    </div>
                   </div>
 
                   {/* Text Area */}
@@ -306,14 +300,11 @@ export default function Stories() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="aspect-video rounded-lg overflow-hidden shadow-xl">
-                <LuxuryVideoPlayer
-                  src="/testimonial-video"
-                  className="w-full h-full"
-                  muted
-                  autoplay
-                  showControls={false}
-                />
+              <div className="aspect-video rounded-lg overflow-hidden shadow-xl bg-luxury-accent flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-lg mb-1">Featured Story</div>
+                  <div className="font-primary text-xs opacity-70">Coming Soon</div>
+                </div>
                 <div className="absolute inset-0 bg-luxury-primary/30 flex items-center justify-center">
                   <motion.div 
                     className="text-center text-white"

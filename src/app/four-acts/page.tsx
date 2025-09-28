@@ -251,17 +251,11 @@ export default function FourActs() {
             </div>
             
             <div className="relative">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
-                <video
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/hero-video.webm" type="video/webm" />
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-xl mb-2">Act Video</div>
+                  <div className="font-primary text-sm opacity-70">Coming Soon</div>
+                </div>
               </div>
               
               {/* Info Card Below Video */}
@@ -281,17 +275,11 @@ export default function FourActs() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
-                <video
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/hero-video.webm" type="video/webm" />
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-xl mb-2">Act Video</div>
+                  <div className="font-primary text-sm opacity-70">Coming Soon</div>
+                </div>
               </div>
               
               {/* Info Card Below Video */}
@@ -400,17 +388,11 @@ export default function FourActs() {
             </div>
 
             <div className="relative">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
-                <video
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/hero-video.webm" type="video/webm" />
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-xl mb-2">Act Video</div>
+                  <div className="font-primary text-sm opacity-70">Coming Soon</div>
+                </div>
               </div>
               
               {/* Info Card Below Video */}
@@ -430,17 +412,11 @@ export default function FourActs() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
-                <video
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/hero-video.webm" type="video/webm" />
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-xl mb-2">Act Video</div>
+                  <div className="font-primary text-sm opacity-70">Coming Soon</div>
+                </div>
               </div>
               
               {/* Info Card Below Video */}

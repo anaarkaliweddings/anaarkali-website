@@ -76,13 +76,15 @@ export default function BrandPromiseSection() {
             </div>
           </div>
 
-          {/* Right: Testimonial with hover-scrub */}
+          {/* Right: Placeholder - No video as requested */}
           <motion.div className="relative" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: 'easeOut' }} viewport={{ once: true }}>
-            <div onMouseMove={onMouseMove} className="relative">
-              <video ref={videoRef} className="aspect-video rounded-lg overflow-hidden w-full" muted playsInline preload="metadata" loop>
-                <source src="/testimonial-video.webm" type="video/webm" />
-                <source src="/testimonial-video.mp4" type="video/mp4" />
-              </video>
+            <div className="relative">
+              <div className="aspect-video rounded-lg overflow-hidden w-full bg-luxury-accent flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-xl mb-2">Client Love</div>
+                  <div className="font-primary text-sm opacity-70">Coming Soon</div>
+                </div>
+              </div>
             </div>
             <motion.div className="absolute -bottom-8 -right-8 bg-luxury-primary text-luxury-accent px-6 py-3 rounded-lg shadow-lg"
               initial={{ rotate: -90, x: 100, y: 100, opacity: 0 }}
@@ -90,7 +92,7 @@ export default function BrandPromiseSection() {
               transition={{ duration: 0.8, ease: [0.68, -0.55, 0.265, 1.55] }} viewport={{ once: true }}>
               <div className="text-center">
                 <div className="font-primary-bold text-2xl" aria-live="polite">Client Love</div>
-                <div className="font-primary text-xs tracking-wider uppercase">Hover to scrub</div>
+                <div className="font-primary text-xs tracking-wider uppercase">Coming Soon</div>
               </div>
             </motion.div>
           </motion.div>

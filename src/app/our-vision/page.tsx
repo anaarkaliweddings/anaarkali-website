@@ -214,17 +214,11 @@ export default function OurVision() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white">
-                <video
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/hero-video.webm" type="video/webm" />
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(79,13,14,0.08)] bg-white flex items-center justify-center">
+                <div className="text-center text-luxury-primary">
+                  <div className="font-primary-bold text-xl mb-2">Founder Video</div>
+                  <div className="font-primary text-sm opacity-70">Coming Soon</div>
+                </div>
               </div>
               
               {/* Info Card Below Video */}

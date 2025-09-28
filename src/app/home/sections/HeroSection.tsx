@@ -49,10 +49,9 @@ export default function HeroSection() {
 
   return (
     <section id="hero-root" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-primary">
-      {/* Layer 1: Video */}
-      <div className="absolute inset-0 z-0">
-        <LuxuryVideoPlayer src="/hero-video" className="w-full h-full" autoplay muted showControls={false} />
-        {/* TODO: Film grain shader could be a canvas overlay; placeholder tint */}
+      {/* Layer 1: Background - No video as requested */}
+      <div className="absolute inset-0 z-0 bg-luxury-primary">
+        {/* Background gradient overlay */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden style={{ mixBlendMode: 'overlay', opacity: 0.08 }} />
       </div>
 

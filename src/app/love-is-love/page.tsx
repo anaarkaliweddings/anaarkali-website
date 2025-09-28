@@ -324,17 +324,11 @@ export default function LoveIsLove() {
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <div className="w-full aspect-video overflow-hidden">
-                    <video
-                      className="w-full h-full object-cover"
-                      muted
-                      playsInline
-                      loop
-                      preload="metadata"
-                    >
-                      <source src="/hero-video.webm" type="video/webm" />
-                      <source src="/hero-video.mp4" type="video/mp4" />
-                    </video>
+                  <div className="w-full aspect-video overflow-hidden bg-luxury-accent flex items-center justify-center">
+                    <div className="text-center text-luxury-primary">
+                      <div className="font-primary-bold text-lg mb-1">Love Story</div>
+                      <div className="font-primary text-xs opacity-70">Coming Soon</div>
+                    </div>
                   </div>
 
                   {/* Text Area */}

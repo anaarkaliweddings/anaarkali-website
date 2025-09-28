@@ -89,14 +89,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="relative aspect-video rounded-lg overflow-hidden">
-                <LuxuryVideoPlayer
-                  src="/hero-video"
-                  className="w-full h-full"
-                  muted
-                  autoplay
-                  showControls={false}
-                />
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-luxury-primary">
                 <div className="absolute inset-0 bg-luxury-primary/50" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white">
@@ -115,14 +108,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="relative aspect-video rounded-lg overflow-hidden">
-                <LuxuryVideoPlayer
-                  src="/testimonial-video"
-                  className="w-full h-full"
-                  muted
-                  autoplay
-                  showControls={false}
-                />
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-luxury-primary">
                 <div className="absolute inset-0 bg-luxury-primary/50" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white">
