@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /test-db
+
+# Allow important pages
+Allow: /wedding-photography/
+Allow: /inclusive-wedding-photography
+Allow: /stories
+Allow: /love-is-love
+Allow: /four-acts
+Allow: /our-vision
+Allow: /begin-your-story
+Allow: /consultation
+
+# Sitemap location
+Sitemap: https://anaarkaliproduction.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
