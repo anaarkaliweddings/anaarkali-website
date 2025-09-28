@@ -11,10 +11,10 @@ type Story = {
 }
 
 const STORIES: Story[] = [
-  { title: 'Priya & Arjun', location: 'Mumbai', excerpt: 'When two families became one through the power of love', video: '/hero-video' },
-  { title: 'Sarah & Rajesh', location: 'Delhi', excerpt: 'An interfaith celebration that honored both traditions', video: '/testimonial-video' },
-  { title: 'Meera & Priya', location: 'Bangalore', excerpt: 'Two brides in red, breaking every rule beautifully', video: '/hero-video' },
-  { title: 'Karan & Mike', location: 'Goa', excerpt: 'A destination wedding that felt like a movie', video: '/testimonial-video' },
+  { title: 'Anuj & Noopur', location: 'Jim Corbett', excerpt: 'A romantic pre-wedding celebration in the wilderness', video: '/videos/Anuj-Noopur-jim Corbett-2024-01' },
+  { title: 'Priya & Haywards', location: 'Jim Corbett', excerpt: 'Love story unfolds in the heart of nature', video: '/videos/Priya-Haywards-jim corbett-2024-06' },
+  { title: 'Priya & David', location: 'Jaipur', excerpt: 'A royal pre-wedding celebration in the Pink City', video: '/videos/Priya-david Pre-wedding-Jaipur-2024-03' },
+  { title: 'Vidhisha & Ruchir', location: 'Delhi', excerpt: 'Urban love story captured in the capital city', video: '/videos/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04' },
 ]
 
 export default function RecentPremieresSection() {
@@ -56,7 +56,6 @@ export default function RecentPremieresSection() {
                   preload="metadata"
                   poster={story.poster}
                 >
-                  <source src={`${story.video}.webm`} type="video/webm" />
                   <source src={`${story.video}.mp4`} type="video/mp4" />
                 </video>
               </div>
