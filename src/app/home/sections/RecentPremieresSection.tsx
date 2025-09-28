@@ -11,10 +11,10 @@ type Story = {
 }
 
 const STORIES: Story[] = [
-  { title: 'Anuj & Noopur', location: 'Jim Corbett', excerpt: 'A romantic pre-wedding celebration in the wilderness', video: '/videos/Anuj-Noopur-jim Corbett-2024-01' },
-  { title: 'Priya & Haywards', location: 'Jim Corbett', excerpt: 'Love story unfolds in the heart of nature', video: '/videos/Priya-Haywards-jim corbett-2024-06' },
-  { title: 'Priya & David', location: 'Jaipur', excerpt: 'A royal pre-wedding celebration in the Pink City', video: '/videos/Priya-david Pre-wedding-Jaipur-2024-03' },
-  { title: 'Vidhisha & Ruchir', location: 'Delhi', excerpt: 'Urban love story captured in the capital city', video: '/videos/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04' },
+  { title: 'Anuj & Noopur', location: 'Jim Corbett', excerpt: 'A romantic pre-wedding celebration in the wilderness', video: '/Anuj-Noopur-jim Corbett-2024-01' },
+  { title: 'Priya & Haywards', location: 'Jim Corbett', excerpt: 'Love story unfolds in the heart of nature', video: '/Priya-Haywards-jim corbett-2024-06' },
+  { title: 'Priya & David', location: 'Jaipur', excerpt: 'A royal pre-wedding celebration in the Pink City', video: '/Priya-david Pre-wedding-Jaipur-2024-03' },
+  { title: 'Vidhisha & Ruchir', location: 'Delhi', excerpt: 'Urban love story captured in the capital city', video: '/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04' },
 ]
 
 export default function RecentPremieresSection() {
