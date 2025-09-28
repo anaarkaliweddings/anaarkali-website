@@ -12,60 +12,52 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
+  const [showUnmuteButton, setShowUnmuteButton] = useState(false)
 
   // Video loading optimization
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    const handleCanPlay = () => {
+    const handleVideoReady = () => {
       setVideoLoaded(true)
+      setShowUnmuteButton(true)
       setIsMuted(video.muted)
-      video.play().catch(console.error)
+      
+      // Try to play unmuted first
+      video.play().catch((error) => {
+        console.log('Unmuted autoplay failed, trying muted:', error)
+        video.muted = true
+        setIsMuted(true)
+        video.play().catch(console.error)
+      })
     }
 
-    const handleLoadedData = () => {
-      setVideoLoaded(true)
-      setIsMuted(video.muted)
+    // Simple approach - just wait for video to be ready
+    if (video.readyState >= 3) { // HAVE_FUTURE_DATA
+      handleVideoReady()
+    } else {
+      video.addEventListener('canplay', handleVideoReady, { once: true })
     }
-
-    const handleCanPlayThrough = () => {
-      setVideoLoaded(true)
-      setIsMuted(video.muted)
-    }
-
-    video.addEventListener('canplay', handleCanPlay)
-    video.addEventListener('loadeddata', handleLoadedData)
-    video.addEventListener('canplaythrough', handleCanPlayThrough)
-    
-    // Set video properties for faster loading
-    video.preload = 'auto'
-    video.load()
-
-    // Force play as soon as possible
-    const playVideo = () => {
-      if (video.readyState >= 2) { // HAVE_CURRENT_DATA
-        video.play().catch((error) => {
-          // If unmuted autoplay fails, try muted autoplay
-          console.log('Unmuted autoplay failed, trying muted:', error)
-          video.muted = true
-          video.play().catch(console.error)
-        })
-      }
-    }
-
-    // Try to play immediately and on various events
-    playVideo()
-    video.addEventListener('loadedmetadata', playVideo)
-    video.addEventListener('loadeddata', playVideo)
 
     return () => {
-      video.removeEventListener('canplay', handleCanPlay)
-      video.removeEventListener('loadeddata', handleLoadedData)
-      video.removeEventListener('canplaythrough', handleCanPlayThrough)
-      video.removeEventListener('loadedmetadata', playVideo)
+      video.removeEventListener('canplay', handleVideoReady)
     }
   }, [])
+
+  // Toggle mute function
+  const toggleMute = () => {
+    const video = videoRef.current
+    if (!video) {
+      console.error('Video element not found')
+      return
+    }
+    
+    console.log('Toggling mute, current state:', video.muted)
+    video.muted = !video.muted
+    setIsMuted(video.muted)
+    console.log('New mute state:', video.muted)
+  }
 
   useEffect(() => {
     if (prefersReducedMotion()) return
@@ -128,32 +120,40 @@ export default function HeroSection() {
         {/* Subtle overlay for better visual balance */}
         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
         
-        {/* Sound indicator - bottom right */}
-        <button 
-          className="absolute bottom-4 right-4 z-20 bg-black/50 text-white px-3 py-2 rounded-full text-sm font-primary-medium cursor-pointer hover:bg-black/70 transition-colors border-none outline-none focus:outline-none focus:ring-2 focus:ring-white/50"
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            console.log('Unmute button clicked!')
-            if (videoRef.current) {
-              console.log('Video found, current muted state:', videoRef.current.muted)
-              videoRef.current.muted = !videoRef.current.muted
-              setIsMuted(videoRef.current.muted)
-              console.log('New muted state:', videoRef.current.muted)
-            } else {
-              console.log('Video ref not found!')
-            }
-          }}
-          type="button"
-          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-        >
-          <span className="flex items-center gap-2">
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L5.5 14H3a1 1 0 01-1-1V7a1 1 0 011-1h2.5l2.883-2.793a1 1 0 011.617.793zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-            {isMuted ? 'Click to unmute' : 'Click to mute'}
-          </span>
-        </button>
+        {/* Sound control button - bottom right */}
+        {showUnmuteButton && (
+          <div 
+            className="absolute bottom-4 right-4 z-30 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-primary-medium cursor-pointer hover:bg-black/90 transition-all duration-200 select-none"
+            style={{ 
+              pointerEvents: 'auto',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
+            }}
+            onMouseDown={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              console.log('Button clicked!')
+              toggleMute()
+            }}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                {isMuted ? (
+                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L5.5 14H3a1 1 0 01-1-1V7a1 1 0 011-1h2.5l2.883-2.793a1 1 0 011.617.793zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                ) : (
+                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L5.5 14H3a1 1 0 01-1-1V7a1 1 0 011-1h2.5l2.883-2.793a1 1 0 011.617.793z" clipRule="evenodd" />
+                )}
+              </svg>
+              <span>{isMuted ? 'Unmute' : 'Mute'}</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Layer 2: Emblem silhouette moving slower */}
