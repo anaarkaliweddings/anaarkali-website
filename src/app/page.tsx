@@ -7,11 +7,9 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
 import EmblemLoader from '@/components/EmblemLoader'
-import dynamic from 'next/dynamic'
-
-const HeroSection = dynamic(() => import('./home/sections/HeroSection'), { ssr: false })
-const BrandPromiseSection = dynamic(() => import('./home/sections/BrandPromiseSection'), { ssr: false })
-const RecentPremieresSection = dynamic(() => import('./home/sections/RecentPremieresSection'), { ssr: false })
+import HeroSection from './home/sections/HeroSection'
+import BrandPromiseSection from './home/sections/BrandPromiseSection'
+import RecentPremieresSection from './home/sections/RecentPremieresSection'
 
 export default function Home() {
   const [storyCount, setStoryCount] = useState(147)
@@ -20,19 +18,25 @@ export default function Home() {
   useEffect(() => {
     const target = 147
     let tween: ReturnType<typeof gsap.fromTo> | null = null
+    
+    // Load GSAP asynchronously without blocking
     loadGSAP().then(({ gsap }) => {
       tween = gsap.fromTo(
         { value: 0 },
         { value: target },
         {
-          duration: 2,
+          duration: 1.5, // Reduced duration for faster animation
           ease: 'power2.out',
           onUpdate: function (this: { targets(): { value: number }[] }) {
             setStoryCount(Math.round(this.targets()[0].value))
           },
         }
       )
+    }).catch(() => {
+      // Fallback if GSAP fails to load
+      setStoryCount(target)
     })
+    
     return () => {
       if (tween) {
         tween.kill()
@@ -43,7 +47,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 800) // Reduced from 2000ms to 800ms for faster loading
 
     return () => clearTimeout(timer)
   }, [])
