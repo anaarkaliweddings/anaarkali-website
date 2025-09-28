@@ -41,6 +41,14 @@ const nextConfig = {
             key: 'Accept-Ranges',
             value: 'bytes',
           },
+          {
+            key: 'Content-Type',
+            value: 'video/mp4',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
         ],
       },
     ]

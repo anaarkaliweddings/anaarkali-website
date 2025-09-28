@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import LuxuryVideoPlayer from '@/components/LuxuryVideoPlayer'
 import EmblemIcon from '@/components/EmblemIcon'
@@ -9,6 +9,54 @@ import { loadGSAP, prefersReducedMotion, springEase } from '@/lib/animations'
 export default function HeroSection() {
   const layer2Ref = useRef<HTMLDivElement | null>(null)
   const headlineRef = useRef<HTMLHeadingElement | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
+  // Video loading optimization
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleCanPlay = () => {
+      setVideoLoaded(true)
+      video.play().catch(console.error)
+    }
+
+    const handleLoadedData = () => {
+      setVideoLoaded(true)
+    }
+
+    const handleCanPlayThrough = () => {
+      setVideoLoaded(true)
+    }
+
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', handleLoadedData)
+    video.addEventListener('canplaythrough', handleCanPlayThrough)
+    
+    // Set video properties for faster loading
+    video.preload = 'auto'
+    video.load()
+
+    // Force play as soon as possible
+    const playVideo = () => {
+      if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+        video.play().catch(console.error)
+      }
+    }
+
+    // Try to play immediately and on various events
+    playVideo()
+    video.addEventListener('loadedmetadata', playVideo)
+    video.addEventListener('loadeddata', playVideo)
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', handleLoadedData)
+      video.removeEventListener('canplaythrough', handleCanPlayThrough)
+      video.removeEventListener('loadedmetadata', playVideo)
+    }
+  }, [])
 
   useEffect(() => {
     if (prefersReducedMotion()) return
@@ -51,11 +99,20 @@ export default function HeroSection() {
     <section id="hero-root" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-primary">
       {/* Layer 1: Video Background */}
       <div className="absolute inset-0 z-0">
+        {/* Loading fallback background */}
+        {!videoLoaded && (
+          <div className="absolute inset-0 bg-luxury-primary flex items-center justify-center">
+            <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin" />
+          </div>
+        )}
+        
         <video
-          className="w-full h-full object-cover"
+          ref={videoRef}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
           autoPlay
           loop
           playsInline
+          muted
           preload="auto"
         >
           <source src="/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04.mp4" type="video/mp4" />
