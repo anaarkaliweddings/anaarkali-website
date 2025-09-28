@@ -14,5 +14,3 @@ Host: https://anaarkaliproduction.com
 
 # Sitemaps
 Sitemap: https://anaarkaliproduction.com/sitemap.xml
-Sitemap: https://anaarkaliproduction.com/sitemap-portfolio.xml
-Sitemap: https://anaarkaliproduction.com/sitemap-blog.xml

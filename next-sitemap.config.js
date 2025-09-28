@@ -65,10 +65,6 @@ module.exports = {
     policies: [
       { userAgent: '*', allow: '/', disallow: ['/admin', '/api', '/test-db'] },
       { userAgent: 'Googlebot', allow: '/' }
-    ],
-    additionalSitemaps: [
-      'https://anaarkaliproduction.com/sitemap-portfolio.xml',
-      'https://anaarkaliproduction.com/sitemap-blog.xml'
     ]
   }
 }
