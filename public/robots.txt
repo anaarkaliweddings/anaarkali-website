@@ -10,7 +10,7 @@ User-agent: Googlebot
 Allow: /
 
 # Host
-Host: https://anaarkaliproduction.com
+Host: https://www.anaarkaliproduction.com
 
 # Sitemaps
-Sitemap: https://anaarkaliproduction.com/sitemap.xml
+Sitemap: https://www.anaarkaliproduction.com/sitemap.xml
