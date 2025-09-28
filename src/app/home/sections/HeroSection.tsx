@@ -55,7 +55,6 @@ export default function HeroSection() {
           src="/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04" 
           className="w-full h-full" 
           autoplay 
-          muted 
           showControls={false} 
         />
         {/* Video overlay for better text readability */}

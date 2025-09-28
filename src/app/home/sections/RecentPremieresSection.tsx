@@ -74,7 +74,6 @@ export default function RecentPremieresSection() {
                       if (el) videoRefs.current[index] = el
                     }}
                     className="w-full h-full object-cover"
-                    muted
                     playsInline
                     loop
                     preload="metadata"

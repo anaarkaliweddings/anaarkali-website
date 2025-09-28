@@ -333,7 +333,6 @@ export default function LoveIsLove() {
                   <div className="w-full aspect-video overflow-hidden">
                     <video
                       className="w-full h-full object-cover"
-                      muted
                       playsInline
                       loop
                       preload="metadata"
