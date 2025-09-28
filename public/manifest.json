@@ -9,20 +9,22 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/Anaarkali_logo_Wordmark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/Emblem_Anaarkali.png",
+      "sizes": "189x221",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
+      "src": "/favicon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "categories": ["photography", "wedding", "cinematography", "entertainment"],

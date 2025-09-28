@@ -79,9 +79,15 @@ export default function RootLayout({
         <link rel="preload" href="/Vidhisha-Ruchir-Pre-wedding-Delhi-2025-04.mp4" as="video" type="video/mp4" />
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
+        {/* Favicon - Anaarkali Emblem */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/Emblem_Anaarkali.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+        <meta name="theme-color" content="#4F0D0E" />
         {/* Structured Data for Organization */}
         <script
           type="application/ld+json"
